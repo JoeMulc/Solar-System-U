@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SolarSystemProject",
+			"Path": "..\\Source\\SolarSystemProject.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SolarSystemProjectEditor",
+			"Path": "..\\Source\\SolarSystemProjectEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

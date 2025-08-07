@@ -1,0 +1,15 @@
+#include "/Engine/Public/Platform.ush"
+
+int latitudeSegments;
+int longitudeSegments;
+float radius;
+RWBuffer<int> Output;
+
+[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
+void SphereGenerationShader(
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint GroupIndex : SV_GroupIndex )
+{
+	// Outputs one number
+    Output[0] = (int)radius + longitudeSegments + longitudeSegments;
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\SolarSystemProject.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SolarSystemProject.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SolarSystemProjectEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin">
+      <UniqueIdentifier>{51226B57-1B1B-3878-8EF2-B49C114441A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Source">
+      <UniqueIdentifier>{D50B2C1C-040D-34BF-8552-D172E66FE1A1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule">
+      <UniqueIdentifier>{21C26661-E5E5-3EA8-BBA0-E8FD3B055E87}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\ComputeModule.Build.cs">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private">
+      <UniqueIdentifier>{B6DF5543-BBC6-379C-AAA1-99348E210A32}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\ComputeModule.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader">
+      <UniqueIdentifier>{4D191618-924C-3E80-B289-DCC83C15AD04}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public">
+      <UniqueIdentifier>{BF16B89A-323D-38B1-BC63-00E764307F3F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\ComputeModule.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader">
+      <UniqueIdentifier>{A9D84AA8-6177-39E2-B760-BF63101D5B12}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader\SphereGenerationShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader</Filter>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader\SphereGenerationShader_readme.md">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader</Filter>
+    </None>
+    <None Include="..\..\Plugins\ShadeupPlugin\ShadeupPlugin.uplugin">
+      <Filter>Plugins\ShadeupPlugin</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Resources">
+      <UniqueIdentifier>{69AE1071-52A5-3DB0-B31B-35EC32789916}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Resources\Icon128.png">
+      <Filter>Plugins\ShadeupPlugin\Resources</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders">
+      <UniqueIdentifier>{5A936CFD-8E9B-3FB6-B3D0-4D9F7EFFA900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule">
+      <UniqueIdentifier>{EDC87A4B-465F-359A-A866-DBE1E590D1CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private">
+      <UniqueIdentifier>{E68B8CAC-6A9A-31AD-90B6-DC94F715AD99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader">
+      <UniqueIdentifier>{99479967-EA07-389F-B007-FB544A0622A9}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.usf">
+      <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ShadeupPlugin">
+      <UniqueIdentifier>{94F4D092-BAB4-310A-BD50-C72EA07ADC11}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\ShadeupPlugin.Build.cs">
+      <Filter>Plugins\ShadeupPlugin\Source\ShadeupPlugin</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ShadeupPlugin\Private">
+      <UniqueIdentifier>{1A1ED3D6-9A6E-3FCE-A6C5-044B8104633F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\Private\ShadeupPlugin.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ShadeupPlugin\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ShadeupPlugin\Public">
+      <UniqueIdentifier>{777D0FA1-14D4-3B5B-96F8-FFE710B17BE2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\Public\ShadeupPlugin.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ShadeupPlugin\Public</Filter>
+    </ClCompile>
+    <Filter Include="Source\SolarSystemProject">
+      <UniqueIdentifier>{BB4406C5-A0DA-3862-A45E-8FADD61A0B8C}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SolarSystemProject\SolarSystemProject.Build.cs">
+      <Filter>Source\SolarSystemProject</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SolarSystemProject\SolarSystemProject.cpp">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\SolarSystemProject.h">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\SolarSystemProject.Build.cs",
+		"C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\ComputeModule.Build.cs",
+		"C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ShadeupPlugin\\ShadeupPlugin.Build.cs",
+		"C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject.Target.cs",
+		"C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProjectEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.4"
+}

@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\source\\solarsystemproject\\solarsystemproject.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\x64\\solarsystemprojecteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\solarsystemproject\\definitions.solarsystemproject.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\source\\solarsystemproject\\solarsystemproject.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

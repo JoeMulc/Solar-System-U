@@ -1,0 +1,8 @@
+{
+	"BuildId": "37670630",
+	"Modules": 
+	{
+		"ComputeModule": "UnrealEditor-ComputeModule.dll",
+		"ShadeupPlugin": "UnrealEditor-ShadeupPlugin.dll"
+	}
+}

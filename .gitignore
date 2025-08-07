@@ -1,0 +1,5 @@
+*.db
+*.pch
+*.ipch
+*.vsidx
+*.opendb
