@@ -25,6 +25,6 @@
 #include "RenderGraphResources.h"
 #include "Runtime/Engine/Classes/Engine/TextureRenderTarget2D.h"
 
-#define NUM_THREADS_SphereGenerationShader_X 64
+#define NUM_THREADS_SphereGenerationShader_X 512
 #define NUM_THREADS_SphereGenerationShader_Y 1
 #define NUM_THREADS_SphereGenerationShader_Z 1

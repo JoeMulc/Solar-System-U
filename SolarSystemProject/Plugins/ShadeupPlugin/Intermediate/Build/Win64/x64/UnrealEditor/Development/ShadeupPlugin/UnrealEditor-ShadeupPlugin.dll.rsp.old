@@ -36,7 +36,7 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN:6
 /NOIMPLIB
-"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\Development\UnrealEd\SharedPCH.UnrealEd.Cpp20.h.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ShadeupPlugin\ShadeupPlugin.cpp.obj"
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ShadeupPlugin\PerModuleInline.gen.cpp.obj"
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ShadeupPlugin\Default.rc2.res"

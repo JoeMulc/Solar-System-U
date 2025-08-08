@@ -1,15 +1,98 @@
 #include "/Engine/Public/Platform.ush"
 
-int latitudeSegments;
-int longitudeSegments;
-float radius;
-RWBuffer<int> Output;
+int LatitudeSegments;
+int LongitudeSegments;
+float Radius;
+uint MaxVertices;
+uint MaxTriangles;
 
+RWBuffer<float> VerticesBuffer;
+RWBuffer<int> TrianglesBuffer;
+RWBuffer<float> NormalsBuffer;
+RWBuffer<float> UVsBuffer;
+RWBuffer<int> CountersBuffer;
+
+//using lat lon sphere need to look at better spheres with more consistent vertex parting
 [numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
 void SphereGenerationShader(
-	uint3 DispatchThreadId : SV_DispatchThreadID,
-	uint GroupIndex : SV_GroupIndex )
+    uint3 DispatchThreadId : SV_DispatchThreadID,
+    uint GroupIndex : SV_GroupIndex)
 {
-	// Outputs one number
-    Output[0] = (int)radius + longitudeSegments + longitudeSegments;
+    uint ThreadIndex = DispatchThreadId.x;
+    
+    //Calculate total vertices and triangles
+    uint TotalVertices = (LatitudeSegments + 1) * (LongitudeSegments + 1);
+    uint TotalTriangleIndices = LatitudeSegments * LongitudeSegments * 6; // 6 indices per quad (2 triangles * 3 vertices)
+    
+    if (ThreadIndex >= TotalVertices)
+        return;
+    
+    //Delete me at some poitnt
+    if (ThreadIndex == 0)
+    {
+        CountersBuffer[0] = TotalVertices;
+        CountersBuffer[1] = TotalTriangleIndices;
+    }
+    
+    //Converts thread coordinates to 2d grid
+    uint LatIndex = ThreadIndex / (LongitudeSegments + 1);
+    uint LonIndex = ThreadIndex % (LongitudeSegments + 1);
+    
+    if (LatIndex <= LatitudeSegments && LonIndex <= LongitudeSegments)
+    {
+        //Calculate spherical coordinates
+        float LatAngle = (float) LatIndex / (float) LatitudeSegments * 3.14159265359; 
+        float LonAngle = (float) LonIndex / (float) LongitudeSegments * 2.0 * 3.14159265359; //just define pi somewhere
+        
+        float3 Position;
+        Position.x = Radius * sin(LatAngle) * cos(LonAngle);
+        Position.y = Radius * sin(LatAngle) * sin(LonAngle);
+        Position.z = Radius * cos(LatAngle);
+        
+        float3 Normal = normalize(Position);
+        
+        //Had to flip to fix bug - wrong texture orientation
+        float2 UV;
+        UV.x = (float) LonIndex / (float) LongitudeSegments;
+        UV.y = 1.0 - ((float) LatIndex / (float) LatitudeSegments);
+        
+        //Write to buffer
+        uint VertexBaseIndex = ThreadIndex * 3;
+        VerticesBuffer[VertexBaseIndex + 0] = Position.x;
+        VerticesBuffer[VertexBaseIndex + 1] = Position.y;
+        VerticesBuffer[VertexBaseIndex + 2] = Position.z;
+        
+        NormalsBuffer[VertexBaseIndex + 0] = Normal.x;
+        NormalsBuffer[VertexBaseIndex + 1] = Normal.y;
+        NormalsBuffer[VertexBaseIndex + 2] = Normal.z;
+        
+        uint UVBaseIndex = ThreadIndex * 2;
+        UVsBuffer[UVBaseIndex + 0] = UV.x;
+        UVsBuffer[UVBaseIndex + 1] = UV.y;
+        
+    }
+    
+    //Triangles
+    if (LatIndex < LatitudeSegments && LonIndex < LongitudeSegments)
+    {
+        uint QuadIndex = LatIndex * LongitudeSegments + LonIndex;
+        uint TriangleBaseIndex = QuadIndex * 6;
+        
+        uint TopLeft = LatIndex * (LongitudeSegments + 1) + LonIndex;
+        uint TopRight = TopLeft + 1;
+        uint BottomLeft = (LatIndex + 1) * (LongitudeSegments + 1) + LonIndex;
+        uint BottomRight = BottomLeft + 1;
+        
+        //Create the two triangles from quad
+        if (TriangleBaseIndex + 5 < MaxTriangles)
+        {
+            TrianglesBuffer[TriangleBaseIndex + 0] = TopLeft;
+            TrianglesBuffer[TriangleBaseIndex + 1] = TopRight;
+            TrianglesBuffer[TriangleBaseIndex + 2] = BottomLeft;
+            
+            TrianglesBuffer[TriangleBaseIndex + 3] = TopRight;
+            TrianglesBuffer[TriangleBaseIndex + 4] = BottomRight;
+            TrianglesBuffer[TriangleBaseIndex + 5] = BottomLeft;
+        }
+    }
 }

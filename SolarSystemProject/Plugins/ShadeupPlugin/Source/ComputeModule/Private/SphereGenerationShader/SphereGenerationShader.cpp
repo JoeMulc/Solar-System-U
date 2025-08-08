@@ -17,169 +17,224 @@ DECLARE_STATS_GROUP(TEXT("SphereGenerationShader"), STATGROUP_SphereGenerationSh
 DECLARE_CYCLE_STAT(TEXT("SphereGenerationShader Execute"), STAT_SphereGenerationShader_Execute, STATGROUP_SphereGenerationShader);
 
 // This class carries our parameter declarations and acts as the bridge between cpp and HLSL.
-class COMPUTEMODULE_API FSphereGenerationShader: public FGlobalShader
+class COMPUTEMODULE_API FSphereGenerationShader : public FGlobalShader
 {
 public:
-	
-	DECLARE_GLOBAL_SHADER(FSphereGenerationShader);
-	SHADER_USE_PARAMETER_STRUCT(FSphereGenerationShader, FGlobalShader);
-	
-	
-	class FSphereGenerationShader_Perm_TEST : SHADER_PERMUTATION_INT("TEST", 1);
-	using FPermutationDomain = TShaderPermutationDomain<
-		FSphereGenerationShader_Perm_TEST
-	>;
 
-	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
-		/*
-		* Here's where you define one or more of the input parameters for your shader.
-		* Some examples:
-		*/
-		// SHADER_PARAMETER(uint32, MyUint32) // On the shader side: uint32 MyUint32;
-		// SHADER_PARAMETER(FVector3f, MyVector) // On the shader side: float3 MyVector;
+    DECLARE_GLOBAL_SHADER(FSphereGenerationShader);
+    SHADER_USE_PARAMETER_STRUCT(FSphereGenerationShader, FGlobalShader);
 
-		// SHADER_PARAMETER_TEXTURE(Texture2D, MyTexture) // On the shader side: Texture2D<float4> MyTexture; (float4 should be whatever you expect each pixel in the texture to be, in this case float4(R,G,B,A) for 4 channels)
-		// SHADER_PARAMETER_SAMPLER(SamplerState, MyTextureSampler) // On the shader side: SamplerState MySampler; // CPP side: TStaticSamplerState<ESamplerFilter::SF_Bilinear>::GetRHI();
+    class FSphereGenerationShader_Perm_TEST : SHADER_PERMUTATION_INT("TEST", 1);
+    using FPermutationDomain = TShaderPermutationDomain<
+        FSphereGenerationShader_Perm_TEST
+    >;
 
-		// SHADER_PARAMETER_ARRAY(float, MyFloatArray, [3]) // On the shader side: float MyFloatArray[3];
+    BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+        SHADER_PARAMETER(int32, LatitudeSegments)
+        SHADER_PARAMETER(int32, LongitudeSegments)
+        SHADER_PARAMETER(float, Radius)
+        SHADER_PARAMETER(uint32, MaxVertices)
+        SHADER_PARAMETER(uint32, MaxTriangles)
 
-		// SHADER_PARAMETER_UAV(RWTexture2D<FVector4f>, MyTextureUAV) // On the shader side: RWTexture2D<float4> MyTextureUAV;
-		// SHADER_PARAMETER_UAV(RWStructuredBuffer<FMyCustomStruct>, MyCustomStructs) // On the shader side: RWStructuredBuffer<FMyCustomStruct> MyCustomStructs;
-		// SHADER_PARAMETER_UAV(RWBuffer<FMyCustomStruct>, MyCustomStructs) // On the shader side: RWBuffer<FMyCustomStruct> MyCustomStructs;
+        //Output buffers
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, VerticesBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, TrianglesBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, NormalsBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, UVsBuffer)
 
-		// SHADER_PARAMETER_SRV(StructuredBuffer<FMyCustomStruct>, MyCustomStructs) // On the shader side: StructuredBuffer<FMyCustomStruct> MyCustomStructs;
-		// SHADER_PARAMETER_SRV(Buffer<FMyCustomStruct>, MyCustomStructs) // On the shader side: Buffer<FMyCustomStruct> MyCustomStructs;
-		// SHADER_PARAMETER_SRV(Texture2D<FVector4f>, MyReadOnlyTexture) // On the shader side: Texture2D<float4> MyReadOnlyTexture;
-
-		// SHADER_PARAMETER_STRUCT_REF(FMyCustomStruct, MyCustomStruct)
-
-		SHADER_PARAMETER(int, latitudeSegments)
-		SHADER_PARAMETER(int, longitudeSegments)
-		SHADER_PARAMETER(float, radius)
-		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, Output)
-		
-
-	END_SHADER_PARAMETER_STRUCT()
+        //Remove this later used for debugging
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, CountersBuffer)
+    END_SHADER_PARAMETER_STRUCT()
 
 public:
-	static bool ShouldCompilePermutation(const FGlobalShaderPermutationParameters& Parameters)
-	{
-		const FPermutationDomain PermutationVector(Parameters.PermutationId);
-		
-		return true;
-	}
+    static bool ShouldCompilePermutation(const FGlobalShaderPermutationParameters& Parameters)
+    {
+        return true;
+    }
 
-	static void ModifyCompilationEnvironment(const FGlobalShaderPermutationParameters& Parameters, FShaderCompilerEnvironment& OutEnvironment)
-	{
-		FGlobalShader::ModifyCompilationEnvironment(Parameters, OutEnvironment);
+    static void ModifyCompilationEnvironment(const FGlobalShaderPermutationParameters& Parameters, FShaderCompilerEnvironment& OutEnvironment)
+    {
+        FGlobalShader::ModifyCompilationEnvironment(Parameters, OutEnvironment);
 
-		const FPermutationDomain PermutationVector(Parameters.PermutationId);
-
-		/*
-		* Here you define constants that can be used statically in the shader code.
-		* Example:
-		*/
-		// OutEnvironment.SetDefine(TEXT("MY_CUSTOM_CONST"), TEXT("1"));
-
-		/*
-		* These defines are used in the thread count section of our shader
-		*/
-		OutEnvironment.SetDefine(TEXT("THREADS_X"), NUM_THREADS_SphereGenerationShader_X);
-		OutEnvironment.SetDefine(TEXT("THREADS_Y"), NUM_THREADS_SphereGenerationShader_Y);
-		OutEnvironment.SetDefine(TEXT("THREADS_Z"), NUM_THREADS_SphereGenerationShader_Z);
-
-		// This shader must support typed UAV load and we are testing if it is supported at runtime using RHIIsTypedUAVLoadSupported
-		//OutEnvironment.CompilerFlags.Add(CFLAG_AllowTypedUAVLoads);
-
-		// FForwardLightingParameters::ModifyCompilationEnvironment(Parameters.Platform, OutEnvironment);
-	}
-private:
+        OutEnvironment.SetDefine(TEXT("THREADS_X"), NUM_THREADS_SphereGenerationShader_X);
+        OutEnvironment.SetDefine(TEXT("THREADS_Y"), NUM_THREADS_SphereGenerationShader_Y);
+        OutEnvironment.SetDefine(TEXT("THREADS_Z"), NUM_THREADS_SphereGenerationShader_Z);
+    }
 };
 
-// This will tell the engine to create the shader and where the shader entry point is.
-//                            ShaderType                            ShaderPath                     Shader function name    Type
 IMPLEMENT_GLOBAL_SHADER(FSphereGenerationShader, "/ComputeModuleShaders/SphereGenerationShader/SphereGenerationShader.usf", "SphereGenerationShader", SF_Compute);
 
-void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FSphereGenerationShaderDispatchParams Params, TFunction<void(int OutputVal)> AsyncCallback) {
-	FRDGBuilder GraphBuilder(RHICmdList);
+void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FSphereGenerationShaderDispatchParams Params, TFunction<void(const FSphereGeometryData&)> AsyncCallback)
+{
+    FRDGBuilder GraphBuilder(RHICmdList);
 
-	{
-		SCOPE_CYCLE_COUNTER(STAT_SphereGenerationShader_Execute);
-		DECLARE_GPU_STAT(SphereGenerationShader)
-		RDG_EVENT_SCOPE(GraphBuilder, "SphereGenerationShader");
-		RDG_GPU_STAT_SCOPE(GraphBuilder, SphereGenerationShader);
-		
-		typename FSphereGenerationShader::FPermutationDomain PermutationVector;
-		
-		// Add any static permutation options here
-		// PermutationVector.Set<FSphereGenerationShader::FMyPermutationName>(12345);
+    {
+        SCOPE_CYCLE_COUNTER(STAT_SphereGenerationShader_Execute);
+        DECLARE_GPU_STAT(SphereGenerationShader)
+        RDG_EVENT_SCOPE(GraphBuilder, "SphereGenerationShader");
+        RDG_GPU_STAT_SCOPE(GraphBuilder, SphereGenerationShader);
 
-		TShaderMapRef<FSphereGenerationShader> ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel), PermutationVector);
-		
+        typename FSphereGenerationShader::FPermutationDomain PermutationVector;
+        TShaderMapRef<FSphereGenerationShader> ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel), PermutationVector);
 
-		bool bIsShaderValid = ComputeShader.IsValid();
+        bool bIsShaderValid = ComputeShader.IsValid();
 
-		if (bIsShaderValid) {
-			FSphereGenerationShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FSphereGenerationShader::FParameters>();
+        if (bIsShaderValid)
+        {
+            FSphereGenerationShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FSphereGenerationShader::FParameters>();
 
-			PassParameters->latitudeSegments = Params.latitudeSegments;
-			PassParameters->longitudeSegments = Params.longitudeSegments;
-			PassParameters->radius = Params.radius;
+            // Calculate buffer sizes
+            uint32 NumVertices = (Params.latitudeSegments + 1) * (Params.longitudeSegments + 1);
+            uint32 NumTriangles = Params.latitudeSegments * Params.longitudeSegments * 2 * 3; // 2 triangles per quad, 3 indices per triangle
 
-			FRDGBufferRef OutputBuffer = GraphBuilder.CreateBuffer(
-				FRDGBufferDesc::CreateBufferDesc(sizeof(int32), 1),
-				TEXT("OutputBuffer"));
+            PassParameters->LatitudeSegments = Params.latitudeSegments;
+            PassParameters->LongitudeSegments = Params.longitudeSegments;
+            PassParameters->Radius = Params.radius;
+            PassParameters->MaxVertices = NumVertices;
+            PassParameters->MaxTriangles = NumTriangles;
 
-			PassParameters->Output = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputBuffer, PF_R32_SINT));
-			
+            // Create output buffers
+            FRDGBufferRef VerticesBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per vertex (x, y, z)
+                TEXT("SphereVerticesBuffer"));
 
-			auto GroupCount = FComputeShaderUtils::GetGroupCount(FIntVector(Params.X, Params.Y, Params.Z), FComputeShaderUtils::kGolden2DGroupSize);
-			GraphBuilder.AddPass(
-				RDG_EVENT_NAME("ExecuteSphereGenerationShader"),
-				PassParameters,
-				ERDGPassFlags::AsyncCompute,
-				[&PassParameters, ComputeShader, GroupCount](FRHIComputeCommandList& RHICmdList)
-			{
-				FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
-			});
+            FRDGBufferRef TrianglesBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), NumTriangles),
+                TEXT("SphereTrianglesBuffer"));
 
-			
-			FRHIGPUBufferReadback* GPUBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecuteSphereGenerationShaderOutput"));
-			AddEnqueueCopyPass(GraphBuilder, GPUBufferReadback, OutputBuffer, 0u);
+            FRDGBufferRef NormalsBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per normal
+                TEXT("SphereNormalsBuffer"));
 
-			auto RunnerFunc = [GPUBufferReadback, AsyncCallback](auto&& RunnerFunc) -> void {
-				if (GPUBufferReadback->IsReady()) {
-					
-					int32* Buffer = (int32*)GPUBufferReadback->Lock(1);
-					int OutVal = Buffer[0];
-					
-					GPUBufferReadback->Unlock();
+            FRDGBufferRef UVsBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 2), // 2 floats per UV
+                TEXT("SphereUVsBuffer"));
 
-					AsyncTask(ENamedThreads::GameThread, [AsyncCallback, OutVal]() {
-						AsyncCallback(OutVal);
-					});
+            FRDGBufferRef TangentsBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per tangent
+                TEXT("SphereTangentsBuffer"));
 
-					delete GPUBufferReadback;
-				} else {
-					AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
-						RunnerFunc(RunnerFunc);
-					});
-				}
-			};
+            FRDGBufferRef CountersBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), 2), // [VertexCount, TriangleCount]
+                TEXT("SphereCountersBuffer"));
 
-			AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
-				RunnerFunc(RunnerFunc);
-			});
-			
-		} else {
-			#if WITH_EDITOR
-				GEngine->AddOnScreenDebugMessage((uint64)42145125184, 6.f, FColor::Red, FString(TEXT("The compute shader has a problem.")));
-			#endif
+            PassParameters->VerticesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(VerticesBuffer, PF_R32_FLOAT));
+            PassParameters->TrianglesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(TrianglesBuffer, PF_R32_SINT));
+            PassParameters->NormalsBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(NormalsBuffer, PF_R32_FLOAT));
+            PassParameters->UVsBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(UVsBuffer, PF_R32_FLOAT));
+            PassParameters->CountersBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(CountersBuffer, PF_R32_SINT));
 
-			// We exit here as we don't want to crash the game if the shader is not found or has an error.
-			
-		}
-	}
+            //Calculateing Group count and adding compute pass
+            auto GroupCount = FComputeShaderUtils::GetGroupCount(FIntVector(NumVertices, 1, 1), FComputeShaderUtils::kGolden2DGroupSize);
 
-	GraphBuilder.Execute();
+            GraphBuilder.AddPass(
+                RDG_EVENT_NAME("ExecuteSphereGenerationShader"),
+                PassParameters,
+                ERDGPassFlags::AsyncCompute,
+                [&PassParameters, ComputeShader, GroupCount](FRHIComputeCommandList& RHICmdList)
+                {
+                    FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
+                });
+
+            //Buffer Readbacks
+            FRHIGPUBufferReadback* VerticesReadback = new FRHIGPUBufferReadback(TEXT("SphereVerticesReadback"));
+            FRHIGPUBufferReadback* TrianglesReadback = new FRHIGPUBufferReadback(TEXT("SphereTrianglesReadback"));
+            FRHIGPUBufferReadback* NormalsReadback = new FRHIGPUBufferReadback(TEXT("SphereNormalsReadback"));
+            FRHIGPUBufferReadback* UVsReadback = new FRHIGPUBufferReadback(TEXT("SphereUVsReadback"));
+            FRHIGPUBufferReadback* CountersReadback = new FRHIGPUBufferReadback(TEXT("SphereCountersReadback"));
+
+            AddEnqueueCopyPass(GraphBuilder, VerticesReadback, VerticesBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, TrianglesReadback, TrianglesBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, NormalsReadback, NormalsBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, UVsReadback, UVsBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, CountersReadback, CountersBuffer, 0u);
+
+            auto RunnerFunc = [VerticesReadback, TrianglesReadback, NormalsReadback, UVsReadback, CountersReadback, AsyncCallback, NumVertices, NumTriangles](auto&& RunnerFunc) -> void {
+                if (VerticesReadback->IsReady() && TrianglesReadback->IsReady() && NormalsReadback->IsReady() &&
+                    UVsReadback->IsReady() && CountersReadback->IsReady())
+                {
+                    FSphereGeometryData GeometryData;
+
+                    //Reading data
+                    int32* CountersData = (int32*)CountersReadback->Lock(sizeof(int32) * 2);
+                    uint32 ActualVertexCount = CountersData[0];
+                    uint32 ActualTriangleCount = CountersData[1];
+                    CountersReadback->Unlock();
+
+                    float* VerticesData = (float*)VerticesReadback->Lock(sizeof(float) * NumVertices * 3);
+                    GeometryData.Vertices.Reserve(ActualVertexCount);
+                    for (uint32 i = 0; i < ActualVertexCount; ++i)
+                    {
+                        GeometryData.Vertices.Add(FVector(
+                            VerticesData[i * 3 + 0],
+                            VerticesData[i * 3 + 1],
+                            VerticesData[i * 3 + 2]
+                        ));
+                    }
+                    VerticesReadback->Unlock();
+
+                    int32* TrianglesData = (int32*)TrianglesReadback->Lock(sizeof(int32) * NumTriangles);
+                    GeometryData.Triangles.Reserve(ActualTriangleCount);
+                    for (uint32 i = 0; i < ActualTriangleCount; ++i)
+                    {
+                        GeometryData.Triangles.Add(TrianglesData[i]);
+                    }
+                    TrianglesReadback->Unlock();
+
+                    float* NormalsData = (float*)NormalsReadback->Lock(sizeof(float) * NumVertices * 3);
+                    GeometryData.Normals.Reserve(ActualVertexCount);
+                    for (uint32 i = 0; i < ActualVertexCount; ++i)
+                    {
+                        GeometryData.Normals.Add(FVector(
+                            NormalsData[i * 3 + 0],
+                            NormalsData[i * 3 + 1],
+                            NormalsData[i * 3 + 2]
+                        ));
+                    }
+                    NormalsReadback->Unlock();
+
+                    float* UVsData = (float*)UVsReadback->Lock(sizeof(float) * NumVertices * 2);
+                    GeometryData.UVs.Reserve(ActualVertexCount);
+                    for (uint32 i = 0; i < ActualVertexCount; ++i)
+                    {
+                        GeometryData.UVs.Add(FVector2D(
+                            UVsData[i * 2 + 0],
+                            UVsData[i * 2 + 1]
+                        ));
+                    }
+                    UVsReadback->Unlock();
+
+                    AsyncTask(ENamedThreads::GameThread, [AsyncCallback, GeometryData]() {
+                        AsyncCallback(GeometryData);
+                        });
+
+                    //Cleanup
+                    delete VerticesReadback;
+                    delete TrianglesReadback;
+                    delete NormalsReadback;
+                    delete UVsReadback;
+                    delete CountersReadback;
+                }
+                else
+                {
+                    AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
+                        RunnerFunc(RunnerFunc);
+                        });
+                }
+                };
+
+            AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
+                RunnerFunc(RunnerFunc);
+                });
+
+        }
+        else
+        {
+#if WITH_EDITOR
+            GEngine->AddOnScreenDebugMessage((uint64)42145125184, 6.f, FColor::Red, FString(TEXT("The sphere generation compute shader has a problem.")));
+#endif
+        }
+    }
+
+    GraphBuilder.Execute();
 }

@@ -1,5 +1,12 @@
 {
 	"RemapUnityFiles": 
 	{
+		"Module.ComputeModule.cpp.obj": [
+			"PerModuleInline.gen.cpp.obj",
+			"ComputeModule.cpp.obj",
+			"ComputeModule.init.gen.cpp.obj",
+			"SphereGenerationShader.gen.cpp.obj",
+			"SphereGenerationShader.cpp.obj"
+		]
 	}
 }

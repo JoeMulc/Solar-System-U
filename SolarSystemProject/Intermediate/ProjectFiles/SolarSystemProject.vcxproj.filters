@@ -117,6 +117,18 @@
     <Filter Include="Source\SolarSystemProject">
       <UniqueIdentifier>{BB4406C5-A0DA-3862-A45E-8FADD61A0B8C}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\SolarSystemProject\CelestialBody.cpp">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\CelestialBody.h">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\OrbitingBody.cpp">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\OrbitingBody.h">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
     <None Include="..\..\Source\SolarSystemProject\SolarSystemProject.Build.cs">
       <Filter>Source\SolarSystemProject</Filter>
     </None>

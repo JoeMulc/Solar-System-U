@@ -38,6 +38,7 @@ C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProj
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSystemProjectModuleRules.AssemblyInfoInputs.cache
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSystemProjectModuleRules.AssemblyInfo.cs
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSystemProjectModuleRules.csproj.CoreCompileInputs.cache
+C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSystemProjectModuleRules.sourcelink.json
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSys.0F3CC989.Up2Date
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\SolarSystemProjectModuleRules.dll
 C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\BuildRulesProjects\SolarSystemProjectModuleRules\obj\Development\refint\SolarSystemProjectModuleRules.dll

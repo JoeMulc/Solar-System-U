@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.usf||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +42,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrbitingBody.h",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h",
+              "RelativeDocumentMoniker": "Source\\SolarSystemProject\\OrbitingBody.h",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h",
+              "RelativeToolTip": "Source\\SolarSystemProject\\OrbitingBody.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-07T14:43:27.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrbitingBody.cpp",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp",
+              "RelativeDocumentMoniker": "Source\\SolarSystemProject\\OrbitingBody.cpp",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp",
+              "RelativeToolTip": "Source\\SolarSystemProject\\OrbitingBody.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-07T14:43:29.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CelestialBody.h",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h",
+              "RelativeDocumentMoniker": "Source\\SolarSystemProject\\CelestialBody.h",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h",
+              "RelativeToolTip": "Source\\SolarSystemProject\\CelestialBody.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-07T12:53:27.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CelestialBody.cpp",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp",
+              "RelativeDocumentMoniker": "Source\\SolarSystemProject\\CelestialBody.cpp",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp",
+              "RelativeToolTip": "Source\\SolarSystemProject\\CelestialBody.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-07T12:53:30.773Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,46 +108,46 @@
               "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.usf",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.usf",
               "RelativeToolTip": "Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.usf",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-08-07T10:50:46.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "SphereGenerationShader.h",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h",
               "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h",
               "RelativeToolTip": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-08-07T10:48:57.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "SphereGenerationShader.h",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h",
               "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h",
               "RelativeToolTip": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Public\\SphereGenerationShader\\SphereGenerationShader.h",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAGUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAgwCAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-08-07T10:48:46.715Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "SphereGenerationShader.cpp",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp",
               "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp",
               "RelativeToolTip": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\SphereGenerationShader\\SphereGenerationShader.cpp",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAH4AAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAANwAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-07T10:48:57.21Z",
               "EditorCaption": ""
