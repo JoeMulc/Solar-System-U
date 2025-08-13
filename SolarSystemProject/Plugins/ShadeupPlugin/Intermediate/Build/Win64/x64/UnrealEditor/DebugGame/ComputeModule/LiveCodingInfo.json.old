@@ -2,13 +2,13 @@
 	"RemapUnityFiles": 
 	{
 		"Module.ComputeModule.cpp.obj": [
-			"SphereGenerationShader.gen.cpp.obj",
-			"ComputeModule.cpp.obj",
 			"ComputeModule.init.gen.cpp.obj",
 			"CraterShader.gen.cpp.obj",
+			"SphereGenerationShader.gen.cpp.obj",
+			"ComputeModule.cpp.obj",
+			"SphereGenerationShader.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
-			"CraterShader.cpp.obj",
-			"SphereGenerationShader.cpp.obj"
+			"CraterShader.cpp.obj"
 		]
 	}
 }

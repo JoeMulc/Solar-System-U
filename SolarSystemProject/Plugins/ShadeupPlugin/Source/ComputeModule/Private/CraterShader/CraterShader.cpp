@@ -85,9 +85,6 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 
 		typename FCraterShader::FPermutationDomain PermutationVector;
 
-		// Add any static permutation options here
-		// PermutationVector.Set<FCraterShader::FMyPermutationName>(12345);
-
 		TShaderMapRef<FCraterShader> ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel), PermutationVector);
 
 		bool bIsShaderValid = ComputeShader.IsValid();
@@ -95,8 +92,10 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 		if (bIsShaderValid) {
 			FCraterShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FCraterShader::FParameters>();
 
-			// Convert FVector array to FVector3f for shader
+			// Convert FVector array to float array WITH vertex count at the beginning
 			TArray<float> inputData;
+			inputData.Add((float)Params.inputVertices.Num()); // Add vertex count as first element
+
 			for (const FVector& vert : Params.inputVertices)
 			{
 				inputData.Add(vert.X);
@@ -110,14 +109,20 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 			FRDGBufferRef inputBuffer = CreateUploadBuffer(GraphBuilder, TEXT("InputBuffer"), inputSize, numInputs, RawData, inputSize * numInputs);
 
 			PassParameters->inputVertices = GraphBuilder.CreateSRV(FRDGBufferSRVDesc(inputBuffer, PF_R32_FLOAT));
-			
+
 			FRDGBufferRef OutputBuffer = GraphBuilder.CreateBuffer(
 				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 3),
 				TEXT("OutputBuffer"));
 
 			PassParameters->outputVertices = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputBuffer, PF_R32_FLOAT));
 
-			auto GroupCount = FComputeShaderUtils::GetGroupCount(FIntVector(Params.X, Params.Y, Params.Z), FComputeShaderUtils::kGolden2DGroupSize);
+			// Calculate proper group count based on number of vertices
+			int numVertices = Params.inputVertices.Num();
+			int threadsPerGroup = 64; // This should match your shader's numthreads
+			int numGroups = (numVertices + threadsPerGroup - 1) / threadsPerGroup;
+
+			FIntVector GroupCount = FIntVector(numGroups, 1, 1);
+
 			GraphBuilder.AddPass(
 				RDG_EVENT_NAME("ExecuteCraterShader"),
 				PassParameters,
@@ -169,9 +174,6 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 #if WITH_EDITOR
 			GEngine->AddOnScreenDebugMessage((uint64)42145125184, 6.f, FColor::Red, FString(TEXT("The compute shader has a problem.")));
 #endif
-
-			// We exit here as we don't want to crash the game if the shader is not found or has an error.
-
 		}
 	}
 

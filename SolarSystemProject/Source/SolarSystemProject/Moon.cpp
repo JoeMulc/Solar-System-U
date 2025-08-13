@@ -43,16 +43,25 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
     UVs = GeometryData.UVs;
 
     FCraterShaderDispatchParams craterParams(1, 1, 1);
-    craterParams.inputVertices.Add(FVector(5, 5, 5));
-    craterParams.outputVertices.SetNum(1);
-
+    craterParams.inputVertices = vertices;
+    craterParams.outputVertices.SetNum(vertices.Num());
+    
     FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterData) {
-
-        UE_LOG(LogTemp, Warning, TEXT("Crater Generated with: %f"),
-            craterData[0].X);
-
+    
+        UE_LOG(LogTemp, Warning, TEXT("Input vertices: %d, Output vertices: %d"),
+            vertices.Num(), craterData.Num());
+    
+        if (craterData.Num() > 0) {
+            UE_LOG(LogTemp, Warning, TEXT("First input vertex: %s"),
+                *vertices[0].ToString());
+            UE_LOG(LogTemp, Warning, TEXT("First output vertex: %s"),
+                *craterData[0].ToString());
         }
-    );
-
-   
+        vertices = craterData;
+        normals.Empty();
+        UKismetProceduralMeshLibrary::CalculateTangentsForMesh(vertices, triangles, UVs, normals, tangents);
+        mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, tangents, false);
+    
+        });
+    
 }

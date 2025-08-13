@@ -1,17 +1,14 @@
 #include "/Engine/Public/Platform.ush"
-
 int LatitudeSegments;
 int LongitudeSegments;
 float Radius;
 uint MaxVertices;
 uint MaxTriangles;
-
 RWBuffer<float> VerticesBuffer;
 RWBuffer<int> TrianglesBuffer;
 RWBuffer<float> NormalsBuffer;
 RWBuffer<float> UVsBuffer;
 RWBuffer<int> CountersBuffer;
-
 //using lat lon sphere need to look at better spheres with more consistent vertex parting
 [numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
 void SphereGenerationShader(
@@ -41,7 +38,7 @@ void SphereGenerationShader(
     if (LatIndex <= LatitudeSegments && LonIndex <= LongitudeSegments)
     {
         //Calculate spherical coordinates
-        float LatAngle = (float) LatIndex / (float) LatitudeSegments * 3.14159265359; 
+        float LatAngle = (float) LatIndex / (float) LatitudeSegments * 3.14159265359;
         float LonAngle = (float) LonIndex / (float) LongitudeSegments * 2.0 * 3.14159265359; //just define pi somewhere
         
         float3 Position;

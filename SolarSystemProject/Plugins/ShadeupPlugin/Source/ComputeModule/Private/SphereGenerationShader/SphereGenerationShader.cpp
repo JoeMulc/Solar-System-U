@@ -225,6 +225,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                 };
 
             AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
+                FPlatformProcess::Sleep(0.001f); //fuck knows
                 RunnerFunc(RunnerFunc);
                 });
 
