@@ -165,6 +165,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                     GeometryData.Vertices.Reserve(ActualVertexCount);
                     for (uint32 i = 0; i < ActualVertexCount; ++i)
                     {
+                        //Convert float data to vector
                         GeometryData.Vertices.Add(FVector(
                             VerticesData[i * 3 + 0],
                             VerticesData[i * 3 + 1],

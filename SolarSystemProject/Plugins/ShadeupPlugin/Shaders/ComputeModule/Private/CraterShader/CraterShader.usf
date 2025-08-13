@@ -1,0 +1,22 @@
+#include "/Engine/Public/Platform.ush"
+
+Buffer<float> inputVertices;
+RWBuffer<float> outputVertices;
+
+[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
+void CraterShader(
+    uint3 DispatchThreadId : SV_DispatchThreadID,
+    uint GroupIndex : SV_GroupIndex)
+{
+    // Outputs one number
+    float x = inputVertices[0];
+    float y = inputVertices[1];
+    float z = inputVertices[2];
+    
+    float sum = x + y + z;
+    outputVertices[0] = sum;
+    outputVertices[1] = 0.f;
+    outputVertices[2] = 0.f;
+   
+
+}

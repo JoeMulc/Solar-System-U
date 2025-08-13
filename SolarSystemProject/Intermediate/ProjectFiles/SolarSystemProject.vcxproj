@@ -495,6 +495,14 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader\CraterShader.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader\CraterShader.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -507,6 +515,11 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader_readme.md"/>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader\SphereGenerationShader.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -514,6 +527,7 @@
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader\SphereGenerationShader_readme.md"/>
     <None Include="..\..\Plugins\ShadeupPlugin\ShadeupPlugin.uplugin"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Resources\Icon128.png"/>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader\CraterShader.usf"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.usf"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\ShadeupPlugin.Build.cs"/>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\Private\ShadeupPlugin.cpp">
@@ -529,6 +543,14 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="..\..\Source\SolarSystemProject\CelestialBody.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_2)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Moon.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_2)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Moon.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_2)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
     </ClCompile>

@@ -1,0 +1,4 @@
+Breadcrumbs 'RHIThread'
+ - FRDGBuilder::Execute
+ - WorldTick
+ - Frame 12282

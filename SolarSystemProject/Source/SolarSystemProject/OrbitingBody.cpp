@@ -18,7 +18,6 @@ AOrbitingBody::AOrbitingBody()
 void AOrbitingBody::BeginPlay()
 {
     Super::BeginPlay();
-    GenerateSphere();
 }
 
 // Called every frame
@@ -41,8 +40,6 @@ void AOrbitingBody::GenerateSphere()
        
                 this->OnSphereReady(GeometryData);
         });
-
-        
 }
 
 void AOrbitingBody::OnSphereReady(const FSphereGeometryData& GeometryData)

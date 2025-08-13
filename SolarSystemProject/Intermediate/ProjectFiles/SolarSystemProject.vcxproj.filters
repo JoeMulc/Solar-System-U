@@ -48,6 +48,15 @@
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\ComputeModule.cpp">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private</Filter>
     </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader">
+      <UniqueIdentifier>{8275DA27-A26A-3865-B245-A54761E71B79}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader\CraterShader.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader\CraterShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader</Filter>
+    </ClCompile>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{4D191618-924C-3E80-B289-DCC83C15AD04}</UniqueIdentifier>
     </Filter>
@@ -63,6 +72,15 @@
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\ComputeModule.h">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public</Filter>
     </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader">
+      <UniqueIdentifier>{9AD13D87-C0BF-305F-B5AA-C3168B6E82BB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader</Filter>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader_readme.md">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader</Filter>
+    </None>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader">
       <UniqueIdentifier>{A9D84AA8-6177-39E2-B760-BF63101D5B12}</UniqueIdentifier>
     </Filter>
@@ -90,6 +108,12 @@
     <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private">
       <UniqueIdentifier>{E68B8CAC-6A9A-31AD-90B6-DC94F715AD99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader">
+      <UniqueIdentifier>{E6D9DADE-51C8-3436-84A9-42692C75081F}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader\CraterShader.usf">
+      <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader</Filter>
+    </None>
     <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{99479967-EA07-389F-B007-FB544A0622A9}</UniqueIdentifier>
     </Filter>
@@ -121,6 +145,12 @@
       <Filter>Source\SolarSystemProject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SolarSystemProject\CelestialBody.h">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Moon.cpp">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Moon.h">
       <Filter>Source\SolarSystemProject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SolarSystemProject\OrbitingBody.cpp">
