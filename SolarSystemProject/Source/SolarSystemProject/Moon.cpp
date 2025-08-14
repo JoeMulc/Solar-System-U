@@ -51,16 +51,8 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
         UE_LOG(LogTemp, Warning, TEXT("Input vertices: %d, Output vertices: %d"),
             vertices.Num(), craterData.Num());
     
-        if (craterData.Num() > 0) {
-            UE_LOG(LogTemp, Warning, TEXT("First input vertex: %s"),
-                *vertices[0].ToString());
-            UE_LOG(LogTemp, Warning, TEXT("First output vertex: %s"),
-                *craterData[0].ToString());
-        }
         vertices = craterData;
-        normals.Empty();
-        UKismetProceduralMeshLibrary::CalculateTangentsForMesh(vertices, triangles, UVs, normals, tangents);
-        mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, tangents, false);
+        mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
     
         });
     

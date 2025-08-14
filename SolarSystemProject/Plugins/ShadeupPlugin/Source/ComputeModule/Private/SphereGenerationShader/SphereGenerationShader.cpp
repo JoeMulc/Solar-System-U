@@ -125,15 +125,20 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
             PassParameters->CountersBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(CountersBuffer, PF_R32_SINT));
 
             //Calculateing Group count and adding compute pass
-            auto GroupCount = FComputeShaderUtils::GetGroupCount(FIntVector(NumVertices, 1, 1), FComputeShaderUtils::kGolden2DGroupSize);
+            FIntVector DispatchSize(
+                FMath::DivideAndRoundUp(Params.longitudeSegments + 1, 16),
+                FMath::DivideAndRoundUp(Params.latitudeSegments + 1, 16),
+                1
+            );
+
 
             GraphBuilder.AddPass(
                 RDG_EVENT_NAME("ExecuteSphereGenerationShader"),
                 PassParameters,
                 ERDGPassFlags::AsyncCompute,
-                [&PassParameters, ComputeShader, GroupCount](FRHIComputeCommandList& RHICmdList)
+                [&PassParameters, ComputeShader, DispatchSize](FRHIComputeCommandList& RHICmdList)
                 {
-                    FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
+                    FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, DispatchSize);
                 });
 
             //Buffer Readbacks

@@ -5,10 +5,10 @@
 			"ComputeModule.init.gen.cpp.obj",
 			"CraterShader.gen.cpp.obj",
 			"SphereGenerationShader.gen.cpp.obj",
-			"PerModuleInline.gen.cpp.obj",
 			"ComputeModule.cpp.obj",
-			"SphereGenerationShader.cpp.obj",
-			"CraterShader.cpp.obj"
+			"CraterShader.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"SphereGenerationShader.cpp.obj"
 		]
 	}
 }

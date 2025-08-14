@@ -24,7 +24,7 @@ static const float craterRadii[8] =
 
 static const float craterDepths[8] =
 {
-    50.0, 35.0, 40.0, 30.0, 45.0, 25.0, 28.0, 42.0
+    100.0, 35.0, 40.0, 30.0, 45.0, 25.0, 28.0, 42.0
 };
 
 // Crater shape parameters
@@ -111,7 +111,7 @@ void CraterShader(
     float3 normal = normalize(vertexPos);
    
     // Apply displacement along normal (scale factor for visibility)
-    float displacementScale = 0.15; // Adjust this to make craters more/less pronounced
+    float displacementScale = 0.3; // Adjust this to make craters more/less pronounced
     float3 displacedPos = vertexPos + normal * totalCraterHeight * displacementScale;
    
     // Write output

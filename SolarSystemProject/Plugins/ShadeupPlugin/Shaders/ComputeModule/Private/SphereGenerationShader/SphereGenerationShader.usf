@@ -9,44 +9,55 @@ RWBuffer<int> TrianglesBuffer;
 RWBuffer<float> NormalsBuffer;
 RWBuffer<float> UVsBuffer;
 RWBuffer<int> CountersBuffer;
-//using lat lon sphere need to look at better spheres with more consistent vertex parting
-[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
+
+// Define PI constant for better precision
+static const float PI = 3.14159265359f;
+
+// 2D thread dispatch for better GPU utilization
+[numthreads(16, 16, 1)]
 void SphereGenerationShader(
     uint3 DispatchThreadId : SV_DispatchThreadID,
     uint GroupIndex : SV_GroupIndex)
 {
-    uint ThreadIndex = DispatchThreadId.x;
+    // Use 2D coordinates directly
+    uint LatIndex = DispatchThreadId.y;
+    uint LonIndex = DispatchThreadId.x;
+    
+    // Early exit if outside bounds
+    if (LatIndex > LatitudeSegments || LonIndex > LongitudeSegments)
+        return;
+    
+    uint ThreadIndex = LatIndex * (LongitudeSegments + 1) + LonIndex;
     
     //Calculate total vertices and triangles
     uint TotalVertices = (LatitudeSegments + 1) * (LongitudeSegments + 1);
-    uint TotalTriangleIndices = LatitudeSegments * LongitudeSegments * 6; // 6 indices per quad (2 triangles * 3 vertices)
+    uint TotalTriangleIndices = LatitudeSegments * LongitudeSegments * 6;
     
-    if (ThreadIndex >= TotalVertices)
-        return;
-    
-    //Delete me at some poitnt
+    // Debug counter writes (remove for production)
     if (ThreadIndex == 0)
     {
         CountersBuffer[0] = TotalVertices;
         CountersBuffer[1] = TotalTriangleIndices;
     }
     
-    //Converts thread coordinates to 2d grid
-    uint LatIndex = ThreadIndex / (LongitudeSegments + 1);
-    uint LonIndex = ThreadIndex % (LongitudeSegments + 1);
-    
     if (LatIndex <= LatitudeSegments && LonIndex <= LongitudeSegments)
     {
-        //Calculate spherical coordinates
-        float LatAngle = (float) LatIndex / (float) LatitudeSegments * 3.14159265359;
-        float LonAngle = (float) LonIndex / (float) LongitudeSegments * 2.0 * 3.14159265359; //just define pi somewhere
+        //Calculate spherical coordinates with better precision
+        float LatAngle = (float) LatIndex / (float) LatitudeSegments * PI;
+        float LonAngle = (float) LonIndex / (float) LongitudeSegments * 2.0f * PI;
+        
+        // Use sincos intrinsic for better performance
+        float sinLat, cosLat, sinLon, cosLon;
+        sincos(LatAngle, sinLat, cosLat);
+        sincos(LonAngle, sinLon, cosLon);
         
         float3 Position;
-        Position.x = Radius * sin(LatAngle) * cos(LonAngle);
-        Position.y = Radius * sin(LatAngle) * sin(LonAngle);
-        Position.z = Radius * cos(LatAngle);
+        Position.x = Radius * sinLat * cosLon;
+        Position.y = Radius * sinLat * sinLon;
+        Position.z = Radius * cosLat;
         
-        float3 Normal = normalize(Position);
+        // Optimized normal calculation - already normalized for unit sphere
+        float3 Normal = Position / Radius;
         
         //Had to flip to fix bug - wrong texture orientation
         float2 UV;
@@ -66,7 +77,6 @@ void SphereGenerationShader(
         uint UVBaseIndex = ThreadIndex * 2;
         UVsBuffer[UVBaseIndex + 0] = UV.x;
         UVsBuffer[UVBaseIndex + 1] = UV.y;
-        
     }
     
     //Triangles
