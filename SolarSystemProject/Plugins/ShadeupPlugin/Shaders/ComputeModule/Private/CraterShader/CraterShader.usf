@@ -1,37 +1,78 @@
 #include "/Engine/Public/Platform.ush"
 
+int numCraters;
 Buffer<float> inputVertices;
 RWBuffer<float> outputVertices;
 
-// Crater parameters - positioned on visible hemisphere
-static const uint numCraters = 8;
-static const float craterCenters[24] =
-{
-    0.0, 0.0, -400.0, // North pole (center)
-    150.0, 150.0, 350.0, // Front-right, upper
-    -150.0, 150.0, 350.0, // Front-left, upper  
-    200.0, -100.0, 350.0, // Front-right, lower
-    -200.0, -100.0, 350.0, // Front-left, lower
-    100.0, 0.0, 380.0, // Front-center, slight right
-    -100.0, 0.0, 380.0, // Front-center, slight left
-    0.0, 250.0, 320.0 // Front-top
-};
-
-static const float craterRadii[8] =
-{
-    90.0, 70.0, 65.0, 60.0, 75.0, 50.0, 55.0, 80.0
-};
-
-static const float craterDepths[8] =
-{
-    100.0, 35.0, 40.0, 30.0, 45.0, 25.0, 28.0, 42.0
-};
-
 // Crater shape parameters
-static const float rimSteepness = 8.0;
-static const float rimWidth = 0.3;
-static const float floorHeight = -0.8;
+static const float rimSteepness = 12.0;
+static const float rimWidth = 0.25;
+static const float floorHeight = -1.2;
 static const float smoothness = 0.2;
+
+// Simple hash function for consistent randomization
+float hash(float seed)
+{
+    return frac(sin(seed * 12.9898) * 43758.5453);
+}
+
+float hash2(float2 seed)
+{
+    return frac(sin(dot(seed, float2(12.9898, 78.233))) * 43758.5453);
+}
+
+// Generate crater parameters based on index and sphere radius
+void generateCraterParams(uint craterIndex, float sphereRadius, out float3 center, out float radius, out float depth)
+{
+    // Use crater index as seed for consistent generation
+    float seedBase = float(craterIndex) * 17.3251;
+    
+    // Generate spherical coordinates for uniform distribution on sphere
+    float u = hash(seedBase + 1.0) * 2.0 - 1.0; // cos(theta) range [-1, 1]
+    float theta = hash(seedBase + 2.0) * 2.0 * 3.14159; // phi range [0, 2?]
+    
+    // Convert to Cartesian coordinates on unit sphere
+    float sinTheta = sqrt(1.0 - u * u);
+    float3 spherePos = float3(
+        sinTheta * cos(theta),
+        sinTheta * sin(theta),
+        u
+    );
+    
+    // Scale to actual sphere radius
+    center = spherePos * sphereRadius;
+    
+    // Scale crater sizes relative to sphere size
+    float sizeScale = sphereRadius / 400.0; // Normalize to original 400-unit sphere
+    
+    // Bias towards smaller craters (10-20 range) with occasional large ones (up to 90)
+    float radiusRandom = hash(seedBase + 3.0);
+    
+    // 70% chance for small craters (10-25), 20% medium (25-50), 10% large (50-90)
+    if (radiusRandom < 0.7)
+    {
+        // Small craters: 10-25 scaled to sphere size
+        radius = (10.0 + hash(seedBase + 4.0) * 15.0) * sizeScale;
+    }
+    else if (radiusRandom < 0.9)
+    {
+        // Medium craters: 25-50 scaled to sphere size
+        radius = (25.0 + hash(seedBase + 5.0) * 25.0) * sizeScale;
+    }
+    else
+    {
+        // Large craters: 50-90 scaled to sphere size
+        radius = (50.0 + hash(seedBase + 6.0) * 40.0) * sizeScale;
+    }
+    
+    // Depth correlates with radius but with some variation
+    // Base depth is proportional to radius, with random variation
+    float baseDepthRatio = 0.4 + hash(seedBase + 7.0) * 0.4; // 0.4 to 0.7
+    depth = radius * baseDepthRatio;
+    
+    // Ensure minimum depth for visibility (also scaled)
+    depth = max(depth, 15.0 * sizeScale);
+}
 
 float smoothMax(float a, float b, float k)
 {
@@ -67,19 +108,20 @@ void CraterShader(
         inputVertices[baseIndex + 1],
         inputVertices[baseIndex + 2]
     );
-   
+    // Calculate sphere radius from vertex positions (estimate from first few vertices)
+    float sphereRadius = length(vertexPos);
+    
     float totalCraterHeight = 0.0;
    
-    // Process each crater using the advanced crater algorithm
-    for (uint i = 0; i < numCraters; i++)
+    // Process each crater using dynamically generated parameters
+    for (uint i = 0; i < (uint) numCraters; i++)
     {
-        float3 craterCenter = float3(
-            craterCenters[i * 3 + 0],
-            craterCenters[i * 3 + 1],
-            craterCenters[i * 3 + 2]
-        );
-       
-        float craterRadius = craterRadii[i];
+        float3 craterCenter;
+        float craterRadius;
+        float craterDepth;
+        
+        // Generate crater parameters with sphere radius
+        generateCraterParams(i, sphereRadius, craterCenter, craterRadius, craterDepth);
        
         // Calculate normalized distance from crater center
         float distance = length(vertexPos - craterCenter);
@@ -102,8 +144,8 @@ void CraterShader(
             // Apply falloff for smooth blending at crater edges
             float falloff = 1.0 - smoothstep(1.0 + rimWidth, 2.0, x);
            
-            // Scale by crater radius and add to total height
-            totalCraterHeight += craterShape * craterRadius * falloff;
+            // Scale by crater depth (not radius) and add to total height
+            totalCraterHeight += craterShape * craterDepth * falloff;
         }
     }
    
@@ -111,7 +153,7 @@ void CraterShader(
     float3 normal = normalize(vertexPos);
    
     // Apply displacement along normal (scale factor for visibility)
-    float displacementScale = 0.3; // Adjust this to make craters more/less pronounced
+    float displacementScale = 0.6;
     float3 displacedPos = vertexPos + normal * totalCraterHeight * displacementScale;
    
     // Write output

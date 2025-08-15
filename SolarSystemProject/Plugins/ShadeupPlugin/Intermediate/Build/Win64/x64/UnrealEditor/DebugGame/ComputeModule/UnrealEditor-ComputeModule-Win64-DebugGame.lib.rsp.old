@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-ComputeModule-Win64-DebugGame.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\DebugGame\UnrealEd\SharedPCH.UnrealEd.Project.NonOptimized.ValApi.Cpp20.h.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\Module.ComputeModule.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\CraterShader.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\PerModuleInline.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\ComputeModule.init.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\CraterShader.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\Default.rc2.res"
+/OUT:"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\ComputeModule\UnrealEditor-ComputeModule-Win64-DebugGame.lib"

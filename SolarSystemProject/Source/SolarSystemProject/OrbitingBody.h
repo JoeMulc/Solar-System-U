@@ -6,6 +6,7 @@
 #include "CelestialBody.h"
 #include "SphereGenerationShader\SphereGenerationShader.h"
 #include "ProceduralMeshComponent.h"
+#include "Materials/MaterialInterface.h"
 #include "KismetProceduralMeshLibrary.h"
 #include "OrbitingBody.generated.h"
 
@@ -28,6 +29,8 @@ protected:
 	void OnSphereReady(const FSphereGeometryData& GeometryData);
 
 	UProceduralMeshComponent* mesh;
+
+	UPROPERTY(EditAnywhere) UMaterialInterface* sphereMaterial;
 
 	UPROPERTY(EditAnywhere) int32 latSegments = 32;
 	UPROPERTY(EditAnywhere) int32 longSegments = 64;

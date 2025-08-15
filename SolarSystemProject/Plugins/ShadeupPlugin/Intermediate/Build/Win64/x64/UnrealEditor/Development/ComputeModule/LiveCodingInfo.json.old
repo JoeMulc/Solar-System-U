@@ -7,8 +7,8 @@
 			"SphereGenerationShader.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
 			"ComputeModule.cpp.obj",
-			"SphereGenerationShader.cpp.obj",
-			"CraterShader.cpp.obj"
+			"CraterShader.cpp.obj",
+			"SphereGenerationShader.cpp.obj"
 		]
 	}
 }

@@ -45,6 +45,7 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
     FCraterShaderDispatchParams craterParams(1, 1, 1);
     craterParams.inputVertices = vertices;
     craterParams.outputVertices.SetNum(vertices.Num());
+    craterParams.numCraters = 60;
     
     FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterData) {
     
@@ -52,8 +53,14 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
             vertices.Num(), craterData.Num());
     
         vertices = craterData;
+        if (IsValid(sphereMaterial))
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Bongin"));
+            mesh->SetMaterial(0, sphereMaterial);
+        }
         mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
-    
+       
         });
     
+
 }

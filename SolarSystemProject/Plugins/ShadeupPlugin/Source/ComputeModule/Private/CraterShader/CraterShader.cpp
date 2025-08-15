@@ -31,6 +31,7 @@ public:
 	>;
 
 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+		SHADER_PARAMETER(int, numCraters)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
 	END_SHADER_PARAMETER_STRUCT()
@@ -92,6 +93,7 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 		if (bIsShaderValid) {
 			FCraterShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FCraterShader::FParameters>();
 
+			PassParameters->numCraters = Params.numCraters;
 			// Convert FVector array to float array WITH vertex count at the beginning
 			TArray<float> inputData;
 			inputData.Add((float)Params.inputVertices.Num()); // Add vertex count as first element

@@ -4,3 +4,4 @@
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/UnrealEditor/Inc/ComputeModule/UHT/SphereGenerationShader.gen.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/x64/UnrealEditor/Development/ComputeModule/PerModuleInline.gen.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Source/ComputeModule/Private/ComputeModule.cpp"
+#include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Source/ComputeModule/Private/CraterShader/CraterShader.cpp"

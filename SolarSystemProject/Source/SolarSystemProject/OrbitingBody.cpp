@@ -11,7 +11,8 @@ AOrbitingBody::AOrbitingBody()
 
     mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("SphereMesh"));
     RootComponent = mesh;
-    mesh->bUseAsyncCooking;
+    mesh->bUseAsyncCooking = true;
+    sphereMaterial = nullptr;
 }
 
 // Called when the game starts or when spawned

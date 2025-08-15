@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeOrbitingBody() {}
 
 // Begin Cross Module References
+ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_ACelestialBody();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_AOrbitingBody();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_AOrbitingBody_NoRegister();
@@ -35,6 +36,10 @@ struct Z_Construct_UClass_AOrbitingBody_Statics
 		{ "IncludePath", "OrbitingBody.h" },
 		{ "ModuleRelativePath", "OrbitingBody.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_sphereMaterial_MetaData[] = {
+		{ "Category", "OrbitingBody" },
+		{ "ModuleRelativePath", "OrbitingBody.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_latSegments_MetaData[] = {
 		{ "Category", "OrbitingBody" },
 		{ "ModuleRelativePath", "OrbitingBody.h" },
@@ -48,6 +53,7 @@ struct Z_Construct_UClass_AOrbitingBody_Statics
 		{ "ModuleRelativePath", "OrbitingBody.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_sphereMaterial;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_latSegments;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_longSegments;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_radius;
@@ -58,10 +64,12 @@ struct Z_Construct_UClass_AOrbitingBody_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_sphereMaterial = { "sphereMaterial", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, sphereMaterial), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_sphereMaterial_MetaData), NewProp_sphereMaterial_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_latSegments = { "latSegments", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, latSegments), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_latSegments_MetaData), NewProp_latSegments_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_longSegments = { "longSegments", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, longSegments), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_longSegments_MetaData), NewProp_longSegments_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_radius = { "radius", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, radius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_radius_MetaData), NewProp_radius_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOrbitingBody_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_sphereMaterial,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_latSegments,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_longSegments,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_radius,
@@ -107,10 +115,10 @@ AOrbitingBody::~AOrbitingBody() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOrbitingBody, AOrbitingBody::StaticClass, TEXT("AOrbitingBody"), &Z_Registration_Info_UClass_AOrbitingBody, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOrbitingBody), 3961366816U) },
+		{ Z_Construct_UClass_AOrbitingBody, AOrbitingBody::StaticClass, TEXT("AOrbitingBody"), &Z_Registration_Info_UClass_AOrbitingBody, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOrbitingBody), 3829335605U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_1902441243(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_3645581481(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

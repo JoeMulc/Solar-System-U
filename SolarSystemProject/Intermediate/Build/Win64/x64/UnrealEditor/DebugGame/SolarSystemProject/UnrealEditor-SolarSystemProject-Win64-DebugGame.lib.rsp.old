@@ -1,0 +1,20 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-SolarSystemProject-Win64-DebugGame.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\DebugGame\UnrealEd\SharedPCH.UnrealEd.Project.NonOptimized.ValApi.Cpp20.h.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\CelestialBody.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\Moon.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\OrbitingBody.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\SolarSystemProject.init.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\CelestialBody.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\SolarSystemProject.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\Moon.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\OrbitingBody.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\PerModuleInline.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\Default.rc2.res"
+/OUT:"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\DebugGame\SolarSystemProject\UnrealEditor-SolarSystemProject-Win64-DebugGame.lib"

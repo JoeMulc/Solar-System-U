@@ -11,6 +11,7 @@ struct COMPUTEMODULE_API FCraterShaderDispatchParams
     int X;
     int Y;
     int Z;
+    int numCraters;
     TArray<FVector> inputVertices;
     TArray<FVector> outputVertices;
 
@@ -72,6 +73,7 @@ public:
         // Create a dispatch parameters struct and fill it with our input vectors
         FCraterShaderDispatchParams Params(1, 1, 1);
         Params.inputVertices = InputVectors;
+        Params.numCraters = craters;
         Params.outputVertices.SetNum(OutputSize); // Pre-allocate output array size
 
         // Dispatch the compute shader and wait until it completes
@@ -81,10 +83,11 @@ public:
     }
 
     UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "ComputeShader", WorldContext = "WorldContextObject"))
-    static UCraterShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, const TArray<FVector>& InputVectors, int OutputSize) {
+    static UCraterShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, const TArray<FVector>& InputVectors, int OutputSize, int c) {
         UCraterShaderLibrary_AsyncExecution* Action = NewObject<UCraterShaderLibrary_AsyncExecution>();
         Action->InputVectors = InputVectors;
         Action->OutputSize = OutputSize;
+        Action->craters = c;
         Action->RegisterWithGameInstance(WorldContextObject);
         return Action;
     }
@@ -94,4 +97,5 @@ public:
 
     TArray<FVector> InputVectors;
     int OutputSize;
+    int craters;
 };
