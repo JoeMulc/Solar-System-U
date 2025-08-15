@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SOLARSYSTEMPROJECT_Moon_generated_h
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMoon(); \
 	friend struct Z_Construct_UClass_AMoon_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(AMoon)
 
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AMoon(AMoon&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~AMoon();
 
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_10_PROLOG
-#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_13_GENERATED_BODY \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_11_PROLOG
+#define FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_13_INCLASS_NO_PURE_DECLS \
-	FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_13_ENHANCED_CONSTRUCTORS \
+	FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_14_INCLASS_NO_PURE_DECLS \
+	FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

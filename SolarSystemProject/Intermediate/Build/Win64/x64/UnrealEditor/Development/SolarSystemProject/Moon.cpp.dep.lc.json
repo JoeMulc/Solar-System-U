@@ -26,6 +26,8 @@
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\unrealeditor\\inc\\solarsystemproject\\uht\\orbitingbody.generated.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\cratershader\\cratershader.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\cratershader.generated.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\noiseshader\\noiseshader.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\noiseshader.generated.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\unrealeditor\\inc\\solarsystemproject\\uht\\moon.generated.h"
         ],
         "ImportedModules": [],

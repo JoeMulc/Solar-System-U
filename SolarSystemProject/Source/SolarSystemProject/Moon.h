@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "OrbitingBody.h"
 #include "CraterShader/CraterShader.h"
+#include "NoiseShader/NoiseShader.h"
 #include "Moon.generated.h"
 
 UCLASS()
@@ -21,6 +22,7 @@ protected:
 	virtual void BeginPlay() override;
 	void GenerateMoon(); 
 	void OnMoonReady(const FSphereGeometryData& GeometryData);
+	void ApplyNoise();
 
 
 public:

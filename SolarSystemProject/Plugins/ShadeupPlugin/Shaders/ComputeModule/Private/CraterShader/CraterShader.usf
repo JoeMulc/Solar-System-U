@@ -86,7 +86,7 @@ float smoothMin(float a, float b, float k)
     return min(a, b) - h * h * h * k * (1.0 / 6.0);
 }
 
-[numthreads(64, 1, 1)]
+[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
 void CraterShader(
     uint3 DispatchThreadId : SV_DispatchThreadID,
     uint GroupIndex : SV_GroupIndex)

@@ -57,6 +57,15 @@
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader\CraterShader.h">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\CraterShader</Filter>
     </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader">
+      <UniqueIdentifier>{7C3CDED2-8DD2-306A-8C80-197767C9C663}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader\NoiseShader.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader\NoiseShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader</Filter>
+    </ClCompile>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{4D191618-924C-3E80-B289-DCC83C15AD04}</UniqueIdentifier>
     </Filter>
@@ -80,6 +89,15 @@
     </ClCompile>
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader_readme.md">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader">
+      <UniqueIdentifier>{32B695D5-DEAE-3115-9484-D20A6D4EF343}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader\NoiseShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader</Filter>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader\NoiseShader_readme.md">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader</Filter>
     </None>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader">
       <UniqueIdentifier>{A9D84AA8-6177-39E2-B760-BF63101D5B12}</UniqueIdentifier>
@@ -113,6 +131,12 @@
     </Filter>
     <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader\CraterShader.usf">
       <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader">
+      <UniqueIdentifier>{448A6837-CBC7-3156-9331-28D10353FADE}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader\NoiseShader.usf">
+      <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader</Filter>
     </None>
     <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{99479967-EA07-389F-B007-FB544A0622A9}</UniqueIdentifier>

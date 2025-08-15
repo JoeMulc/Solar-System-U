@@ -503,6 +503,14 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader\NoiseShader.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader\NoiseShader.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -520,6 +528,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\CraterShader\CraterShader_readme.md"/>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader\NoiseShader.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader\NoiseShader_readme.md"/>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader\SphereGenerationShader.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -528,6 +541,7 @@
     <None Include="..\..\Plugins\ShadeupPlugin\ShadeupPlugin.uplugin"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Resources\Icon128.png"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\CraterShader\CraterShader.usf"/>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader\NoiseShader.usf"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader\SphereGenerationShader.usf"/>
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\ShadeupPlugin.Build.cs"/>
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ShadeupPlugin\Private\ShadeupPlugin.cpp">

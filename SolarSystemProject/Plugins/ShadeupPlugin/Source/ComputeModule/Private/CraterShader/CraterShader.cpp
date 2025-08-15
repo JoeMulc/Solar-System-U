@@ -118,9 +118,8 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 
 			PassParameters->outputVertices = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputBuffer, PF_R32_FLOAT));
 
-			// Calculate proper group count based on number of vertices
 			int numVertices = Params.inputVertices.Num();
-			int threadsPerGroup = 64; // This should match your shader's numthreads
+			int threadsPerGroup = 64; 
 			int numGroups = (numVertices + threadsPerGroup - 1) / threadsPerGroup;
 
 			FIntVector GroupCount = FIntVector(numGroups, 1, 1);

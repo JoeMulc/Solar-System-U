@@ -1,0 +1,22 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\noiseshader.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\x64\\solarsystemprojecteditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\computemodule\\definitions.computemodule.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\noiseshader\\noiseshader.h",
+            "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\blueprintasyncactionbase.h",
+            "d:\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\blueprintasyncactionbase.generated.h",
+            "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\engine\\texturerendertarget2d.h",
+            "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\engine\\texturerendertarget.h",
+            "d:\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\texturerendertarget.generated.h",
+            "d:\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\texturerendertarget2d.generated.h",
+            "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\public\\materials\\materialrenderproxy.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\noiseshader.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
