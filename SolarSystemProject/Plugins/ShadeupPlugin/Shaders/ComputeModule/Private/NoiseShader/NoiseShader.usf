@@ -1,12 +1,12 @@
 #include "/Engine/Private/Common.ush"
 
 // Hardcoded noise parameters
-#define NUM_OCTAVES 4
-#define NOISE_STRENGTH 2.0
-#define SCALE 20.0
-#define PERSISTENCE 0.5
-#define LACUNARITY 2.0
-#define BASE_FREQUENCY 0.8
+int numOctaves;
+float noiseStrength;
+float scale;
+float persistence;
+float lacunarity;
+float baseFrequency;
 
 Buffer<float> inputVertices;
 RWBuffer<float> outputVertices;
@@ -39,13 +39,13 @@ float fractalNoise(float3 p)
 {
     float totalNoise = 0.0;
     float amplitude = 1.0;
-    float frequency = BASE_FREQUENCY;
+    float frequency = baseFrequency;
     
-    for (int octave = 0; octave < NUM_OCTAVES; ++octave)
+    for (int octave = 0; octave < numOctaves; ++octave)
     {
         totalNoise += noise3D(p * frequency) * amplitude;
-        amplitude *= PERSISTENCE;
-        frequency *= LACUNARITY;
+        amplitude *= persistence;
+        frequency *= lacunarity;
     }
     
     return totalNoise * 2.0 - 1.0; // Map to [-1, 1]

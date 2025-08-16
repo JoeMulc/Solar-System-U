@@ -13,7 +13,12 @@ struct COMPUTEMODULE_API FNoiseShaderDispatchParams
 	int X;
 	int Y;
 	int Z;
-
+	int numOctaves;
+	float noiseStrength; 
+	float scale;
+	float persistence; 
+	float lacunarity; 
+	float baseFrequency; 
 	TArray<FVector> inputVertices;
 	TArray<FVector> outputVertices;
 	
@@ -77,6 +82,12 @@ class COMPUTEMODULE_API UNoiseShaderLibrary_AsyncExecution : public UBlueprintAs
 public:
 	TArray<FVector> inVert;
 	int outSize;
+	int numOc;
+	float noiseS;
+	float s;
+	float pers;
+	float lacu;
+	float bF;
 
 	// Execute the actual load
 	virtual void Activate() override {
@@ -84,6 +95,12 @@ public:
 		FNoiseShaderDispatchParams Params(1, 1, 1);
 		Params.inputVertices = inVert;
 		Params.outputVertices.SetNum(outSize);
+		Params.numOctaves = numOc;
+		Params.noiseStrength = noiseS;
+		Params.scale = s;
+		Params.persistence = pers;
+		Params.lacunarity = lacu;
+		Params.baseFrequency = bF;
 
 		// Dispatch the compute shader and wait until it completes
 		FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> OutputValues) {
@@ -94,10 +111,16 @@ public:
 	
 	
 	UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "ComputeShader", WorldContext = "WorldContextObject"))
-	static UNoiseShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, int Arg2) {
+	static UNoiseShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, int Arg2, int arg3, float arg4, float arg5, float arg6, float arg7, float arg8) {
 		UNoiseShaderLibrary_AsyncExecution* Action = NewObject<UNoiseShaderLibrary_AsyncExecution>();
 		Action->inVert = vs;
 		Action->outSize = Arg2;
+		Action->numOc = arg3;
+		Action->noiseS = arg4;
+		Action->s = arg5;
+		Action->pers = arg6;
+		Action->lacu = arg7;
+		Action->bF = arg8;
 		Action->RegisterWithGameInstance(WorldContextObject);
 
 		return Action;

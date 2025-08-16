@@ -59,6 +59,12 @@ void AMoon::ApplyNoise()
 {
     FNoiseShaderDispatchParams Params(vertices.Num(), 1, 1);
     Params.inputVertices = vertices;
+    Params.numOctaves = numOctaves;
+    Params.noiseStrength = noiseStrength;
+    Params.scale = scale;
+    Params.persistence = persistence;
+    Params.lacunarity = lacunarity;
+    Params.baseFrequency = baseFrequency;
     Params.outputVertices.SetNum(vertices.Num());
     
     FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> verts) {
@@ -72,7 +78,6 @@ void AMoon::ApplyNoise()
         }
         mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
-
 
     //float numOctaves = 4.f;
     //float noisestrength = 2;

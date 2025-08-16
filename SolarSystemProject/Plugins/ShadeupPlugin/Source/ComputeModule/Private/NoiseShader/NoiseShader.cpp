@@ -31,13 +31,14 @@ public:
 	>;
 
 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
-		
-
-	
+		SHADER_PARAMETER(int, numOctaves)
+		SHADER_PARAMETER(float, noiseStrength)
+		SHADER_PARAMETER(float, scale)
+		SHADER_PARAMETER(float, persistence)
+		SHADER_PARAMETER(float, lacunarity)
+		SHADER_PARAMETER(float, baseFrequency)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
-		
-
 	END_SHADER_PARAMETER_STRUCT()
 
 public:
@@ -100,6 +101,13 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 
 		if (bIsShaderValid) {
 			FNoiseShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FNoiseShader::FParameters>();
+
+			PassParameters->numOctaves = Params.numOctaves;
+			PassParameters->noiseStrength = Params.noiseStrength;
+			PassParameters->scale = Params.scale;
+			PassParameters->persistence = Params.persistence;
+			PassParameters->lacunarity = Params.lacunarity;
+			PassParameters->baseFrequency = Params.baseFrequency;
 
 			TArray<float> inputData;
 			inputData.Add((float)Params.inputVertices.Num()); // Add vertex count as first element
