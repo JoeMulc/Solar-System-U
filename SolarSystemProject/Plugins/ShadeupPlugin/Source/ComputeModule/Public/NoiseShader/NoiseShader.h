@@ -14,7 +14,6 @@ struct COMPUTEMODULE_API FNoiseShaderDispatchParams
 	int Y;
 	int Z;
 
-	
 	TArray<FVector> inputVertices;
 	TArray<FVector> outputVertices;
 	

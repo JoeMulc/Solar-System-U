@@ -57,49 +57,51 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
 
 void AMoon::ApplyNoise()
 {
-    //FNoiseShaderDispatchParams Params(1, 1, 1);
-    //Params.inputVertices = vertices;
-    //Params.outputVertices.SetNum(vertices.Num());
-    //
-    //FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> verts) {
-    //
-    //    vertices = verts;
-    //
-    //    if (IsValid(sphereMaterial))
-    //
-    //    {
-    //        mesh->SetMaterial(0, sphereMaterial);
-    //    }
-    //    mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
-    //    });
-    float numOctaves = 4.f;
-    float noisestrength = 2;
-    float scale = 20.f;
-
-    for (FVector& vertex : vertices)
-    {
-        FVector normalizedPos = vertex.GetSafeNormal();
-        float totalNoise = 0.f;
-        float amplitude = 1.0f;
-        float frequency = 0.8f;
-        float persistence = 0.5f;
-        float lacunarity = 2;
-
-        for (int octave = 0; octave < numOctaves; ++octave)
+    FNoiseShaderDispatchParams Params(vertices.Num(), 1, 1);
+    Params.inputVertices = vertices;
+    Params.outputVertices.SetNum(vertices.Num());
+    
+    FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> verts) {
+    
+        vertices = verts;
+    
+        if (IsValid(sphereMaterial))
+    
         {
-            float noiseValue = FMath::PerlinNoise3D(normalizedPos * frequency);
-            totalNoise += noiseValue * amplitude;
-
-            amplitude *= persistence;
-            frequency *= lacunarity;
+            mesh->SetMaterial(0, sphereMaterial);
         }
+        mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
+        });
 
-        vertex += normalizedPos * totalNoise * noisestrength * scale;
-    }
-    if (IsValid(sphereMaterial))
-    {
-       mesh->SetMaterial(0, sphereMaterial);
-    }
-    mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
+
+    //float numOctaves = 4.f;
+    //float noisestrength = 2;
+    //float scale = 20.f;
+    //
+    //for (FVector& vertex : vertices)
+    //{
+    //    FVector normalizedPos = vertex.GetSafeNormal();
+    //    float totalNoise = 0.f;
+    //    float amplitude = 1.0f;
+    //    float frequency = 0.8f;
+    //    float persistence = 0.5f;
+    //    float lacunarity = 2;
+    //
+    //    for (int octave = 0; octave < numOctaves; ++octave)
+    //    {
+    //        float noiseValue = FMath::PerlinNoise3D(normalizedPos * frequency);
+    //        totalNoise += noiseValue * amplitude;
+    //
+    //        amplitude *= persistence;
+    //        frequency *= lacunarity;
+    //    }
+    //
+    //    vertex += normalizedPos * totalNoise * noisestrength * scale;
+    //}
+    //if (IsValid(sphereMaterial))
+    //{
+    //   mesh->SetMaterial(0, sphereMaterial);
+    //}
+    //mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
 }
  

@@ -3,6 +3,7 @@
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/UnrealEditor/Inc/ComputeModule/UHT/CraterShader.gen.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/UnrealEditor/Inc/ComputeModule/UHT/NoiseShader.gen.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/UnrealEditor/Inc/ComputeModule/UHT/SphereGenerationShader.gen.cpp"
+#include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/ComputeModule/PerModuleInline.gen.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Source/ComputeModule/Private/ComputeModule.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Source/ComputeModule/Private/CraterShader/CraterShader.cpp"
 #include "C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Plugins/ShadeupPlugin/Source/ComputeModule/Private/NoiseShader/NoiseShader.cpp"

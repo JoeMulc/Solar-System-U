@@ -25,6 +25,6 @@
 #include "RenderGraphResources.h"
 #include "Runtime/Engine/Classes/Engine/TextureRenderTarget2D.h"
 
-#define NUM_THREADS_NoiseShader_X 32
+#define NUM_THREADS_NoiseShader_X 64
 #define NUM_THREADS_NoiseShader_Y 1
 #define NUM_THREADS_NoiseShader_Z 1
