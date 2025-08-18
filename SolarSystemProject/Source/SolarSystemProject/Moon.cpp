@@ -50,12 +50,12 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
     FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterData) {
 
         vertices = craterData;
-        ApplyNoise();
+        ApplyGPUNoise();
 
         });
 }
 
-void AMoon::ApplyNoise()
+void AMoon::ApplyGPUNoise()
 {
     FNoiseShaderDispatchParams Params(vertices.Num(), 1, 1);
     Params.inputVertices = vertices;
@@ -79,6 +79,12 @@ void AMoon::ApplyNoise()
         mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
 
+    
+}
+ 
+//Not really usable atm but its here :D
+void AMoon::ApplyCPUNoise()
+{
     //float numOctaves = 4.f;
     //float noisestrength = 2;
     //float scale = 20.f;
@@ -108,5 +114,6 @@ void AMoon::ApplyNoise()
     //   mesh->SetMaterial(0, sphereMaterial);
     //}
     //mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
+
+    
 }
- 

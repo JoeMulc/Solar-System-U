@@ -4,34 +4,41 @@ int numCraters;
 Buffer<float> inputVertices;
 RWBuffer<float> outputVertices;
 
-// Crater shape parameters
+//Height/steepness of crater rim
 static const float rimSteepness = 12.0;
+
+//Width of crater rim
 static const float rimWidth = 0.25;
+
+//Floor of crater cavity
 static const float floorHeight = -1.2;
+
+//Smoothing factor in blending shapes
 static const float smoothness = 0.2;
 
-// Simple hash function for consistent randomization
+//Random number generator
 float hash(float seed)
 {
     return frac(sin(seed * 12.9898) * 43758.5453);
 }
 
+//Random number generator for 2d inputs
 float hash2(float2 seed)
 {
     return frac(sin(dot(seed, float2(12.9898, 78.233))) * 43758.5453);
 }
 
-// Generate crater parameters based on index and sphere radius
+//Generate crater params
 void generateCraterParams(uint craterIndex, float sphereRadius, out float3 center, out float radius, out float depth)
 {
-    // Use crater index as seed for consistent generation
+    //Seed for consistency
     float seedBase = float(craterIndex) * 17.3251;
     
-    // Generate spherical coordinates for uniform distribution on sphere
-    float u = hash(seedBase + 1.0) * 2.0 - 1.0; // cos(theta) range [-1, 1]
-    float theta = hash(seedBase + 2.0) * 2.0 * 3.14159; // phi range [0, 2?]
+    //Sphereical coordinates
+    float u = hash(seedBase + 1.0) * 2.0 - 1.0; 
+    float theta = hash(seedBase + 2.0) * 2.0 * 3.14159; 
     
-    // Convert to Cartesian coordinates on unit sphere
+    //Conversion to cartesian
     float sinTheta = sqrt(1.0 - u * u);
     float3 spherePos = float3(
         sinTheta * cos(theta),
@@ -39,41 +46,37 @@ void generateCraterParams(uint craterIndex, float sphereRadius, out float3 cente
         u
     );
     
-    // Scale to actual sphere radius
+    //Scale to radius
     center = spherePos * sphereRadius;
     
     // Scale crater sizes relative to sphere size
-    float sizeScale = sphereRadius / 400.0; // Normalize to original 400-unit sphere
+    float sizeScale = sphereRadius / 400.0; //Scales values based on the orginal tested 400 radius sphere
     
-    // Bias towards smaller craters (10-20 range) with occasional large ones (up to 90)
+    ///Bias stuff
     float radiusRandom = hash(seedBase + 3.0);
     
-    // 70% chance for small craters (10-25), 20% medium (25-50), 10% large (50-90)
     if (radiusRandom < 0.7)
     {
-        // Small craters: 10-25 scaled to sphere size
         radius = (10.0 + hash(seedBase + 4.0) * 15.0) * sizeScale;
     }
     else if (radiusRandom < 0.9)
     {
-        // Medium craters: 25-50 scaled to sphere size
         radius = (25.0 + hash(seedBase + 5.0) * 25.0) * sizeScale;
     }
     else
     {
-        // Large craters: 50-90 scaled to sphere size
         radius = (50.0 + hash(seedBase + 6.0) * 40.0) * sizeScale;
     }
     
-    // Depth correlates with radius but with some variation
-    // Base depth is proportional to radius, with random variation
-    float baseDepthRatio = 0.4 + hash(seedBase + 7.0) * 0.4; // 0.4 to 0.7
+    //Cavity depth scaled with radius with some variation
+    float baseDepthRatio = 0.4 + hash(seedBase + 7.0) * 0.4; 
     depth = radius * baseDepthRatio;
     
-    // Ensure minimum depth for visibility (also scaled)
+    //Ensures depth is valid
     depth = max(depth, 15.0 * sizeScale);
 }
 
+//Two functions allow for smooth transition between geometry
 float smoothMax(float a, float b, float k)
 {
     float h = max(k - abs(a - b), 0.0) / k;
@@ -93,7 +96,7 @@ void CraterShader(
 {
     uint vertexIndex = DispatchThreadId.x;
    
-    // Read vertex count from first element
+    //First element is num vertices
     uint numVertices = (uint) (inputVertices[0]);
    
     if (vertexIndex >= numVertices)
@@ -101,62 +104,58 @@ void CraterShader(
         return;
     }
    
-    // Read input vertex position (skip first element which is vertex count)
+    //Convert data
     uint baseIndex = vertexIndex * 3 + 1;
     float3 vertexPos = float3(
         inputVertices[baseIndex + 0],
         inputVertices[baseIndex + 1],
         inputVertices[baseIndex + 2]
     );
+    
     // Calculate sphere radius from vertex positions (estimate from first few vertices)
     float sphereRadius = length(vertexPos);
     
     float totalCraterHeight = 0.0;
    
-    // Process each crater using dynamically generated parameters
     for (uint i = 0; i < (uint) numCraters; i++)
     {
         float3 craterCenter;
         float craterRadius;
         float craterDepth;
         
-        // Generate crater parameters with sphere radius
         generateCraterParams(i, sphereRadius, craterCenter, craterRadius, craterDepth);
        
-        // Calculate normalized distance from crater center
+        //0 - crater center : > 1 - rim bounds
         float distance = length(vertexPos - craterCenter);
         float x = distance / craterRadius;
        
-        // Only process if within crater influence range
+        //Within crater range
         if (x <= 2.0)
         {
-            // Crater cavity (parabolic depression)
+            //Sebastian lague function - crater uses two curves and a flat line 
+            //Crater cavity - parabola          
             float cavity = x * x - 1.0;
            
-            // Crater rim (elevated edge)
+            //Another parabola for im
             float rimX = min(x - 1.0 - rimWidth, 0.0);
             float rim = rimSteepness * rimX * rimX;
            
-            // Combine cavity and rim using smooth operations
+            //Combine curve and rim
             float craterShape = smoothMax(cavity, floorHeight, smoothness);
             craterShape = smoothMin(craterShape, rim, smoothness);
            
-            // Apply falloff for smooth blending at crater edges
+            //Smooth falloff
             float falloff = 1.0 - smoothstep(1.0 + rimWidth, 2.0, x);
            
-            // Scale by crater depth (not radius) and add to total height
+            //Scale additional height by crater depth
             totalCraterHeight += craterShape * craterDepth * falloff;
         }
     }
    
-    // Calculate normal for spherical displacement (radial direction)
     float3 normal = normalize(vertexPos);
-   
-    // Apply displacement along normal (scale factor for visibility)
     float displacementScale = 0.6;
     float3 displacedPos = vertexPos + normal * totalCraterHeight * displacementScale;
-   
-    // Write output
+
     uint outputIndex = vertexIndex * 3;
     outputVertices[outputIndex + 0] = displacedPos.x;
     outputVertices[outputIndex + 1] = displacedPos.y;

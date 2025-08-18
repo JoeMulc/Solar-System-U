@@ -1,22 +1,27 @@
 #include "/Engine/Private/Common.ush"
-
-// Hardcoded noise parameters
 int numOctaves;
 float noiseStrength;
 float scale;
+
+//Roughness ofgenerated terrain
 float persistence;
+
+//Controls Detail between octaves
 float lacunarity;
-float baseFrequency;
+
+//Controls zoom of noise pattern
+float baseFrequency;    
 
 Buffer<float> inputVertices;
 RWBuffer<float> outputVertices;
 
-// Working noise function
+// Gets random values
 float hash(float n)
 {
     return frac(sin(n) * 43758.5453);
 }
 
+//Found this online
 float noise3D(float3 x)
 {
     float3 p = floor(x);
@@ -35,6 +40,7 @@ float noise3D(float3 x)
             lerp(hash(n + 170.0), hash(n + 171.0), f.x), f.y), f.z);
 }
 
+//My CPU code
 float fractalNoise(float3 p)
 {
     float totalNoise = 0.0;
@@ -48,7 +54,7 @@ float fractalNoise(float3 p)
         frequency *= lacunarity;
     }
     
-    return totalNoise * 2.0 - 1.0; // Map to [-1, 1]
+    return totalNoise * 2.0 - 1.0; 
 }
 
 [numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
@@ -56,13 +62,13 @@ void NoiseShader(uint3 id : SV_DispatchThreadID)
 {
     uint index = id.x;
     
-    // Read vertex count from first element
+    //First element of input is vertex num
     uint vertexCount = (uint) inputVertices[0];
     
     if (index >= vertexCount)
         return;
     
-    // Read vertex position (skip first element which is vertex count)
+    //Data conversion
     uint dataIndex = index * 3 + 1;
     float3 vertex = float3(
         inputVertices[dataIndex],
@@ -70,16 +76,11 @@ void NoiseShader(uint3 id : SV_DispatchThreadID)
         inputVertices[dataIndex + 2]
     );
     
-    // Normalize vertex position
     float3 normalizedPos = normalize(vertex);
-    
-    // Calculate fractal noise
     float totalNoise = fractalNoise(normalizedPos);
+    float3 displacedVertex = vertex + normalizedPos * totalNoise * noiseStrength * 10.0;
     
-    // Apply noise displacement with reasonable scale
-    float3 displacedVertex = vertex + normalizedPos * totalNoise * 10.0;
-    
-    // Write output
+    //Output
     uint outputIndex = index * 3;
     outputVertices[outputIndex] = displacedVertex.x;
     outputVertices[outputIndex + 1] = displacedVertex.y;

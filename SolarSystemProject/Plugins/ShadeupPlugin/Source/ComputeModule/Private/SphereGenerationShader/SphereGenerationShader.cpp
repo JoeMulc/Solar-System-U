@@ -30,20 +30,20 @@ public:
     >;
 
     BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
-        SHADER_PARAMETER(int32, LatitudeSegments)
-        SHADER_PARAMETER(int32, LongitudeSegments)
-        SHADER_PARAMETER(float, Radius)
-        SHADER_PARAMETER(uint32, MaxVertices)
-        SHADER_PARAMETER(uint32, MaxTriangles)
+        SHADER_PARAMETER(int32, latitudeSegments)
+        SHADER_PARAMETER(int32, longitudeSegments)
+        SHADER_PARAMETER(float, radius)
+        SHADER_PARAMETER(uint32, maxVertices)
+        SHADER_PARAMETER(uint32, maxTriangles)
 
         //Output buffers
-        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, VerticesBuffer)
-        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, TrianglesBuffer)
-        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, NormalsBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, verticesBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, trianglesBuffer)
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, normalsBuffer)
         SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, UVsBuffer)
 
-        //Remove this later used for debugging
-        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, CountersBuffer)
+        //tempo debug
+        SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<int>, countersBuffer)
     END_SHADER_PARAMETER_STRUCT()
 
 public:
@@ -84,45 +84,45 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
             FSphereGenerationShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FSphereGenerationShader::FParameters>();
 
             // Calculate buffer sizes
-            uint32 NumVertices = (Params.latitudeSegments + 1) * (Params.longitudeSegments + 1);
-            uint32 NumTriangles = Params.latitudeSegments * Params.longitudeSegments * 2 * 3; // 2 triangles per quad, 3 indices per triangle
+            uint32 numVertices = (Params.latitudeSegments + 1) * (Params.longitudeSegments + 1);
+            uint32 numTriangles = Params.latitudeSegments * Params.longitudeSegments * 2 * 3;
 
-            PassParameters->LatitudeSegments = Params.latitudeSegments;
-            PassParameters->LongitudeSegments = Params.longitudeSegments;
-            PassParameters->Radius = Params.radius;
-            PassParameters->MaxVertices = NumVertices;
-            PassParameters->MaxTriangles = NumTriangles;
+            PassParameters->latitudeSegments = Params.latitudeSegments;
+            PassParameters->longitudeSegments = Params.longitudeSegments;
+            PassParameters->radius = Params.radius;
+            PassParameters->maxVertices = numVertices;
+            PassParameters->maxTriangles = numTriangles;
 
             // Create output buffers
-            FRDGBufferRef VerticesBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per vertex (x, y, z)
+            FRDGBufferRef verticesBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), numVertices * 3), 
                 TEXT("SphereVerticesBuffer"));
 
-            FRDGBufferRef TrianglesBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), NumTriangles),
+            FRDGBufferRef trianglesBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), numTriangles),
                 TEXT("SphereTrianglesBuffer"));
 
-            FRDGBufferRef NormalsBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per normal
+            FRDGBufferRef normalsBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), numVertices * 3), 
                 TEXT("SphereNormalsBuffer"));
 
             FRDGBufferRef UVsBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 2), // 2 floats per UV
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), numVertices * 2), 
                 TEXT("SphereUVsBuffer"));
 
             FRDGBufferRef TangentsBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(float), NumVertices * 3), // 3 floats per tangent
+                FRDGBufferDesc::CreateBufferDesc(sizeof(float), numVertices * 3), 
                 TEXT("SphereTangentsBuffer"));
 
-            FRDGBufferRef CountersBuffer = GraphBuilder.CreateBuffer(
-                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), 2), // [VertexCount, TriangleCount]
+            FRDGBufferRef countersBuffer = GraphBuilder.CreateBuffer(
+                FRDGBufferDesc::CreateBufferDesc(sizeof(int32), 2), 
                 TEXT("SphereCountersBuffer"));
 
-            PassParameters->VerticesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(VerticesBuffer, PF_R32_FLOAT));
-            PassParameters->TrianglesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(TrianglesBuffer, PF_R32_SINT));
-            PassParameters->NormalsBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(NormalsBuffer, PF_R32_FLOAT));
+            PassParameters->verticesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(verticesBuffer, PF_R32_FLOAT));
+            PassParameters->trianglesBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(trianglesBuffer, PF_R32_SINT));
+            PassParameters->normalsBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(normalsBuffer, PF_R32_FLOAT));
             PassParameters->UVsBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(UVsBuffer, PF_R32_FLOAT));
-            PassParameters->CountersBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(CountersBuffer, PF_R32_SINT));
+            PassParameters->countersBuffer = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(countersBuffer, PF_R32_SINT));
 
             //Calculateing Group count and adding compute pass
             FIntVector DispatchSize(
@@ -148,13 +148,13 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
             FRHIGPUBufferReadback* UVsReadback = new FRHIGPUBufferReadback(TEXT("SphereUVsReadback"));
             FRHIGPUBufferReadback* CountersReadback = new FRHIGPUBufferReadback(TEXT("SphereCountersReadback"));
 
-            AddEnqueueCopyPass(GraphBuilder, VerticesReadback, VerticesBuffer, 0u);
-            AddEnqueueCopyPass(GraphBuilder, TrianglesReadback, TrianglesBuffer, 0u);
-            AddEnqueueCopyPass(GraphBuilder, NormalsReadback, NormalsBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, VerticesReadback, verticesBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, TrianglesReadback, trianglesBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, NormalsReadback, normalsBuffer, 0u);
             AddEnqueueCopyPass(GraphBuilder, UVsReadback, UVsBuffer, 0u);
-            AddEnqueueCopyPass(GraphBuilder, CountersReadback, CountersBuffer, 0u);
+            AddEnqueueCopyPass(GraphBuilder, CountersReadback, countersBuffer, 0u);
 
-            auto RunnerFunc = [VerticesReadback, TrianglesReadback, NormalsReadback, UVsReadback, CountersReadback, AsyncCallback, NumVertices, NumTriangles](auto&& RunnerFunc) -> void {
+            auto RunnerFunc = [VerticesReadback, TrianglesReadback, NormalsReadback, UVsReadback, CountersReadback, AsyncCallback, numVertices, numTriangles](auto&& RunnerFunc) -> void {
                 if (VerticesReadback->IsReady() && TrianglesReadback->IsReady() && NormalsReadback->IsReady() &&
                     UVsReadback->IsReady() && CountersReadback->IsReady())
                 {
@@ -166,7 +166,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                     uint32 ActualTriangleCount = CountersData[1];
                     CountersReadback->Unlock();
 
-                    float* VerticesData = (float*)VerticesReadback->Lock(sizeof(float) * NumVertices * 3);
+                    float* VerticesData = (float*)VerticesReadback->Lock(sizeof(float) * numVertices * 3);
                     GeometryData.Vertices.Reserve(ActualVertexCount);
                     for (uint32 i = 0; i < ActualVertexCount; ++i)
                     {
@@ -179,7 +179,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                     }
                     VerticesReadback->Unlock();
 
-                    int32* TrianglesData = (int32*)TrianglesReadback->Lock(sizeof(int32) * NumTriangles);
+                    int32* TrianglesData = (int32*)TrianglesReadback->Lock(sizeof(int32) * numTriangles);
                     GeometryData.Triangles.Reserve(ActualTriangleCount);
                     for (uint32 i = 0; i < ActualTriangleCount; ++i)
                     {
@@ -187,7 +187,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                     }
                     TrianglesReadback->Unlock();
 
-                    float* NormalsData = (float*)NormalsReadback->Lock(sizeof(float) * NumVertices * 3);
+                    float* NormalsData = (float*)NormalsReadback->Lock(sizeof(float) * numVertices * 3);
                     GeometryData.Normals.Reserve(ActualVertexCount);
                     for (uint32 i = 0; i < ActualVertexCount; ++i)
                     {
@@ -199,7 +199,7 @@ void FSphereGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
                     }
                     NormalsReadback->Unlock();
 
-                    float* UVsData = (float*)UVsReadback->Lock(sizeof(float) * NumVertices * 2);
+                    float* UVsData = (float*)UVsReadback->Lock(sizeof(float) * numVertices * 2);
                     GeometryData.UVs.Reserve(ActualVertexCount);
                     for (uint32 i = 0; i < ActualVertexCount; ++i)
                     {

@@ -1,105 +1,97 @@
 #include "/Engine/Public/Platform.ush"
-int LatitudeSegments;
-int LongitudeSegments;
-float Radius;
-uint MaxVertices;
-uint MaxTriangles;
-RWBuffer<float> VerticesBuffer;
-RWBuffer<int> TrianglesBuffer;
-RWBuffer<float> NormalsBuffer;
+int latitudeSegments;
+int longitudeSegments;
+float radius;
+uint maxVertices;
+uint maxTriangles;
+RWBuffer<float> verticesBuffer;
+RWBuffer<int> trianglesBuffer;
+RWBuffer<float> normalsBuffer;
 RWBuffer<float> UVsBuffer;
-RWBuffer<int> CountersBuffer;
+RWBuffer<int> countersBuffer;
 
-// Define PI constant for better precision
 static const float PI = 3.14159265359f;
 
-// 2D thread dispatch for better GPU utilization
 [numthreads(16, 16, 1)]
 void SphereGenerationShader(
     uint3 DispatchThreadId : SV_DispatchThreadID,
     uint GroupIndex : SV_GroupIndex)
 {
-    // Use 2D coordinates directly
-    uint LatIndex = DispatchThreadId.y;
-    uint LonIndex = DispatchThreadId.x;
+    uint latIndex = DispatchThreadId.y;
+    uint lonIndex = DispatchThreadId.x;
     
-    // Early exit if outside bounds
-    if (LatIndex > LatitudeSegments || LonIndex > LongitudeSegments)
+    if (latIndex > latitudeSegments || lonIndex > longitudeSegments)
         return;
     
-    uint ThreadIndex = LatIndex * (LongitudeSegments + 1) + LonIndex;
+    uint threadIndex = latIndex * (longitudeSegments + 1) + lonIndex;
     
     //Calculate total vertices and triangles
-    uint TotalVertices = (LatitudeSegments + 1) * (LongitudeSegments + 1);
-    uint TotalTriangleIndices = LatitudeSegments * LongitudeSegments * 6;
+    uint totalVertices = (latitudeSegments + 1) * (longitudeSegments + 1);
+    uint totalTriangleIndices = latitudeSegments * longitudeSegments * 6;
     
-    // Debug counter writes (remove for production)
-    if (ThreadIndex == 0)
+    //Debug counter writes
+    if (threadIndex == 0)
     {
-        CountersBuffer[0] = TotalVertices;
-        CountersBuffer[1] = TotalTriangleIndices;
+        countersBuffer[0] = totalVertices;
+        countersBuffer[1] = totalTriangleIndices;
     }
     
-    if (LatIndex <= LatitudeSegments && LonIndex <= LongitudeSegments)
+    if (latIndex <= latitudeSegments && lonIndex <= longitudeSegments)
     {
-        //Calculate spherical coordinates with better precision
-        float LatAngle = (float) LatIndex / (float) LatitudeSegments * PI;
-        float LonAngle = (float) LonIndex / (float) LongitudeSegments * 2.0f * PI;
+        float latAngle = (float) latIndex / (float) latitudeSegments * PI;
+        float lonAngle = (float) lonIndex / (float) longitudeSegments * 2.0f * PI;
         
-        // Use sincos intrinsic for better performance
         float sinLat, cosLat, sinLon, cosLon;
-        sincos(LatAngle, sinLat, cosLat);
-        sincos(LonAngle, sinLon, cosLon);
+        sincos(latAngle, sinLat, cosLat);
+        sincos(lonAngle, sinLon, cosLon);
         
-        float3 Position;
-        Position.x = Radius * sinLat * cosLon;
-        Position.y = Radius * sinLat * sinLon;
-        Position.z = Radius * cosLat;
+        float3 position;
+        position.x = radius * sinLat * cosLon;
+        position.y = radius * sinLat * sinLon;
+        position.z = radius * cosLat;
         
-        // Optimized normal calculation - already normalized for unit sphere
-        float3 Normal = Position / Radius;
+        float3 normal = position / radius;
         
         //Had to flip to fix bug - wrong texture orientation
         float2 UV;
-        UV.x = (float) LonIndex / (float) LongitudeSegments;
-        UV.y = 1.0 - ((float) LatIndex / (float) LatitudeSegments);
+        UV.x = (float) lonIndex / (float) longitudeSegments;
+        UV.y = 1.0 - ((float) latIndex / (float) latitudeSegments);
         
         //Write to buffer
-        uint VertexBaseIndex = ThreadIndex * 3;
-        VerticesBuffer[VertexBaseIndex + 0] = Position.x;
-        VerticesBuffer[VertexBaseIndex + 1] = Position.y;
-        VerticesBuffer[VertexBaseIndex + 2] = Position.z;
+        uint VertexBaseIndex = threadIndex * 3;
+        verticesBuffer[VertexBaseIndex + 0] = position.x;
+        verticesBuffer[VertexBaseIndex + 1] = position.y;
+        verticesBuffer[VertexBaseIndex + 2] = position.z;
         
-        NormalsBuffer[VertexBaseIndex + 0] = Normal.x;
-        NormalsBuffer[VertexBaseIndex + 1] = Normal.y;
-        NormalsBuffer[VertexBaseIndex + 2] = Normal.z;
+        normalsBuffer[VertexBaseIndex + 0] = normal.x;
+        normalsBuffer[VertexBaseIndex + 1] = normal.y;
+        normalsBuffer[VertexBaseIndex + 2] = normal.z;
         
-        uint UVBaseIndex = ThreadIndex * 2;
+        uint UVBaseIndex = threadIndex * 2;
         UVsBuffer[UVBaseIndex + 0] = UV.x;
         UVsBuffer[UVBaseIndex + 1] = UV.y;
     }
     
     //Triangles
-    if (LatIndex < LatitudeSegments && LonIndex < LongitudeSegments)
+    if (latIndex < latitudeSegments && lonIndex < longitudeSegments)
     {
-        uint QuadIndex = LatIndex * LongitudeSegments + LonIndex;
-        uint TriangleBaseIndex = QuadIndex * 6;
+        uint quadIndex = latIndex * longitudeSegments + lonIndex;
+        uint triangleBaseIndex = quadIndex * 6;
         
-        uint TopLeft = LatIndex * (LongitudeSegments + 1) + LonIndex;
-        uint TopRight = TopLeft + 1;
-        uint BottomLeft = (LatIndex + 1) * (LongitudeSegments + 1) + LonIndex;
-        uint BottomRight = BottomLeft + 1;
+        uint topLeft = latIndex * (longitudeSegments + 1) + lonIndex;
+        uint topRight = topLeft + 1;
+        uint bottomLeft = (latIndex + 1) * (longitudeSegments + 1) + lonIndex;
+        uint bottomRight = bottomLeft + 1;
         
-        //Create the two triangles from quad
-        if (TriangleBaseIndex + 5 < MaxTriangles)
+        if (triangleBaseIndex + 5 < maxTriangles)
         {
-            TrianglesBuffer[TriangleBaseIndex + 0] = TopLeft;
-            TrianglesBuffer[TriangleBaseIndex + 1] = TopRight;
-            TrianglesBuffer[TriangleBaseIndex + 2] = BottomLeft;
+            trianglesBuffer[triangleBaseIndex + 0] = topLeft;
+            trianglesBuffer[triangleBaseIndex + 1] = topRight;
+            trianglesBuffer[triangleBaseIndex + 2] = bottomLeft;
             
-            TrianglesBuffer[TriangleBaseIndex + 3] = TopRight;
-            TrianglesBuffer[TriangleBaseIndex + 4] = BottomRight;
-            TrianglesBuffer[TriangleBaseIndex + 5] = BottomLeft;
+            trianglesBuffer[triangleBaseIndex + 3] = topRight;
+            trianglesBuffer[triangleBaseIndex + 4] = bottomRight;
+            trianglesBuffer[triangleBaseIndex + 5] = bottomLeft;
         }
     }
 }
