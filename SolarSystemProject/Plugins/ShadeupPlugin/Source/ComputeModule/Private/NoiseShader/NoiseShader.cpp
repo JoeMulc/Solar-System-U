@@ -38,6 +38,13 @@ public:
 		SHADER_PARAMETER(float, lacunarity)
 		SHADER_PARAMETER(float, baseFrequency)
 		SHADER_PARAMETER(float, normalCalculationEpsilon)
+		SHADER_PARAMETER(float, ridgeStrength)
+		SHADER_PARAMETER(float, detailNoiseStrength)
+		SHADER_PARAMETER(float, detailScale)
+		SHADER_PARAMETER(float, fineDetailStrength)
+		SHADER_PARAMETER(float, fineDetailScale)
+		SHADER_PARAMETER(float, ultraFineStrength)
+		SHADER_PARAMETER(float, ultraFineScale)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputNormals)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
@@ -105,6 +112,7 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 		if (bIsShaderValid) {
 			FNoiseShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FNoiseShader::FParameters>();
 
+			//Shader params
 			PassParameters->numOctaves = Params.numOctaves;
 			PassParameters->noiseStrength = Params.noiseStrength;
 			PassParameters->scale = Params.scale;
@@ -112,6 +120,13 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 			PassParameters->lacunarity = Params.lacunarity;
 			PassParameters->baseFrequency = Params.baseFrequency;
 			PassParameters->normalCalculationEpsilon = Params.normalCalculationEpsilon;
+			PassParameters->ridgeStrength = Params.ridgeStrength;				
+			PassParameters->detailNoiseStrength = Params.detailNoiseStrength;
+			PassParameters->detailScale = Params.detailScale;
+			PassParameters->fineDetailStrength = Params.fineDetailStrength;
+			PassParameters->fineDetailScale = Params.fineDetailScale;
+			PassParameters->ultraFineStrength = Params.ultraFineStrength;
+			PassParameters->ultraFineScale = Params.ultraFineScale;
 
 			// Create input vertex data
 			TArray<float> inputVertexData;
@@ -147,14 +162,14 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 
 			PassParameters->inputNormals = GraphBuilder.CreateSRV(FRDGBufferSRVDesc(inputNormalBuffer, PF_R32_FLOAT));
 
-			// Create output buffer for vertices
+			//Create output buffer for vertices
 			FRDGBufferRef OutputVertexBuffer = GraphBuilder.CreateBuffer(
 				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 3),
 				TEXT("OutputVertexBuffer"));
 
 			PassParameters->outputVertices = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputVertexBuffer, PF_R32_FLOAT));
 
-			// Create output buffer for normals
+			//Create output buffer for normals
 			FRDGBufferRef OutputNormalBuffer = GraphBuilder.CreateBuffer(
 				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 3),
 				TEXT("OutputNormalBuffer"));
@@ -181,7 +196,7 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 			auto RunnerFunc = [GPUVertexBufferReadback, GPUNormalBufferReadback, AsyncCallback, NumOutputs = Params.inputVertices.Num()](auto&& RunnerFunc) -> void {
 				if (GPUVertexBufferReadback->IsReady() && GPUNormalBufferReadback->IsReady()) {
 
-					// Read vertex data
+					//Read vertex data - conversion
 					float* VertexBuffer = (float*)GPUVertexBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
 					TArray<FVector> OutputVertices;
 					for (int i = 0; i < NumOutputs; i++)
@@ -194,7 +209,7 @@ void FNoiseShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICm
 					}
 					GPUVertexBufferReadback->Unlock();
 
-					// Read normal data
+					//Read normal data - conversion
 					float* NormalBuffer = (float*)GPUNormalBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
 					TArray<FVector> OutputNormals;
 					for (int i = 0; i < NumOutputs; i++)

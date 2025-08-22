@@ -21,7 +21,7 @@ struct COMPUTEMODULE_API FCraterShaderDispatchParams
         : X(x)
         , Y(y)
         , Z(z)
-        , normalCalculationEpsilon(0.01f) // Default epsilon for normal calculation
+        , normalCalculationEpsilon(0.01f) 
     {
     }
 };
@@ -78,8 +78,8 @@ public:
         Params.inputVertices = InputVectors;
         Params.numCraters = craters;
         Params.normalCalculationEpsilon = normalEpsilon;
-        Params.outputVertices.SetNum(OutputSize); // Pre-allocate output array size
-        Params.outputNormals.SetNum(OutputSize); // Pre-allocate normals array size
+        Params.outputVertices.SetNum(OutputSize); 
+        Params.outputNormals.SetNum(OutputSize); 
 
         // Dispatch the compute shader and wait until it completes
         FCraterShaderInterface::Dispatch(Params, [this](TArray<FVector> OutputVertices, TArray<FVector> OutputNormals) {

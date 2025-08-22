@@ -1,22 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "Moon.h"
 
 AMoon::AMoon()
 {
-
 }
 
 void AMoon::BeginPlay()
 {
-	Super::BeginPlay();
+    Super::BeginPlay();
     GenerateMoon();
 }
 
 void AMoon::Tick(float deltaTime)
 {
-	Super::Tick(deltaTime);
+    Super::Tick(deltaTime);
 }
 
 void AMoon::GenerateMoon()
@@ -25,19 +22,16 @@ void AMoon::GenerateMoon()
     Params.radius = radius;
     Params.latitudeSegments = latSegments;
     Params.longitudeSegments = longSegments;
-
     FSphereGenerationShaderInterface::Dispatch(Params, [this](const FSphereGeometryData& GeometryData) {
         UE_LOG(LogTemp, Warning, TEXT("Sphere Generated with: %d vertices and %d triangles"),
             GeometryData.Vertices.Num(), GeometryData.Triangles.Num());
 
-        
         vertices = GeometryData.Vertices;
         triangles = GeometryData.Triangles;
         normals = GeometryData.Normals;
         UVs = GeometryData.UVs;
         this->OnMoonReady(GeometryData);
         });
-
 }
 
 void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
@@ -45,30 +39,36 @@ void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
     FCraterShaderDispatchParams craterParams(1, 1, 1);
     craterParams.inputVertices = vertices;
     craterParams.outputVertices.SetNum(vertices.Num());
-    craterParams.outputNormals.SetNum(vertices.Num()); 
-    craterParams.numCraters = 60;
+    craterParams.outputNormals.SetNum(vertices.Num());
+    craterParams.numCraters = numCraters;
     craterParams.normalCalculationEpsilon = 0.1f;
-
     FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterVertices, TArray<FVector> craterNormals) {
         vertices = craterVertices;
-        normals = craterNormals; // Now you have the calculated normals!
+        normals = craterNormals;
         ApplyGPUNoise();
         });
 }
 
 void AMoon::ApplyGPUNoise()
 {
-    // Use proper thread count - vertices.Num() for X, 1 for Y and Z
+    //Maybe make a struct for all these parameters you fkn moron
     FNoiseShaderDispatchParams Params(vertices.Num(), 1, 1);
     Params.inputVertices = vertices;
-    Params.inputNormals = normals;  // Pass crater normals as input
+    Params.inputNormals = normals;  
     Params.numOctaves = numOctaves;
-    Params.noiseStrength = noiseStrength; // Reduce noise strength to prevent spikes
+    Params.noiseStrength = noiseStrength; 
     Params.scale = scale;
     Params.persistence = persistence;
     Params.lacunarity = lacunarity;
     Params.baseFrequency = baseFrequency;
-    Params.normalCalculationEpsilon = 0.01f; // Slightly larger epsilon for stability
+    Params.normalCalculationEpsilon = 0.01f; 
+    Params.ridgeStrength = ridgeStrength;
+    Params.detailNoiseStrength = detailNoiseStrength;
+    Params.detailScale = detailScale;
+    Params.fineDetailStrength = fineDetailStrength;
+    Params.fineDetailScale = fineDetailScale;
+    Params.ultraFineStrength = ultraFineStrength;
+    Params.ultraFineScale = ultraFineScale;
     Params.outputVertices.SetNum(vertices.Num());
     Params.outputNormals.SetNum(vertices.Num());
 
@@ -82,7 +82,8 @@ void AMoon::ApplyGPUNoise()
         mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
 }
- 
+
+
 //Not really usable atm but its here :D
 void AMoon::ApplyCPUNoise()
 {
@@ -116,5 +117,4 @@ void AMoon::ApplyCPUNoise()
     //}
     //mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
 
-    
 }

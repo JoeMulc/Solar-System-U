@@ -8,8 +8,5 @@
 /NODEFAULTLIB
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\Module.ComputeModule.cpp.obj"
-"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\CraterShader.cpp.obj"
-"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\ComputeModule.init.gen.cpp.obj"
-"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\CraterShader.gen.cpp.obj"
 "C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\Default.rc2.res"
 /OUT:"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Plugins\ShadeupPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ComputeModule\UnrealEditor-ComputeModule.lib"

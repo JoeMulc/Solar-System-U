@@ -12,7 +12,7 @@ static const float rimSteepness = 12.0;
 //Width of crater rim
 static const float rimWidth = 0.25;
 
-//Floor of crater cavity
+//Floor of crater cavity                                //make these shader params in future
 static const float floorHeight = -1.2;
 
 //Smoothing factor in blending shapes
@@ -24,7 +24,7 @@ float hash(float seed)
     return frac(sin(seed * 12.9898) * 43758.5453);
 }
 
-//Random number generator for 2d inputs
+//Random number generator for 2d
 float hash2(float2 seed)
 {
     return frac(sin(dot(seed, float2(12.9898, 78.233))) * 43758.5453);
@@ -51,8 +51,8 @@ void generateCraterParams(uint craterIndex, float sphereRadius, out float3 cente
     //Scale to radius
     center = spherePos * sphereRadius;
     
-    // Scale crater sizes relative to sphere size
-    float sizeScale = sphereRadius / 400.0; //Scales values based on the orginal tested 400 radius sphere
+    //Scale crater sizes relative to original sphere radius
+    float sizeScale = sphereRadius / 400.0; 
     
     ///Bias stuff
     float radiusRandom = hash(seedBase + 3.0);
@@ -91,7 +91,7 @@ float smoothMin(float a, float b, float k)
     return min(a, b) - h * h * h * k * (1.0 / 6.0);
 }
 
-// Calculate crater displacement at a given position
+//Calculate crater displacement at a given position
 float calculateCraterDisplacement(float3 vertexPos, float sphereRadius)
 {
     float totalCraterHeight = 0.0;
@@ -134,19 +134,20 @@ float calculateCraterDisplacement(float3 vertexPos, float sphereRadius)
     return totalCraterHeight;
 }
 
+//Confusing normal calculations - way faster than UKISMET stuff though
 float3 calculateCraterNormal(float3 vertexPos, float sphereRadius, float epsilon)
 {
     float3 normal = normalize(vertexPos);
     float3 tangent1, tangent2;
     
-    // More stable tangent calculation
+    //More stable tangent calculation
     if (abs(normal.x) < 0.9)
         tangent1 = normalize(cross(normal, float3(1, 0, 0)));
     else
         tangent1 = normalize(cross(normal, float3(0, 1, 0)));
     tangent2 = cross(normal, tangent1);
     
-    // Sample on sphere surface (not displaced positions)
+    //Sample on sphere surface
     float3 pos1 = normalize(vertexPos + tangent1 * epsilon) * sphereRadius;
     float3 pos2 = normalize(vertexPos - tangent1 * epsilon) * sphereRadius;
     float3 pos3 = normalize(vertexPos + tangent2 * epsilon) * sphereRadius;
@@ -157,11 +158,11 @@ float3 calculateCraterNormal(float3 vertexPos, float sphereRadius, float epsilon
     float h3 = calculateCraterDisplacement(pos3, sphereRadius);
     float h4 = calculateCraterDisplacement(pos4, sphereRadius);
     
-    // Calculate gradient in tangent space
+    //Calculate gradient in tangent space
     float dx = (h1 - h2) / (2.0 * epsilon);
     float dy = (h3 - h4) / (2.0 * epsilon);
     
-    // Convert to surface normal
+    //Convert to surface normal
     return normalize(normal - dx * tangent1 - dy * tangent2);
 }
 
@@ -188,28 +189,26 @@ void CraterShader(
         inputVertices[baseIndex + 2]
     );
     
-    // Calculate sphere radius from vertex positions
+    //Calculate sphere radius from vertex positions - probs should just input but too much work rn FIX ME
     float sphereRadius = length(vertexPos);
     
-    // Calculate crater displacement
+    //Calculate crater displacement
     float totalCraterHeight = calculateCraterDisplacement(vertexPos, sphereRadius);
    
-    // Calculate displaced vertex position
+    //Calculate displaced vertex position
     float3 normal = normalize(vertexPos);
     float displacementScale = 0.6;
     float3 displacedPos = vertexPos + normal * totalCraterHeight * displacementScale;
 
-    // Calculate proper normal using the original sphere position
+    //Normals calculation
     float adaptiveEpsilon = normalCalculationEpsilon * (sphereRadius / 400.0);
     float3 craterNormal = calculateCraterNormal(vertexPos, sphereRadius, adaptiveEpsilon);
 
-    // Output vertex data
     uint outputVertexIndex = vertexIndex * 3;
     outputVertices[outputVertexIndex + 0] = displacedPos.x;
     outputVertices[outputVertexIndex + 1] = displacedPos.y;
     outputVertices[outputVertexIndex + 2] = displacedPos.z;
     
-    // Output normal data
     uint outputNormalIndex = vertexIndex * 3;
     outputNormals[outputNormalIndex + 0] = craterNormal.x;
     outputNormals[outputNormalIndex + 1] = craterNormal.y;
