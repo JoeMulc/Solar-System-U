@@ -30,6 +30,11 @@ void AMoon::GenerateMoon()
         UE_LOG(LogTemp, Warning, TEXT("Sphere Generated with: %d vertices and %d triangles"),
             GeometryData.Vertices.Num(), GeometryData.Triangles.Num());
 
+        
+        vertices = GeometryData.Vertices;
+        triangles = GeometryData.Triangles;
+        normals = GeometryData.Normals;
+        UVs = GeometryData.UVs;
         this->OnMoonReady(GeometryData);
         });
 
@@ -37,49 +42,45 @@ void AMoon::GenerateMoon()
 
 void AMoon::OnMoonReady(const FSphereGeometryData& GeometryData)
 {
-    vertices = GeometryData.Vertices;
-    triangles = GeometryData.Triangles;
-    normals = GeometryData.Normals;
-    UVs = GeometryData.UVs;
-
-    FCraterShaderDispatchParams craterParams(1, 1, 1);      //change x to num vertices maybe!
+    FCraterShaderDispatchParams craterParams(1, 1, 1);
     craterParams.inputVertices = vertices;
     craterParams.outputVertices.SetNum(vertices.Num());
+    craterParams.outputNormals.SetNum(vertices.Num()); 
     craterParams.numCraters = 60;
-    
-    FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterData) {
+    craterParams.normalCalculationEpsilon = 0.1f;
 
-        vertices = craterData;
+    FCraterShaderInterface::Dispatch(craterParams, [this](TArray<FVector> craterVertices, TArray<FVector> craterNormals) {
+        vertices = craterVertices;
+        normals = craterNormals; // Now you have the calculated normals!
         ApplyGPUNoise();
-
         });
 }
 
 void AMoon::ApplyGPUNoise()
 {
+    // Use proper thread count - vertices.Num() for X, 1 for Y and Z
     FNoiseShaderDispatchParams Params(vertices.Num(), 1, 1);
     Params.inputVertices = vertices;
+    Params.inputNormals = normals;  // Pass crater normals as input
     Params.numOctaves = numOctaves;
-    Params.noiseStrength = noiseStrength;
+    Params.noiseStrength = noiseStrength; // Reduce noise strength to prevent spikes
     Params.scale = scale;
     Params.persistence = persistence;
     Params.lacunarity = lacunarity;
     Params.baseFrequency = baseFrequency;
+    Params.normalCalculationEpsilon = 0.01f; // Slightly larger epsilon for stability
     Params.outputVertices.SetNum(vertices.Num());
-    
-    FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> verts) {
-    
-        vertices = verts;
-    
+    Params.outputNormals.SetNum(vertices.Num());
+
+    FNoiseShaderInterface::Dispatch(Params, [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals) {
+        vertices = finalVertices;
+        normals = finalNormals;
         if (IsValid(sphereMaterial))
-    
         {
             mesh->SetMaterial(0, sphereMaterial);
         }
         mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
-
-    
 }
  
 //Not really usable atm but its here :D

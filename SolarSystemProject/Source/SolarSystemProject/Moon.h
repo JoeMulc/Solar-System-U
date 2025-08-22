@@ -24,11 +24,11 @@ protected:
 	void OnMoonReady(const FSphereGeometryData& GeometryData);
 	
 	UPROPERTY(EditAnywhere) int numOctaves = 4;
-	UPROPERTY(EditAnywhere) float noiseStrength = 1.0;
+	UPROPERTY(EditAnywhere) float noiseStrength = 15;
 	UPROPERTY(EditAnywhere) float scale = 20.0;
 	UPROPERTY(EditAnywhere) float persistence = 0.5;
-	UPROPERTY(EditAnywhere) float lacunarity = 2.0;
-	UPROPERTY(EditAnywhere) float baseFrequency = 0.8;
+	UPROPERTY(EditAnywhere) float lacunarity = 0.8;
+	UPROPERTY(EditAnywhere) float baseFrequency = 0.2;
 
 	void ApplyGPUNoise();
 	void ApplyCPUNoise();

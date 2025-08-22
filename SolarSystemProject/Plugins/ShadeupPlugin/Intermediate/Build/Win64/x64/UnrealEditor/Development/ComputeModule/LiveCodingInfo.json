@@ -2,15 +2,15 @@
 	"RemapUnityFiles": 
 	{
 		"Module.ComputeModule.cpp.obj": [
-			"ComputeModule.init.gen.cpp.obj",
-			"CraterShader.gen.cpp.obj",
-			"NoiseShader.gen.cpp.obj",
 			"SphereGenerationShader.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
 			"ComputeModule.cpp.obj",
+			"SphereGenerationShader.cpp.obj",
+			"ComputeModule.init.gen.cpp.obj",
+			"CraterShader.gen.cpp.obj",
+			"NoiseShader.gen.cpp.obj",
 			"CraterShader.cpp.obj",
-			"NoiseShader.cpp.obj",
-			"SphereGenerationShader.cpp.obj"
+			"NoiseShader.cpp.obj"
 		]
 	}
 }

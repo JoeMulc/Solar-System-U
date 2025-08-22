@@ -1,19 +1,16 @@
 #include "/Engine/Private/Common.ush"
+
 int numOctaves;
 float noiseStrength;
 float scale;
-
-//Roughness ofgenerated terrain
 float persistence;
-
-//Controls Detail between octaves
 float lacunarity;
-
-//Controls zoom of noise pattern
-float baseFrequency;    
-
+float baseFrequency;
+float normalCalculationEpsilon;
 Buffer<float> inputVertices;
+Buffer<float> inputNormals;
 RWBuffer<float> outputVertices;
+RWBuffer<float> outputNormals;
 
 // Gets random values
 float hash(float n)
@@ -21,7 +18,7 @@ float hash(float n)
     return frac(sin(n) * 43758.5453);
 }
 
-//Found this online
+// Found this online
 float noise3D(float3 x)
 {
     float3 p = floor(x);
@@ -40,7 +37,7 @@ float noise3D(float3 x)
             lerp(hash(n + 170.0), hash(n + 171.0), f.x), f.y), f.z);
 }
 
-//My CPU code
+// Fractal noise function
 float fractalNoise(float3 p)
 {
     float totalNoise = 0.0;
@@ -54,7 +51,65 @@ float fractalNoise(float3 p)
         frequency *= lacunarity;
     }
     
-    return totalNoise * 2.0 - 1.0; 
+    return totalNoise * 2.0 - 1.0;
+}
+
+// Calculate noise displacement using sphere-projected position for consistency
+float calculateNoiseDisplacement(float3 craterVertex)
+{
+    // Project crater vertex back to sphere surface for consistent noise sampling
+    float sphereRadius = length(craterVertex);
+    float3 spherePos = normalize(craterVertex) * sphereRadius;
+    
+    // Use the sphere-projected position for noise sampling
+    float3 normalizedPos = normalize(spherePos);
+    float totalNoise = fractalNoise(normalizedPos * scale);
+    
+    return totalNoise * noiseStrength;
+}
+
+// Improved normal calculation that preserves crater structure
+float3 calculateNoiseNormalPerturbation(float3 craterVertex, float3 craterNormal, float epsilon)
+{
+    // Use sphere-projected position for consistent sampling
+    float sphereRadius = length(craterVertex);
+    float3 spherePos = normalize(craterVertex) * sphereRadius;
+    
+    // Create tangent frame on the sphere surface (not crater surface)
+    float3 sphereNormal = normalize(spherePos);
+    float3 tangent1, tangent2;
+    if (abs(sphereNormal.z) < 0.9)
+        tangent1 = normalize(cross(sphereNormal, float3(0, 0, 1)));
+    else
+        tangent1 = normalize(cross(sphereNormal, float3(1, 0, 0)));
+    tangent2 = normalize(cross(sphereNormal, tangent1));
+
+    // Sample noise on the sphere surface, not crater surface
+    float3 samplePos1 = spherePos + tangent1 * epsilon * sphereRadius;
+    float3 samplePos2 = spherePos - tangent1 * epsilon * sphereRadius;
+    float3 samplePos3 = spherePos + tangent2 * epsilon * sphereRadius;
+    float3 samplePos4 = spherePos - tangent2 * epsilon * sphereRadius;
+
+    // Normalize sample positions to maintain sphere surface
+    samplePos1 = normalize(samplePos1) * sphereRadius;
+    samplePos2 = normalize(samplePos2) * sphereRadius;
+    samplePos3 = normalize(samplePos3) * sphereRadius;
+    samplePos4 = normalize(samplePos4) * sphereRadius;
+
+    // Sample noise displacements
+    float d1 = fractalNoise(normalize(samplePos1) * scale) * noiseStrength;
+    float d2 = fractalNoise(normalize(samplePos2) * scale) * noiseStrength;
+    float d3 = fractalNoise(normalize(samplePos3) * scale) * noiseStrength;
+    float d4 = fractalNoise(normalize(samplePos4) * scale) * noiseStrength;
+
+    // Calculate gradients in sphere tangent space
+    float gradX = (d1 - d2) / (2.0 * epsilon * sphereRadius);
+    float gradY = (d3 - d4) / (2.0 * epsilon * sphereRadius);
+
+    // Transform gradient to world space and scale down for subtlety
+    float3 noiseGradient = (tangent1 * gradX + tangent2 * gradY) * 0.3; // Reduced strength
+    
+    return noiseGradient;
 }
 
 [numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
@@ -62,27 +117,49 @@ void NoiseShader(uint3 id : SV_DispatchThreadID)
 {
     uint index = id.x;
     
-    //First element of input is vertex num
+    // First element of input is vertex count
     uint vertexCount = (uint) inputVertices[0];
     
     if (index >= vertexCount)
         return;
     
-    //Data conversion
+    // Data conversion - input vertices are crater-displaced
     uint dataIndex = index * 3 + 1;
-    float3 vertex = float3(
+    float3 craterVertex = float3(
         inputVertices[dataIndex],
         inputVertices[dataIndex + 1],
         inputVertices[dataIndex + 2]
     );
     
-    float3 normalizedPos = normalize(vertex);
-    float totalNoise = fractalNoise(normalizedPos);
-    float3 displacedVertex = vertex + normalizedPos * totalNoise * noiseStrength * 10.0;
+    // Get the crater normal from input
+    uint normalIndex = index * 3;
+    float3 craterNormal = float3(
+        inputNormals[normalIndex],
+        inputNormals[normalIndex + 1],
+        inputNormals[normalIndex + 2]
+    );
     
-    //Output
+    // Calculate noise displacement
+    float noiseDisplacement = calculateNoiseDisplacement(craterVertex);
+    
+    // Apply noise displacement along the crater normal
+    float3 finalVertex = craterVertex + craterNormal * noiseDisplacement;
+    
+    // Calculate subtle noise normal perturbation
+    float3 noiseGradient = calculateNoiseNormalPerturbation(craterVertex, craterNormal, normalCalculationEpsilon);
+
+    // Apply gentle perturbation to crater normal, preserving crater structure
+    float3 finalNormal = normalize(craterNormal + noiseGradient);
+    
+    // Output vertices
     uint outputIndex = index * 3;
-    outputVertices[outputIndex] = displacedVertex.x;
-    outputVertices[outputIndex + 1] = displacedVertex.y;
-    outputVertices[outputIndex + 2] = displacedVertex.z;
+    outputVertices[outputIndex] = finalVertex.x;
+    outputVertices[outputIndex + 1] = finalVertex.y;
+    outputVertices[outputIndex + 2] = finalVertex.z;
+    
+    // Output normals
+    uint outputNormalIndex = index * 3;
+    outputNormals[outputNormalIndex] = finalNormal.x;
+    outputNormals[outputNormalIndex + 1] = finalNormal.y;
+    outputNormals[outputNormalIndex + 2] = finalNormal.z;
 }

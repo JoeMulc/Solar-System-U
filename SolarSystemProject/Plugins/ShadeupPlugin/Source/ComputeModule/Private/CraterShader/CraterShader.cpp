@@ -32,8 +32,10 @@ public:
 
 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
 		SHADER_PARAMETER(int, numCraters)
+		SHADER_PARAMETER(float, normalCalculationEpsilon)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
+		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputNormals)
 	END_SHADER_PARAMETER_STRUCT()
 
 public:
@@ -75,7 +77,7 @@ private:
 //                            ShaderType                            ShaderPath                     Shader function name    Type
 IMPLEMENT_GLOBAL_SHADER(FCraterShader, "/ComputeModuleShaders/CraterShader/CraterShader.usf", "CraterShader", SF_Compute);
 
-void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FCraterShaderDispatchParams Params, TFunction<void(TArray<FVector> OutputValues)> AsyncCallback) {
+void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FCraterShaderDispatchParams Params, TFunction<void(TArray<FVector> OutputVertices, TArray<FVector> OutputNormals)> AsyncCallback) {
 	FRDGBuilder GraphBuilder(RHICmdList);
 
 	{
@@ -94,6 +96,8 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 			FCraterShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FCraterShader::FParameters>();
 
 			PassParameters->numCraters = Params.numCraters;
+			PassParameters->normalCalculationEpsilon = Params.normalCalculationEpsilon;
+
 			// Convert FVector array to float array WITH vertex count at the beginning
 			TArray<float> inputData;
 			inputData.Add((float)Params.inputVertices.Num()); // Add vertex count as first element
@@ -112,14 +116,22 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 
 			PassParameters->inputVertices = GraphBuilder.CreateSRV(FRDGBufferSRVDesc(inputBuffer, PF_R32_FLOAT));
 
-			FRDGBufferRef OutputBuffer = GraphBuilder.CreateBuffer(
+			// Create output buffer for vertices
+			FRDGBufferRef OutputVertexBuffer = GraphBuilder.CreateBuffer(
 				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 3),
-				TEXT("OutputBuffer"));
+				TEXT("OutputVertexBuffer"));
 
-			PassParameters->outputVertices = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputBuffer, PF_R32_FLOAT));
+			PassParameters->outputVertices = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputVertexBuffer, PF_R32_FLOAT));
+
+			// Create output buffer for normals
+			FRDGBufferRef OutputNormalBuffer = GraphBuilder.CreateBuffer(
+				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 3),
+				TEXT("OutputNormalBuffer"));
+
+			PassParameters->outputNormals = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputNormalBuffer, PF_R32_FLOAT));
 
 			int numVertices = Params.inputVertices.Num();
-			int threadsPerGroup = 64; 
+			int threadsPerGroup = 64;
 			int numGroups = (numVertices + threadsPerGroup - 1) / threadsPerGroup;
 
 			FIntVector GroupCount = FIntVector(numGroups, 1, 1);
@@ -133,31 +145,47 @@ void FCraterShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHIC
 					FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
 				});
 
-			FRHIGPUBufferReadback* GPUBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecuteCraterShaderOutput"));
-			AddEnqueueCopyPass(GraphBuilder, GPUBufferReadback, OutputBuffer, 0u);
+			FRHIGPUBufferReadback* GPUVertexBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecuteCraterShaderVertexOutput"));
+			FRHIGPUBufferReadback* GPUNormalBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecuteCraterShaderNormalOutput"));
 
-			auto RunnerFunc = [GPUBufferReadback, AsyncCallback, NumOutputs = Params.outputVertices.Num()](auto&& RunnerFunc) -> void {
-				if (GPUBufferReadback->IsReady()) {
+			AddEnqueueCopyPass(GraphBuilder, GPUVertexBufferReadback, OutputVertexBuffer, 0u);
+			AddEnqueueCopyPass(GraphBuilder, GPUNormalBufferReadback, OutputNormalBuffer, 0u);
 
-					float* Buffer = (float*)GPUBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
+			auto RunnerFunc = [GPUVertexBufferReadback, GPUNormalBufferReadback, AsyncCallback, NumOutputs = Params.inputVertices.Num()](auto&& RunnerFunc) -> void {
+				if (GPUVertexBufferReadback->IsReady() && GPUNormalBufferReadback->IsReady()) {
 
-					TArray<FVector> OutputValues;
+					// Read vertex data
+					float* VertexBuffer = (float*)GPUVertexBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
+					TArray<FVector> OutputVertices;
 					for (int i = 0; i < NumOutputs; i++)
 					{
-						OutputValues.Add(FVector(
-							Buffer[i * 3 + 0],
-							Buffer[i * 3 + 1],
-							Buffer[i * 3 + 2]
+						OutputVertices.Add(FVector(
+							VertexBuffer[i * 3 + 0],
+							VertexBuffer[i * 3 + 1],
+							VertexBuffer[i * 3 + 2]
 						));
 					}
+					GPUVertexBufferReadback->Unlock();
 
-					GPUBufferReadback->Unlock();
+					// Read normal data
+					float* NormalBuffer = (float*)GPUNormalBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
+					TArray<FVector> OutputNormals;
+					for (int i = 0; i < NumOutputs; i++)
+					{
+						OutputNormals.Add(FVector(
+							NormalBuffer[i * 3 + 0],
+							NormalBuffer[i * 3 + 1],
+							NormalBuffer[i * 3 + 2]
+						));
+					}
+					GPUNormalBufferReadback->Unlock();
 
-					AsyncTask(ENamedThreads::GameThread, [AsyncCallback, OutputValues]() {
-						AsyncCallback(OutputValues);
+					AsyncTask(ENamedThreads::GameThread, [AsyncCallback, OutputVertices, OutputNormals]() {
+						AsyncCallback(OutputVertices, OutputNormals);
 						});
 
-					delete GPUBufferReadback;
+					delete GPUVertexBufferReadback;
+					delete GPUNormalBufferReadback;
 				}
 				else {
 					AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {

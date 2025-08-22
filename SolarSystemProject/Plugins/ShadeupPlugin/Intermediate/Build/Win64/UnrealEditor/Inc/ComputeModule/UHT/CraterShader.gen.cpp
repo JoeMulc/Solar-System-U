@@ -24,26 +24,36 @@ struct Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncEx
 {
 	struct _Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms
 	{
-		TArray<FVector> Values;
+		TArray<FVector> Vertices;
+		TArray<FVector> Normals;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "Public/CraterShader/CraterShader.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Values_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Vertices_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Normals_MetaData[] = {
 		{ "NativeConst", "" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Values_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_Values;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Vertices_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_Vertices;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Normals_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_Normals;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Values_Inner = { "Values", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Values = { "Values", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms, Values), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Values_MetaData), NewProp_Values_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices_Inner = { "Vertices", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices = { "Vertices", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms, Vertices), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Vertices_MetaData), NewProp_Vertices_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals_Inner = { "Normals", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals = { "Normals", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms, Normals), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Normals_MetaData), NewProp_Normals_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Values_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Values,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_ComputeModule, nullptr, "OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::_Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::Function_MetaDataParams) };
@@ -57,14 +67,16 @@ UFunction* Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_Asy
 	}
 	return ReturnFunction;
 }
-void FOnCraterShaderLibrary_AsyncExecutionCompleted_DelegateWrapper(const FMulticastScriptDelegate& OnCraterShaderLibrary_AsyncExecutionCompleted, TArray<FVector> const& Values)
+void FOnCraterShaderLibrary_AsyncExecutionCompleted_DelegateWrapper(const FMulticastScriptDelegate& OnCraterShaderLibrary_AsyncExecutionCompleted, TArray<FVector> const& Vertices, TArray<FVector> const& Normals)
 {
 	struct _Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms
 	{
-		TArray<FVector> Values;
+		TArray<FVector> Vertices;
+		TArray<FVector> Normals;
 	};
 	_Script_ComputeModule_eventOnCraterShaderLibrary_AsyncExecutionCompleted_Parms Parms;
-	Parms.Values=Values;
+	Parms.Vertices=Vertices;
+	Parms.Normals=Normals;
 	OnCraterShaderLibrary_AsyncExecutionCompleted.ProcessMulticastDelegate<UObject>(&Parms);
 }
 // End Delegate FOnCraterShaderLibrary_AsyncExecutionCompleted
@@ -78,12 +90,14 @@ struct Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComp
 		TArray<FVector> InputVectors;
 		int32 OutputSize;
 		int32 c;
+		float normalEps;
 		UCraterShaderLibrary_AsyncExecution* ReturnValue;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "BlueprintInternalUseOnly", "true" },
 		{ "Category", "ComputeShader" },
+		{ "CPP_Default_normalEps", "0.010000" },
 		{ "ModuleRelativePath", "Public/CraterShader/CraterShader.h" },
 		{ "WorldContext", "WorldContextObject" },
 	};
@@ -96,6 +110,7 @@ struct Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComp
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_InputVectors;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_OutputSize;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_c;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_normalEps;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
@@ -105,6 +120,7 @@ const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UCraterShad
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_InputVectors = { "InputVectors", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CraterShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, InputVectors), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InputVectors_MetaData), NewProp_InputVectors_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_OutputSize = { "OutputSize", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CraterShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, OutputSize), METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_c = { "c", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CraterShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, c), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_normalEps = { "normalEps", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CraterShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, normalEps), METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(CraterShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, ReturnValue), Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_WorldContextObject,
@@ -112,6 +128,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UCrate
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_InputVectors,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_OutputSize,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_c,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_normalEps,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_ReturnValue,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::PropPointers) < 2048);
@@ -132,9 +149,10 @@ DEFINE_FUNCTION(UCraterShaderLibrary_AsyncExecution::execExecuteBaseComputeShade
 	P_GET_TARRAY_REF(FVector,Z_Param_Out_InputVectors);
 	P_GET_PROPERTY(FIntProperty,Z_Param_OutputSize);
 	P_GET_PROPERTY(FIntProperty,Z_Param_c);
+	P_GET_PROPERTY(FFloatProperty,Z_Param_normalEps);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(UCraterShaderLibrary_AsyncExecution**)Z_Param__Result=UCraterShaderLibrary_AsyncExecution::ExecuteBaseComputeShader(Z_Param_WorldContextObject,Z_Param_Out_InputVectors,Z_Param_OutputSize,Z_Param_c);
+	*(UCraterShaderLibrary_AsyncExecution**)Z_Param__Result=UCraterShaderLibrary_AsyncExecution::ExecuteBaseComputeShader(Z_Param_WorldContextObject,Z_Param_Out_InputVectors,Z_Param_OutputSize,Z_Param_c,Z_Param_normalEps);
 	P_NATIVE_END;
 }
 // End Class UCraterShaderLibrary_AsyncExecution Function ExecuteBaseComputeShader
@@ -168,7 +186,7 @@ struct Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader, "ExecuteBaseComputeShader" }, // 1775289431
+		{ &Z_Construct_UFunction_UCraterShaderLibrary_AsyncExecution_ExecuteBaseComputeShader, "ExecuteBaseComputeShader" }, // 847048273
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -176,7 +194,7 @@ struct Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics::NewProp_Completed = { "Completed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCraterShaderLibrary_AsyncExecution, Completed), Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Completed_MetaData), NewProp_Completed_MetaData) }; // 2600761127
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics::NewProp_Completed = { "Completed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UCraterShaderLibrary_AsyncExecution, Completed), Z_Construct_UDelegateFunction_ComputeModule_OnCraterShaderLibrary_AsyncExecutionCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Completed_MetaData), NewProp_Completed_MetaData) }; // 2458440423
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution_Statics::NewProp_Completed,
 };
@@ -222,10 +240,10 @@ UCraterShaderLibrary_AsyncExecution::~UCraterShaderLibrary_AsyncExecution() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_CraterShader_CraterShader_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution, UCraterShaderLibrary_AsyncExecution::StaticClass, TEXT("UCraterShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UCraterShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCraterShaderLibrary_AsyncExecution), 1216831137U) },
+		{ Z_Construct_UClass_UCraterShaderLibrary_AsyncExecution, UCraterShaderLibrary_AsyncExecution::StaticClass, TEXT("UCraterShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UCraterShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UCraterShaderLibrary_AsyncExecution), 2798240800U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_CraterShader_CraterShader_h_330730370(TEXT("/Script/ComputeModule"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_CraterShader_CraterShader_h_1144582039(TEXT("/Script/ComputeModule"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_CraterShader_CraterShader_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_CraterShader_CraterShader_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
