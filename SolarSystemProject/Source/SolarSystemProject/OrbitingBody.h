@@ -36,6 +36,8 @@ protected:
 	UPROPERTY(EditAnywhere) int32 longSegments = 64;
 	UPROPERTY(EditAnywhere) float radius = 400.f;
 
+	UPROPERTY(EditAnywhere) float spinSpeed = 2;
+
 	TArray<FVector> vertices;
 	TArray<int32> triangles;
 	TArray<FVector> normals;

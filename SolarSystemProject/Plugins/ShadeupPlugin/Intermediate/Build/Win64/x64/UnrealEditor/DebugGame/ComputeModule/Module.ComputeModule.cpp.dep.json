@@ -6,6 +6,7 @@
         "PCH": "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\intermediate\\build\\win64\\x64\\solarsystemprojecteditor\\debuggame\\unrealed\\sharedpch.unrealed.project.nonoptimized.valapi.cpp20.h.pch",
         "Includes": [
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\debuggame\\computemodule\\definitions.computemodule.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\computemodule.init.gen.cpp",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\cratershader.gen.cpp",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\cratershader\\cratershader.h",
             "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\blueprintasyncactionbase.h",
@@ -16,6 +17,9 @@
             "d:\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\texturerendertarget2d.generated.h",
             "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\public\\materials\\materialrenderproxy.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\cratershader.generated.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\noiseshader.gen.cpp",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\noiseshader\\noiseshader.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\noiseshader.generated.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\spheregenerationshader.gen.cpp",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\public\\spheregenerationshader\\spheregenerationshader.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\computemodule\\uht\\spheregenerationshader.generated.h",
@@ -64,6 +68,8 @@
             "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\public\\canvastypes.h",
             "d:\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\canvastypes.generated.h",
             "d:\\epic games\\ue_5.5\\engine\\source\\runtime\\renderer\\public\\meshpassutils.h",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\private\\noiseshader\\noiseshader.cpp",
+            "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\private\\noiseshader\\noiseshader.h",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\private\\spheregenerationshader\\spheregenerationshader.cpp",
             "c:\\users\\joe\\documents\\unreal projects\\solar_system\\solar-system\\solarsystemproject\\plugins\\shadeupplugin\\source\\computemodule\\private\\spheregenerationshader\\spheregenerationshader.h"
         ],

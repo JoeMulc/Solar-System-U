@@ -11,6 +11,7 @@ AOrbitingBody::AOrbitingBody()
 
     mesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("SphereMesh"));
     RootComponent = mesh;
+    RootComponent->SetMobility(EComponentMobility::Movable);
     mesh->bUseAsyncCooking = true;
     sphereMaterial = nullptr;
 }
@@ -26,6 +27,13 @@ void AOrbitingBody::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
+    if (!IsValid(this) || !RootComponent)
+    {
+        return;
+    }
+
+    FRotator rotation = FRotator(0, spinSpeed * DeltaTime, 0.f);
+    AddActorLocalRotation(rotation);
 }
 
 void AOrbitingBody::GenerateSphere()
