@@ -66,6 +66,15 @@
     <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader\NoiseShader.h">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\NoiseShader</Filter>
     </ClCompile>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\PlanetGenerationShader">
+      <UniqueIdentifier>{622F2FE0-9605-307D-A845-98DE38334518}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\PlanetGenerationShader\PlanetGenerationShader.cpp">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\PlanetGenerationShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Private\PlanetGenerationShader\PlanetGenerationShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Private\PlanetGenerationShader</Filter>
+    </ClCompile>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{4D191618-924C-3E80-B289-DCC83C15AD04}</UniqueIdentifier>
     </Filter>
@@ -98,6 +107,15 @@
     </ClCompile>
     <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader\NoiseShader_readme.md">
       <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\NoiseShader</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\PlanetGenerationShader">
+      <UniqueIdentifier>{8922093F-09C7-3B81-97FF-D207DA5830BC}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\PlanetGenerationShader\PlanetGenerationShader.h">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\PlanetGenerationShader</Filter>
+    </ClCompile>
+    <None Include="..\..\Plugins\ShadeupPlugin\Source\ComputeModule\Public\PlanetGenerationShader\PlanetGenerationShader_readme.md">
+      <Filter>Plugins\ShadeupPlugin\Source\ComputeModule\Public\PlanetGenerationShader</Filter>
     </None>
     <Filter Include="Plugins\ShadeupPlugin\Source\ComputeModule\Public\SphereGenerationShader">
       <UniqueIdentifier>{A9D84AA8-6177-39E2-B760-BF63101D5B12}</UniqueIdentifier>
@@ -137,6 +155,12 @@
     </Filter>
     <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader\NoiseShader.usf">
       <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\NoiseShader</Filter>
+    </None>
+    <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\PlanetGenerationShader">
+      <UniqueIdentifier>{C3941493-437C-3384-B964-EB4107E5CDA4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\PlanetGenerationShader\PlanetGenerationShader.usf">
+      <Filter>Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\PlanetGenerationShader</Filter>
     </None>
     <Filter Include="Plugins\ShadeupPlugin\Shaders\ComputeModule\Private\SphereGenerationShader">
       <UniqueIdentifier>{99479967-EA07-389F-B007-FB544A0622A9}</UniqueIdentifier>
@@ -181,6 +205,12 @@
       <Filter>Source\SolarSystemProject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SolarSystemProject\OrbitingBody.h">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Planet.cpp">
+      <Filter>Source\SolarSystemProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SolarSystemProject\Planet.h">
       <Filter>Source\SolarSystemProject</Filter>
     </ClCompile>
     <None Include="..\..\Source\SolarSystemProject\SolarSystemProject.Build.cs">

@@ -1,0 +1,16 @@
+#include "/Engine/Public/Platform.ush"
+
+Buffer<float> inputVertices;
+Buffer<float> inputNormals;
+RWBuffer<float> outputVertices;
+RWBuffer<float> outputNormals;
+
+
+[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
+void PlanetGenerationShader(
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint GroupIndex : SV_GroupIndex )
+{
+	// Outputs one number
+    
+}
