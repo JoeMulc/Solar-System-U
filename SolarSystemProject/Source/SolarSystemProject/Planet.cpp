@@ -41,21 +41,31 @@ void APlanet::GeneratePlanet()
 
 void APlanet::OnPlanetReady()
 {
-    FPlanetGenerationShaderDispatchParams planetParams(1, 1, 1);
+    FPlanetGenerationShaderDispatchParams planetParams(vertices.Num(), 1, 1);
     planetParams.inputVertices = vertices;
-    planetParams.outputVertices.SetNum(vertices.Num());
     planetParams.inputNormals = normals;
+    planetParams.outputVertices.SetNum(vertices.Num());
     planetParams.outputNormals.SetNum(normals.Num());
+    planetParams.outputColors.SetNum(vertices.Num());
 
-    FPlanetGenerationShaderInterface::Dispatch(planetParams, [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals) {
-        //vertices = finalVertices;
-        //normals = finalNormals;
+    FPlanetGenerationShaderInterface::Dispatch(planetParams,
+        [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals, TArray<FLinearColor> finalColors) {
 
-        if (IsValid(sphereMaterial))
-        {
-            mesh->SetMaterial(0, sphereMaterial);
-        }
-        mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
+            vertices = finalVertices;
+            normals = finalNormals;
 
+            verticeColors.Empty();
+            verticeColors.Reserve(finalColors.Num());
+            for (const FLinearColor& linearColor : finalColors)
+            {
+                verticeColors.Add(linearColor.ToFColor(true)); 
+            }
+
+            if (IsValid(sphereMaterial))
+            {
+                mesh->SetMaterial(0, sphereMaterial);
+            }
+
+            mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
 }

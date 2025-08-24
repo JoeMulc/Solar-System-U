@@ -4,13 +4,275 @@ Buffer<float> inputVertices;
 Buffer<float> inputNormals;
 RWBuffer<float> outputVertices;
 RWBuffer<float> outputNormals;
+RWBuffer<float> outputColors;
 
+//Planet generation parameters - tested on spher 1500r
+static const float seaLevel = 0.0;
+static const float oceanDepth = -80.0;
+static const float mountainHeight = 150.0;
+static const float continentHeight = 40.0;
+static const float valleyDepth = -30.0;
 
-[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
-void PlanetGenerationShader(
-	uint3 DispatchThreadId : SV_DispatchThreadID,
-	uint GroupIndex : SV_GroupIndex )
+//Terrain color parameters
+static const float grassSlopeThreshold = 0.3; //Below this = grass
+static const float rockSlopeThreshold = 0.7; //Above this = rock
+static const float snowHeightThreshold = 80.0; //Above this = snow
+static const float sandHeightThreshold = 10.0; //Below this (on land) = sand
+
+//Terrain colors 
+static const float brightness = 0.05;
+static const float4 oceanColor = float4(0.1, 0.3, 0.8, 1.0) * brightness; //Dark blue
+static const float4 shallowColor = float4(0.2, 0.6, 0.9, 1.0) * brightness; //Light blue
+static const float4 sandColor = float4(0.9, 0.8, 0.6, 1.0) * brightness; //Tan
+static const float4 grassColor = float4(0.2, 0.7, 0.1, 1.0) * brightness; //Green
+static const float4 rockColor = float4(0.4, 0.3, 0.2, 1.0) * brightness; //Brown
+static const float4 snowColor = float4(0.95, 0.95, 0.98, 1.0) * brightness; //White
+static const float3 continentOffset = float3(123.456, 789.012, 345.678);
+static const float3 mountainOffset = float3(987.654, 321.098, 765.432);
+static const float3 detailOffset = float3(456.789, 12.345, 678.901);
+static const float3 ridgeOffset = float3(234.567, 890.123, 456.789);
+static const float3 riverOffset = float3(678.901, 234.567, 890.123);
+
+//Noise scales for different features
+static const float continentScale = 0.002; //Large continents
+static const float mountainScale = 0.005; //Mountain ranges
+static const float detailScale = 0.008; //Hills valley
+static const float ridgeScale = 0.008; //Mountain ridges
+
+//Simple hash function for noise
+float hash(float3 p)
 {
-	// Outputs one number
+    p = frac(p * 0.3183099 + 0.1);
+    p *= 17.0;
+    return frac(p.x * p.y * p.z * (p.x + p.y + p.z));
+}
+
+//Lost with a lot of this noise stuff but it works nevertheless
+//3D noise function
+float noise(float3 x)
+{
+    float3 p = floor(x);
+    float3 f = frac(x);
+    f = f * f * (3.0 - 2.0 * f);
     
+    return lerp(lerp(lerp(hash(p + float3(0, 0, 0)),
+                         hash(p + float3(1, 0, 0)), f.x),
+                    lerp(hash(p + float3(0, 1, 0)),
+                         hash(p + float3(1, 1, 0)), f.x), f.y),
+               lerp(lerp(hash(p + float3(0, 0, 1)),
+                         hash(p + float3(1, 0, 1)), f.x),
+                    lerp(hash(p + float3(0, 1, 1)),
+                         hash(p + float3(1, 1, 1)), f.x), f.y), f.z);
+}
+
+//Fractal Brownian Motion
+float fbm(float3 pos, float scale, int octaves, float persistence, float lacunarity)
+{
+    float value = 0.0;
+    float amplitude = 1.0;
+    float frequency = scale;
+    
+    for (int i = 0; i < octaves; i++)
+    {
+        value += amplitude * (noise(pos * frequency) * 2.0 - 1.0);
+        amplitude *= persistence;
+        frequency *= lacunarity;
+    }
+    
+    return value;
+}
+
+//Ridged noise for mountain ranges
+float ridgedNoise(float3 pos, float scale, int octaves)
+{
+    float value = 0.0;
+    float amplitude = 1.0;
+    float frequency = scale;
+    
+    for (int i = 0; i < octaves; i++)
+    {
+        float n = abs(noise(pos * frequency) * 2.0 - 1.0);
+        n = 1.0 - n;
+        n = n * n * n;
+        value += amplitude * n;
+        amplitude *= 0.5;
+        frequency *= 2.0;
+    }
+    
+    return value;
+}
+
+//Smooth step for blending
+float smoothstep01(float edge0, float edge1, float x)
+{
+    float t = saturate((x - edge0) / (edge1 - edge0));
+    return t * t * (3.0 - 2.0 * t);
+}
+
+float erosion(float height, float slope)
+{
+    return height - slope * 0.3;
+}
+
+float calculateTerrainHeight(float3 pos)
+{
+    //Continents
+    float continentMask = fbm(pos + continentOffset, continentScale, 4, 0.6, 2.0);
+    continentMask = smoothstep01(-0.2, 0.3, continentMask);
+    
+    //Base height
+    float baseHeight = lerp(oceanDepth, continentHeight, continentMask);
+    
+    //Mountains
+    float mountainMask = continentMask * smoothstep01(0.4, 0.8, continentMask);
+    float mountainRidges = ridgedNoise(pos + ridgeOffset, ridgeScale, 3);
+    float mountainNoise = fbm(pos + mountainOffset, mountainScale, 4, 0.4, 2.0);
+    float mountains = mountainRidges * mountainNoise * mountainMask * mountainHeight * 0.7;
+    
+    //hillsnvalleys
+    float hillsValleys = fbm(pos + detailOffset, detailScale, 3, 0.3, 2.0) * 12.0;
+    
+    //Erosion using local slope
+    float localSlope = abs(fbm(pos + detailOffset + float3(1, 0, 0), detailScale, 2, 0.5, 2.0) -
+                          fbm(pos + detailOffset - float3(1, 0, 0), detailScale, 2, 0.5, 2.0));
+    hillsValleys = erosion(hillsValleys, localSlope);
+    
+    //beaches
+    float coastalBlend = smoothstep01(0.0, 0.4, continentMask);
+    hillsValleys *= coastalBlend;
+    
+    //rivers and valleys
+    float riverNoise = fbm(pos + riverOffset, 0.003, 2, 0.5, 2.0);
+    float riverMask = smoothstep01(0.3, 0.7, abs(riverNoise));
+    float riverValleys = (1.0 - riverMask) * valleyDepth * 0.5 * continentMask;
+    
+    //Combine all features 
+    float finalHeight = baseHeight + mountains + hillsValleys + riverValleys;
+    
+    //Polar caps - Not happy with this some magical numbers
+    float latitude = abs(pos.y) / 800.0;
+    float polarCap = smoothstep01(0.8, 1.0, latitude);
+    finalHeight = lerp(finalHeight, finalHeight * 0.7, polarCap);
+    
+    //Smoothing - stopped jagged vertexes vertices idk illl go vertexes
+    finalHeight = clamp(finalHeight, oceanDepth * 1.2, mountainHeight * 0.8);
+    finalHeight *= 0.8; //Magical smoothing number
+    
+    return finalHeight;
+}
+
+[numthreads(64, 1, 1)]
+void PlanetGenerationShader(
+    uint3 DispatchThreadId : SV_DispatchThreadID,
+    uint GroupIndex : SV_GroupIndex)
+{
+    uint vertexIndex = DispatchThreadId.x;
+    
+    uint baseIndex = vertexIndex * 3 + 1;
+    float3 vertexPos = float3(
+        inputVertices[baseIndex],
+        inputVertices[baseIndex + 1],
+        inputVertices[baseIndex + 2]
+    );
+    
+    uint normalIndex = vertexIndex * 3;
+    float3 normal = float3(
+        inputNormals[normalIndex],
+        inputNormals[normalIndex + 1],
+        inputNormals[normalIndex + 2]
+    );
+    
+    // Calculate terrain height at this vertex
+    float finalHeight = calculateTerrainHeight(vertexPos);
+    
+    //Calculate bordering vertexes
+    float sampleDistance = 5.0; 
+    float heightX1 = calculateTerrainHeight(vertexPos + float3(sampleDistance, 0, 0));
+    float heightX2 = calculateTerrainHeight(vertexPos - float3(sampleDistance, 0, 0));
+    float heightY1 = calculateTerrainHeight(vertexPos + float3(0, sampleDistance, 0));
+    float heightY2 = calculateTerrainHeight(vertexPos - float3(0, sampleDistance, 0));
+    float heightZ1 = calculateTerrainHeight(vertexPos + float3(0, 0, sampleDistance));
+    float heightZ2 = calculateTerrainHeight(vertexPos - float3(0, 0, sampleDistance));
+    
+    //Gradient in 3 directions
+    float3 gradient = float3(
+        (heightX1 - heightX2) / (2.0 * sampleDistance),
+        (heightY1 - heightY2) / (2.0 * sampleDistance),
+        (heightZ1 - heightZ2) / (2.0 * sampleDistance)
+    );
+    
+    //Steepness/shallowness of slope
+    float terrainSlope = length(gradient);
+    
+    
+    float4 terrainColor;
+    //Ocean areas
+    if (finalHeight < seaLevel - 20.0)
+    {
+        terrainColor = oceanColor; 
+    }
+    else if (finalHeight < seaLevel)
+    {
+        //blends shallow and ocean
+        float t = (finalHeight - (seaLevel - 20.0)) / 20.0;
+        terrainColor = lerp(oceanColor, shallowColor, t);
+    }
+    //Land
+    else
+    {
+        //snow
+        if (finalHeight > snowHeightThreshold)
+        {
+            terrainColor = snowColor;
+        }
+        //beach
+        else if (finalHeight < sandHeightThreshold)
+        {
+            terrainColor = sandColor;
+        }
+        //grass
+        else
+        {
+            terrainColor = grassColor;
+        }
+        
+        //OVERIDE for gradient
+        //rock
+        if (terrainSlope > rockSlopeThreshold)
+        {
+            terrainColor = rockColor;
+        }
+        //grass
+        else if (terrainSlope > grassSlopeThreshold)
+        {
+            //blends grass and rock
+            float t = (terrainSlope - grassSlopeThreshold) / (rockSlopeThreshold - grassSlopeThreshold);
+            terrainColor = lerp(terrainColor, rockColor, t);
+        }
+        
+        //Adds snow if height sufficient
+        if (finalHeight > snowHeightThreshold * 0.8 && terrainSlope < rockSlopeThreshold * 1.2)
+        {
+            float snowBlend = (finalHeight - snowHeightThreshold * 0.8) / (snowHeightThreshold * 0.2);
+            terrainColor = lerp(terrainColor, snowColor, saturate(snowBlend));
+        }
+    }
+    
+    float3 newVertexPos = vertexPos + normal * finalHeight;
+    
+    //Output
+    uint outputIndex = vertexIndex * 3;
+    outputVertices[outputIndex] = newVertexPos.x;
+    outputVertices[outputIndex + 1] = newVertexPos.y;
+    outputVertices[outputIndex + 2] = newVertexPos.z;
+    
+    outputNormals[outputIndex] = normal.x;          //is the necessary?!?!
+    outputNormals[outputIndex + 1] = normal.y;
+    outputNormals[outputIndex + 2] = normal.z;
+    
+    uint colorIndex = vertexIndex * 4;
+    outputColors[colorIndex] = terrainColor.r;
+    outputColors[colorIndex + 1] = terrainColor.g;
+    outputColors[colorIndex + 2] = terrainColor.b;
+    outputColors[colorIndex + 3] = terrainColor.a;
 }

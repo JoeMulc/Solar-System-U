@@ -25,6 +25,6 @@
 #include "RenderGraphResources.h"
 #include "Runtime/Engine/Classes/Engine/TextureRenderTarget2D.h"
 
-#define NUM_THREADS_PlanetGenerationShader_X 512
+#define NUM_THREADS_PlanetGenerationShader_X 64
 #define NUM_THREADS_PlanetGenerationShader_Y 1
 #define NUM_THREADS_PlanetGenerationShader_Z 1

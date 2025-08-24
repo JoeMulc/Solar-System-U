@@ -17,34 +17,30 @@ DECLARE_STATS_GROUP(TEXT("PlanetGenerationShader"), STATGROUP_PlanetGenerationSh
 DECLARE_CYCLE_STAT(TEXT("PlanetGenerationShader Execute"), STAT_PlanetGenerationShader_Execute, STATGROUP_PlanetGenerationShader);
 
 // This class carries our parameter declarations and acts as the bridge between cpp and HLSL.
-class COMPUTEMODULE_API FPlanetGenerationShader: public FGlobalShader
+class COMPUTEMODULE_API FPlanetGenerationShader : public FGlobalShader
 {
 public:
-	
+
 	DECLARE_GLOBAL_SHADER(FPlanetGenerationShader);
 	SHADER_USE_PARAMETER_STRUCT(FPlanetGenerationShader, FGlobalShader);
-	
-	
+
 	class FPlanetGenerationShader_Perm_TEST : SHADER_PERMUTATION_INT("TEST", 1);
 	using FPermutationDomain = TShaderPermutationDomain<
 		FPlanetGenerationShader_Perm_TEST
 	>;
 
 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
-		
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputNormals)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputNormals)
-		
-
+		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputColors)
 	END_SHADER_PARAMETER_STRUCT()
 
 public:
 	static bool ShouldCompilePermutation(const FGlobalShaderPermutationParameters& Parameters)
 	{
 		const FPermutationDomain PermutationVector(Parameters.PermutationId);
-		
 		return true;
 	}
 
@@ -55,22 +51,11 @@ public:
 		const FPermutationDomain PermutationVector(Parameters.PermutationId);
 
 		/*
-		* Here you define constants that can be used statically in the shader code.
-		* Example:
-		*/
-		// OutEnvironment.SetDefine(TEXT("MY_CUSTOM_CONST"), TEXT("1"));
-
-		/*
 		* These defines are used in the thread count section of our shader
 		*/
 		OutEnvironment.SetDefine(TEXT("THREADS_X"), NUM_THREADS_PlanetGenerationShader_X);
 		OutEnvironment.SetDefine(TEXT("THREADS_Y"), NUM_THREADS_PlanetGenerationShader_Y);
 		OutEnvironment.SetDefine(TEXT("THREADS_Z"), NUM_THREADS_PlanetGenerationShader_Z);
-
-		// This shader must support typed UAV load and we are testing if it is supported at runtime using RHIIsTypedUAVLoadSupported
-		//OutEnvironment.CompilerFlags.Add(CFLAG_AllowTypedUAVLoads);
-
-		// FForwardLightingParameters::ModifyCompilationEnvironment(Parameters.Platform, OutEnvironment);
 	}
 private:
 };
@@ -79,7 +64,7 @@ private:
 //                            ShaderType                            ShaderPath                     Shader function name    Type
 IMPLEMENT_GLOBAL_SHADER(FPlanetGenerationShader, "/ComputeModuleShaders/PlanetGenerationShader/PlanetGenerationShader.usf", "PlanetGenerationShader", SF_Compute);
 
-void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FPlanetGenerationShaderDispatchParams Params, TFunction<void(TArray<FVector> OutputVertices, TArray<FVector> OutputNormals)> AsyncCallback) {
+void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmediate& RHICmdList, FPlanetGenerationShaderDispatchParams Params, TFunction<void(TArray<FVector> OutputVertices, TArray<FVector> OutputNormals, TArray<FLinearColor> OutputColors)> AsyncCallback) {
 	FRDGBuilder GraphBuilder(RHICmdList);
 
 	{
@@ -87,14 +72,10 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 		DECLARE_GPU_STAT(PlanetGenerationShader)
 		RDG_EVENT_SCOPE(GraphBuilder, "PlanetGenerationShader");
 		RDG_GPU_STAT_SCOPE(GraphBuilder, PlanetGenerationShader);
-		
+
 		typename FPlanetGenerationShader::FPermutationDomain PermutationVector;
-		
-		// Add any static permutation options here
-		// PermutationVector.Set<FPlanetGenerationShader::FMyPermutationName>(12345);
 
 		TShaderMapRef<FPlanetGenerationShader> ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel), PermutationVector);
-		
 
 		bool bIsShaderValid = ComputeShader.IsValid();
 
@@ -103,7 +84,7 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 
 			// Create input vertex data
 			TArray<float> inputVertexData;
-			inputVertexData.Add((float)Params.inputVertices.Num()); // Add vertex count as first element
+			inputVertexData.Add((float)Params.inputVertices.Num()); 
 
 			for (const FVector& vert : Params.inputVertices)
 			{
@@ -118,7 +99,7 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 			FRDGBufferRef inputVertexBuffer = CreateUploadBuffer(GraphBuilder, TEXT("InputVertexBuffer"), inputVertexSize, numVertexInputs, RawVertexData, inputVertexSize * numVertexInputs);
 
 			PassParameters->inputVertices = GraphBuilder.CreateSRV(FRDGBufferSRVDesc(inputVertexBuffer, PF_R32_FLOAT));
-	
+
 			// Create input normal data
 			TArray<float> inputNormalData;
 			for (const FVector& norm : Params.inputNormals)
@@ -149,27 +130,33 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 
 			PassParameters->outputNormals = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputNormalBuffer, PF_R32_FLOAT));
 
+			//Create output buffer for colors 
+			FRDGBufferRef OutputColorBuffer = GraphBuilder.CreateBuffer(
+				FRDGBufferDesc::CreateBufferDesc(sizeof(float), Params.inputVertices.Num() * 4),
+				TEXT("OutputColorBuffer"));
+
+			PassParameters->outputColors = GraphBuilder.CreateUAV(FRDGBufferUAVDesc(OutputColorBuffer, PF_R32_FLOAT));
+
 			auto GroupCount = FComputeShaderUtils::GetGroupCount(FIntVector(Params.X, Params.Y, Params.Z), FComputeShaderUtils::kGolden2DGroupSize);
 			GraphBuilder.AddPass(
 				RDG_EVENT_NAME("ExecutePlanetGenerationShader"),
 				PassParameters,
 				ERDGPassFlags::AsyncCompute,
 				[&PassParameters, ComputeShader, GroupCount](FRHIComputeCommandList& RHICmdList)
-			{
-				FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
-			});
-
-			
+				{
+					FComputeShaderUtils::Dispatch(RHICmdList, ComputeShader, *PassParameters, GroupCount);
+				});
 
 			FRHIGPUBufferReadback* GPUVertexBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecutePlanetGenerationShaderVertexOutput"));
 			FRHIGPUBufferReadback* GPUNormalBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecutePlanetGenerationShaderNormalOutput"));
+			FRHIGPUBufferReadback* GPUColorBufferReadback = new FRHIGPUBufferReadback(TEXT("ExecutePlanetGenerationShaderColorOutput"));
 
 			AddEnqueueCopyPass(GraphBuilder, GPUVertexBufferReadback, OutputVertexBuffer, 0u);
 			AddEnqueueCopyPass(GraphBuilder, GPUNormalBufferReadback, OutputNormalBuffer, 0u);
+			AddEnqueueCopyPass(GraphBuilder, GPUColorBufferReadback, OutputColorBuffer, 0u);
 
-
-			auto RunnerFunc = [GPUVertexBufferReadback, GPUNormalBufferReadback, AsyncCallback, NumOutputs = Params.inputVertices.Num()](auto&& RunnerFunc) -> void {
-				if (GPUVertexBufferReadback->IsReady() && GPUNormalBufferReadback->IsReady()) {
+			auto RunnerFunc = [GPUVertexBufferReadback, GPUNormalBufferReadback, GPUColorBufferReadback, AsyncCallback, NumOutputs = Params.inputVertices.Num()](auto&& RunnerFunc) -> void {
+				if (GPUVertexBufferReadback->IsReady() && GPUNormalBufferReadback->IsReady() && GPUColorBufferReadback->IsReady()) {
 
 					//Read vertex data - conversion
 					float* VertexBuffer = (float*)GPUVertexBufferReadback->Lock(NumOutputs * 3 * sizeof(float));
@@ -197,12 +184,27 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 					}
 					GPUNormalBufferReadback->Unlock();
 
-					AsyncTask(ENamedThreads::GameThread, [AsyncCallback, OutputVertices, OutputNormals]() {
-						AsyncCallback(OutputVertices, OutputNormals);
+					//Read color data - conversion
+					float* ColorBuffer = (float*)GPUColorBufferReadback->Lock(NumOutputs * 4 * sizeof(float));
+					TArray<FLinearColor> OutputColors;
+					for (int i = 0; i < NumOutputs; i++)
+					{
+						OutputColors.Add(FLinearColor(
+							ColorBuffer[i * 4 + 0],
+							ColorBuffer[i * 4 + 1],
+							ColorBuffer[i * 4 + 2],
+							ColorBuffer[i * 4 + 3]
+						));
+					}
+					GPUColorBufferReadback->Unlock();
+
+					AsyncTask(ENamedThreads::GameThread, [AsyncCallback, OutputVertices, OutputNormals, OutputColors]() {
+						AsyncCallback(OutputVertices, OutputNormals, OutputColors);
 						});
 
 					delete GPUVertexBufferReadback;
 					delete GPUNormalBufferReadback;
+					delete GPUColorBufferReadback;
 				}
 				else {
 					AsyncTask(ENamedThreads::ActualRenderingThread, [RunnerFunc]() {
@@ -220,9 +222,7 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 #if WITH_EDITOR
 			GEngine->AddOnScreenDebugMessage((uint64)42145125184, 6.f, FColor::Red, FString(TEXT("The compute shader has a problem.")));
 #endif
-
 			// We exit here as we don't want to crash the game if the shader is not found or has an error.
-
 		}
 	}
 

@@ -14,6 +14,7 @@ COMPUTEMODULE_API UClass* Z_Construct_UClass_UPlanetGenerationShaderLibrary_Asyn
 COMPUTEMODULE_API UClass* Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_NoRegister();
 COMPUTEMODULE_API UFunction* Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature();
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject_NoRegister();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_UBlueprintAsyncActionBase();
 UPackage* Z_Construct_UPackage__Script_ComputeModule();
@@ -26,6 +27,7 @@ struct Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibra
 	{
 		TArray<FVector> Vertices;
 		TArray<FVector> Normals;
+		TArray<FLinearColor> Colors;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -37,11 +39,16 @@ struct Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibra
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Normals_MetaData[] = {
 		{ "NativeConst", "" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Colors_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Vertices_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_Vertices;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Normals_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_Normals;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Colors_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_Colors;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
@@ -49,11 +56,15 @@ const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_Com
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices = { "Vertices", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms, Vertices), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Vertices_MetaData), NewProp_Vertices_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals_Inner = { "Normals", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals = { "Normals", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms, Normals), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Normals_MetaData), NewProp_Normals_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Colors_Inner = { "Colors", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Colors = { "Colors", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms, Colors), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Colors_MetaData), NewProp_Colors_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Vertices,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Normals,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Colors_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::NewProp_Colors,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_ComputeModule, nullptr, "OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::_Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature_Statics::Function_MetaDataParams) };
@@ -67,16 +78,18 @@ UFunction* Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderL
 	}
 	return ReturnFunction;
 }
-void FOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_DelegateWrapper(const FMulticastScriptDelegate& OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted, TArray<FVector> const& Vertices, TArray<FVector> const& Normals)
+void FOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_DelegateWrapper(const FMulticastScriptDelegate& OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted, TArray<FVector> const& Vertices, TArray<FVector> const& Normals, TArray<FLinearColor> const& Colors)
 {
 	struct _Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms
 	{
 		TArray<FVector> Vertices;
 		TArray<FVector> Normals;
+		TArray<FLinearColor> Colors;
 	};
 	_Script_ComputeModule_eventOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted_Parms Parms;
 	Parms.Vertices=Vertices;
 	Parms.Normals=Normals;
+	Parms.Colors=Colors;
 	OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted.ProcessMulticastDelegate<UObject>(&Parms);
 }
 // End Delegate FOnPlanetGenerationShaderLibrary_AsyncExecutionCompleted
@@ -183,7 +196,7 @@ struct Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics::NewProp_Completed = { "Completed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlanetGenerationShaderLibrary_AsyncExecution, Completed), Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Completed_MetaData), NewProp_Completed_MetaData) }; // 1034613684
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics::NewProp_Completed = { "Completed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPlanetGenerationShaderLibrary_AsyncExecution, Completed), Z_Construct_UDelegateFunction_ComputeModule_OnPlanetGenerationShaderLibrary_AsyncExecutionCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Completed_MetaData), NewProp_Completed_MetaData) }; // 3321750029
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics::NewProp_Completed,
 };
@@ -229,10 +242,10 @@ UPlanetGenerationShaderLibrary_AsyncExecution::~UPlanetGenerationShaderLibrary_A
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, UPlanetGenerationShaderLibrary_AsyncExecution::StaticClass, TEXT("UPlanetGenerationShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlanetGenerationShaderLibrary_AsyncExecution), 3239107171U) },
+		{ Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, UPlanetGenerationShaderLibrary_AsyncExecution::StaticClass, TEXT("UPlanetGenerationShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlanetGenerationShaderLibrary_AsyncExecution), 1731852291U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_4458059(TEXT("/Script/ComputeModule"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_1369350863(TEXT("/Script/ComputeModule"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
