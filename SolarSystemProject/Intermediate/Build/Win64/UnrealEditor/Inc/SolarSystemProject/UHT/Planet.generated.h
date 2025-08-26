@@ -14,7 +14,28 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SOLARSYSTEMPROJECT_Planet_generated_h
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FPlanetInfo_Statics; \
+	SOLARSYSTEMPROJECT_API static class UScriptStruct* StaticStruct();
+
+
+template<> SOLARSYSTEMPROJECT_API UScriptStruct* StaticStruct<struct FPlanetInfo>();
+
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execSetHighlandsPlanet); \
+	DECLARE_FUNCTION(execSetSwampPlanet); \
+	DECLARE_FUNCTION(execSetArchipelagoPlanet); \
+	DECLARE_FUNCTION(execSetMarsLikePlanet); \
+	DECLARE_FUNCTION(execSetTundraPlanet); \
+	DECLARE_FUNCTION(execSetDesertPlanet); \
+	DECLARE_FUNCTION(execSetCrystalPlanet); \
+	DECLARE_FUNCTION(execSetIceWorld); \
+	DECLARE_FUNCTION(execSetJungleWorld); \
+	DECLARE_FUNCTION(execSetVolcanicPlanet); \
+	DECLARE_FUNCTION(execSetEarthLike);
+
+
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPlanet(); \
 	friend struct Z_Construct_UClass_APlanet_Statics; \
@@ -23,7 +44,7 @@ public: \
 	DECLARE_SERIALIZER(APlanet)
 
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	APlanet(APlanet&&); \
@@ -35,12 +56,13 @@ public: \
 	NO_API virtual ~APlanet();
 
 
-#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_10_PROLOG
-#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_GENERATED_BODY \
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_244_PROLOG
+#define FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_INCLASS_NO_PURE_DECLS \
-	FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_13_ENHANCED_CONSTRUCTORS \
+	FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_INCLASS_NO_PURE_DECLS \
+	FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_247_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

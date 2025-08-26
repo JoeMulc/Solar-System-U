@@ -11,6 +11,7 @@ APlanet::APlanet()
 void APlanet::BeginPlay()
 {
 	Super::BeginPlay();
+   
     GeneratePlanet();
 }
 
@@ -47,6 +48,19 @@ void APlanet::OnPlanetReady()
     planetParams.outputVertices.SetNum(vertices.Num());
     planetParams.outputNormals.SetNum(normals.Num());
     planetParams.outputColors.SetNum(vertices.Num());
+    planetParams.seaLevel = planetInfo.seaLevel;
+    planetParams.oceanDepth = planetInfo.oceanDepth;
+    planetParams.mountainHeight = planetInfo.mountainHeight;
+    planetParams.continentHeight = planetInfo.continentHeight;
+    planetParams.valleyDepth = planetInfo.valleyDepth;
+    planetParams.grassSlopeThreshold = planetInfo.grassSlopeThreshold;
+    planetParams.rockSlopeThreshold = planetInfo.rockSlopeThreshold;
+    planetParams.snowHeightThreshold = planetInfo.snowHeightThreshold;
+    planetParams.sandHeightThreshold = planetInfo.sandHeightThreshold;
+    planetParams.continentScale = planetInfo.continentScale;
+    planetParams.mountainScale = planetInfo.mountainScale;
+    planetParams.detailScale = planetInfo.detailScale;
+    planetParams.ridgeScale = planetInfo.ridgeScale;
 
     FPlanetGenerationShaderInterface::Dispatch(planetParams,
         [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals, TArray<FLinearColor> finalColors) {

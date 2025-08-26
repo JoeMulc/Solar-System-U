@@ -7,17 +7,17 @@ RWBuffer<float> outputNormals;
 RWBuffer<float> outputColors;
 
 //Planet generation parameters - tested on spher 1500r
-static const float seaLevel = 0.0;
-static const float oceanDepth = -80.0;
-static const float mountainHeight = 150.0;
-static const float continentHeight = 40.0;
-static const float valleyDepth = -30.0;
+float seaLevel;
+float oceanDepth;
+float mountainHeight;
+float continentHeight;
+float valleyDepth;
 
 //Terrain color parameters
-static const float grassSlopeThreshold = 0.3; //Below this = grass
-static const float rockSlopeThreshold = 0.7; //Above this = rock
-static const float snowHeightThreshold = 80.0; //Above this = snow
-static const float sandHeightThreshold = 10.0; //Below this (on land) = sand
+float grassSlopeThreshold; //Below this = grass
+float rockSlopeThreshold; //Above this = rock
+float snowHeightThreshold; //Above this = snow
+float sandHeightThreshold; //Below this (on land) = sand
 
 //Terrain colors 
 static const float brightness = 0.05;
@@ -34,10 +34,10 @@ static const float3 ridgeOffset = float3(234.567, 890.123, 456.789);
 static const float3 riverOffset = float3(678.901, 234.567, 890.123);
 
 //Noise scales for different features
-static const float continentScale = 0.002; //Large continents
-static const float mountainScale = 0.005; //Mountain ranges
-static const float detailScale = 0.008; //Hills valley
-static const float ridgeScale = 0.008; //Mountain ridges
+float continentScale; //Large continents
+float mountainScale; //Mountain ranges
+float detailScale; //Hills valley
+float ridgeScale; //Mountain ridges
 
 //Simple hash function for noise
 float hash(float3 p)

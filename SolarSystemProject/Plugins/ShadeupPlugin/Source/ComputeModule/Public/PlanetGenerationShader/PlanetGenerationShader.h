@@ -12,6 +12,23 @@ struct COMPUTEMODULE_API FPlanetGenerationShaderDispatchParams
     int X;
     int Y;
     int Z;
+
+    float seaLevel;
+    float oceanDepth;
+    float mountainHeight;
+    float continentHeight;
+    float valleyDepth;
+
+    float grassSlopeThreshold;
+    float rockSlopeThreshold;
+    float snowHeightThreshold;
+    float sandHeightThreshold;
+
+    float continentScale;
+    float mountainScale;
+    float detailScale;
+    float ridgeScale;
+
     TArray<FVector> inputVertices;
     TArray<FVector> inputNormals;
     TArray<FVector> outputVertices;
@@ -75,6 +92,21 @@ class COMPUTEMODULE_API UPlanetGenerationShaderLibrary_AsyncExecution : public U
     GENERATED_BODY()
 
 public:
+    float sL;
+    float oDf;
+    float mHf;
+    float cH;
+    float vDf;
+
+    float gST;
+    float rST;
+    float snowHT;
+    float sandHT;
+
+    float cs;
+    float mS;
+    float dS;
+    float rS;
     TArray<FVector> inVert;
     TArray<FVector> inNorm;
 
@@ -91,10 +123,24 @@ public:
     }
 
     UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "ComputeShader", WorldContext = "WorldContextObject"))
-    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns) {
+    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13) {
         UPlanetGenerationShaderLibrary_AsyncExecution* Action = NewObject<UPlanetGenerationShaderLibrary_AsyncExecution>();
+        Action->sL = arg1;
+        Action->oDf = arg2;
+        Action->mHf = arg3;
+        Action->cH = arg4;
+        Action->vDf = arg5;
+        Action->gST = arg6;
+        Action->rST = arg7;
+        Action->snowHT = arg8;
+        Action->sandHT = arg9;
+        Action->cs = arg10;
+        Action->mS = arg11;
+        Action->dS = arg12;
+        Action->rS = arg13;
         Action->inVert = vs;
         Action->inNorm = ns;
+       
         Action->RegisterWithGameInstance(WorldContextObject);
         return Action;
     }

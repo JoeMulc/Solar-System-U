@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeSolarSystemProject_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xDC77B5AC,
-				0xDE7E6F30,
+				0xA42A2976,
+				0x63074F60,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_SolarSystemProject.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_SolarSystemProject.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_SolarSystemProject(Z_Construct_UPackage__Script_SolarSystemProject, TEXT("/Script/SolarSystemProject"), Z_Registration_Info_UPackage__Script_SolarSystemProject, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xDC77B5AC, 0xDE7E6F30));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_SolarSystemProject(Z_Construct_UPackage__Script_SolarSystemProject, TEXT("/Script/SolarSystemProject"), Z_Registration_Info_UPackage__Script_SolarSystemProject, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xA42A2976, 0x63074F60));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -30,6 +30,19 @@ public:
 	>;
 
 	BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+		SHADER_PARAMETER(float, seaLevel)
+		SHADER_PARAMETER(float, oceanDepth)
+		SHADER_PARAMETER(float, mountainHeight)
+		SHADER_PARAMETER(float, continentHeight)
+		SHADER_PARAMETER(float, valleyDepth)
+		SHADER_PARAMETER(float, grassSlopeThreshold)
+		SHADER_PARAMETER(float, rockSlopeThreshold)
+		SHADER_PARAMETER(float, snowHeightThreshold)
+		SHADER_PARAMETER(float, sandHeightThreshold)
+		SHADER_PARAMETER(float, continentScale)
+		SHADER_PARAMETER(float, mountainScale)
+		SHADER_PARAMETER(float, detailScale)
+		SHADER_PARAMETER(float, ridgeScale)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputNormals)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
@@ -81,6 +94,23 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 
 		if (bIsShaderValid) {
 			FPlanetGenerationShader::FParameters* PassParameters = GraphBuilder.AllocParameters<FPlanetGenerationShader::FParameters>();
+
+			//Shader Parameters
+			PassParameters->seaLevel = Params.seaLevel;
+			PassParameters->oceanDepth = Params.oceanDepth;
+			PassParameters->mountainHeight = Params.mountainHeight;
+			PassParameters->continentHeight = Params.continentHeight;
+			PassParameters->valleyDepth = Params.valleyDepth;
+		
+			PassParameters->grassSlopeThreshold = Params.grassSlopeThreshold;
+			PassParameters->rockSlopeThreshold = Params.rockSlopeThreshold;
+			PassParameters->snowHeightThreshold = Params.snowHeightThreshold;
+			PassParameters->sandHeightThreshold = Params.sandHeightThreshold;
+	
+			PassParameters->continentScale = Params.continentScale;
+			PassParameters->mountainScale = Params.mountainScale;
+			PassParameters->detailScale = Params.detailScale;
+			PassParameters->ridgeScale = Params.ridgeScale;
 
 			// Create input vertex data
 			TArray<float> inputVertexData;
