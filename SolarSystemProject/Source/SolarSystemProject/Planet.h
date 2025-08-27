@@ -28,6 +28,13 @@ struct FPlanetInfo
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float detailScale = 0.008f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float ridgeScale = 0.008f;
 
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor oceanColor = FLinearColor(0.1, 0.3, 0.8, 1.0);
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor shallowColor = FLinearColor(0.2, 0.6, 0.9, 1.0);
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor sandColor = FLinearColor(0.9, 0.8, 0.6, 1.0);
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor grassColor = FLinearColor(0.2, 0.7, 0.1, 1.0);
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor rockColor = FLinearColor(0.4, 0.3, 0.2, 1.0);
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor snowColor = FLinearColor(0.95, 0.95, 0.98, 1.0);
+
     // Planet Factory Functions
 
     static FPlanetInfo CreateEarthLike()
@@ -254,6 +261,8 @@ protected:
 
 	void GeneratePlanet();
 	void OnPlanetReady();
+    FVector4f linearToVector(FLinearColor col);
+
 	UPROPERTY(EditAnywhere) FPlanetInfo planetInfo;
 
     UFUNCTION(CallInEditor, Category = "Planet Presets")

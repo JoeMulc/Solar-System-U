@@ -19,14 +19,15 @@ float rockSlopeThreshold; //Above this = rock
 float snowHeightThreshold; //Above this = snow
 float sandHeightThreshold; //Below this (on land) = sand
 
-//Terrain colors 
+//Terrain colors - now parameters instead of hardcoded
+float4 oceanColor;
+float4 shallowColor;
+float4 sandColor;
+float4 grassColor;
+float4 rockColor;
+float4 snowColor;
+
 static const float brightness = 0.05;
-static const float4 oceanColor = float4(0.1, 0.3, 0.8, 1.0) * brightness; //Dark blue
-static const float4 shallowColor = float4(0.2, 0.6, 0.9, 1.0) * brightness; //Light blue
-static const float4 sandColor = float4(0.9, 0.8, 0.6, 1.0) * brightness; //Tan
-static const float4 grassColor = float4(0.2, 0.7, 0.1, 1.0) * brightness; //Green
-static const float4 rockColor = float4(0.4, 0.3, 0.2, 1.0) * brightness; //Brown
-static const float4 snowColor = float4(0.95, 0.95, 0.98, 1.0) * brightness; //White
 static const float3 continentOffset = float3(123.456, 789.012, 345.678);
 static const float3 mountainOffset = float3(987.654, 321.098, 765.432);
 static const float3 detailOffset = float3(456.789, 12.345, 678.901);
@@ -34,10 +35,10 @@ static const float3 ridgeOffset = float3(234.567, 890.123, 456.789);
 static const float3 riverOffset = float3(678.901, 234.567, 890.123);
 
 //Noise scales for different features
-float continentScale; //Large continents
-float mountainScale; //Mountain ranges
-float detailScale; //Hills valley
-float ridgeScale; //Mountain ridges
+float continentScale; 
+float mountainScale; 
+float detailScale; 
+float ridgeScale; 
 
 //Simple hash function for noise
 float hash(float3 p)
@@ -186,7 +187,7 @@ void PlanetGenerationShader(
     float finalHeight = calculateTerrainHeight(vertexPos);
     
     //Calculate bordering vertexes
-    float sampleDistance = 5.0; 
+    float sampleDistance = 5.0;
     float heightX1 = calculateTerrainHeight(vertexPos + float3(sampleDistance, 0, 0));
     float heightX2 = calculateTerrainHeight(vertexPos - float3(sampleDistance, 0, 0));
     float heightY1 = calculateTerrainHeight(vertexPos + float3(0, sampleDistance, 0));
@@ -209,13 +210,13 @@ void PlanetGenerationShader(
     //Ocean areas
     if (finalHeight < seaLevel - 20.0)
     {
-        terrainColor = oceanColor; 
+        terrainColor = oceanColor * brightness;
     }
     else if (finalHeight < seaLevel)
     {
         //blends shallow and ocean
         float t = (finalHeight - (seaLevel - 20.0)) / 20.0;
-        terrainColor = lerp(oceanColor, shallowColor, t);
+        terrainColor = lerp(oceanColor * brightness, shallowColor * brightness, t);
     }
     //Land
     else
@@ -223,38 +224,38 @@ void PlanetGenerationShader(
         //snow
         if (finalHeight > snowHeightThreshold)
         {
-            terrainColor = snowColor;
+            terrainColor = snowColor * brightness;
         }
         //beach
         else if (finalHeight < sandHeightThreshold)
         {
-            terrainColor = sandColor;
+            terrainColor = sandColor * brightness;
         }
         //grass
         else
         {
-            terrainColor = grassColor;
+            terrainColor = grassColor * brightness;
         }
         
         //OVERIDE for gradient
         //rock
         if (terrainSlope > rockSlopeThreshold)
         {
-            terrainColor = rockColor;
+            terrainColor = rockColor * brightness;
         }
         //grass
         else if (terrainSlope > grassSlopeThreshold)
         {
             //blends grass and rock
             float t = (terrainSlope - grassSlopeThreshold) / (rockSlopeThreshold - grassSlopeThreshold);
-            terrainColor = lerp(terrainColor, rockColor, t);
+            terrainColor = lerp(terrainColor, rockColor * brightness, t);
         }
         
         //Adds snow if height sufficient
         if (finalHeight > snowHeightThreshold * 0.8 && terrainSlope < rockSlopeThreshold * 1.2)
         {
             float snowBlend = (finalHeight - snowHeightThreshold * 0.8) / (snowHeightThreshold * 0.2);
-            terrainColor = lerp(terrainColor, snowColor, saturate(snowBlend));
+            terrainColor = lerp(terrainColor, snowColor * brightness, saturate(snowBlend));
         }
     }
     
@@ -266,7 +267,7 @@ void PlanetGenerationShader(
     outputVertices[outputIndex + 1] = newVertexPos.y;
     outputVertices[outputIndex + 2] = newVertexPos.z;
     
-    outputNormals[outputIndex] = normal.x;          //is the necessary?!?!
+    outputNormals[outputIndex] = normal.x; //is the necessary?!?!
     outputNormals[outputIndex + 1] = normal.y;
     outputNormals[outputIndex + 2] = normal.z;
     

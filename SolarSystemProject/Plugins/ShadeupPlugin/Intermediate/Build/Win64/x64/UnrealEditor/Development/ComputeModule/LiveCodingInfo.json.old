@@ -11,8 +11,8 @@
 			"ComputeModule.cpp.obj",
 			"CraterShader.cpp.obj",
 			"NoiseShader.cpp.obj",
-			"SphereGenerationShader.cpp.obj",
-			"PlanetGenerationShader.cpp.obj"
+			"PlanetGenerationShader.cpp.obj",
+			"SphereGenerationShader.cpp.obj"
 		]
 	}
 }

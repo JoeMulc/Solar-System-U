@@ -43,6 +43,12 @@ public:
 		SHADER_PARAMETER(float, mountainScale)
 		SHADER_PARAMETER(float, detailScale)
 		SHADER_PARAMETER(float, ridgeScale)
+		SHADER_PARAMETER(FVector4f, oceanColor)
+		SHADER_PARAMETER(FVector4f, shallowColor)
+		SHADER_PARAMETER(FVector4f, sandColor)
+		SHADER_PARAMETER(FVector4f, grassColor)
+		SHADER_PARAMETER(FVector4f, rockColor)
+		SHADER_PARAMETER(FVector4f, snowColor)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputNormals)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
@@ -111,6 +117,13 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 			PassParameters->mountainScale = Params.mountainScale;
 			PassParameters->detailScale = Params.detailScale;
 			PassParameters->ridgeScale = Params.ridgeScale;
+
+			PassParameters->oceanColor = Params.oceanColor;
+			PassParameters->shallowColor = Params.shallowColor;
+			PassParameters->sandColor = Params.sandColor;
+			PassParameters->grassColor = Params.grassColor;
+			PassParameters->rockColor = Params.rockColor;
+			PassParameters->snowColor = Params.snowColor;
 
 			// Create input vertex data
 			TArray<float> inputVertexData;

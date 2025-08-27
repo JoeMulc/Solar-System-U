@@ -61,6 +61,12 @@ void APlanet::OnPlanetReady()
     planetParams.mountainScale = planetInfo.mountainScale;
     planetParams.detailScale = planetInfo.detailScale;
     planetParams.ridgeScale = planetInfo.ridgeScale;
+    planetParams.grassColor = linearToVector(planetInfo.grassColor);
+    planetParams.oceanColor = linearToVector(planetInfo.oceanColor);
+    planetParams.rockColor = linearToVector(planetInfo.rockColor);
+    planetParams.sandColor = linearToVector(planetInfo.sandColor);
+    planetParams.shallowColor = linearToVector(planetInfo.shallowColor);
+    planetParams.snowColor =  linearToVector(planetInfo.snowColor);
 
     FPlanetGenerationShaderInterface::Dispatch(planetParams,
         [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals, TArray<FLinearColor> finalColors) {
@@ -82,4 +88,9 @@ void APlanet::OnPlanetReady()
 
             mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
         });
+}
+
+FVector4f APlanet::linearToVector(FLinearColor col)
+{
+    return FVector4f(col.R, col.G, col.B, col.A);
 }

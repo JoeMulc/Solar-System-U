@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodePlanet() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_AOrbitingBody();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet_NoRegister();
@@ -89,6 +90,30 @@ struct Z_Construct_UScriptStruct_FPlanetInfo_Statics
 		{ "Category", "Planet Generation|Scales" },
 		{ "ModuleRelativePath", "Planet.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_oceanColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_shallowColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_sandColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_grassColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_rockColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_snowColor_MetaData[] = {
+		{ "Category", "Planet Generation|Colours" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_seaLevel;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_oceanDepth;
@@ -103,6 +128,12 @@ struct Z_Construct_UScriptStruct_FPlanetInfo_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_mountainScale;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_detailScale;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ridgeScale;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_oceanColor;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_shallowColor;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_sandColor;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_grassColor;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_rockColor;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_snowColor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
@@ -123,6 +154,12 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetI
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_mountainScale = { "mountainScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, mountainScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_mountainScale_MetaData), NewProp_mountainScale_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_detailScale = { "detailScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, detailScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_detailScale_MetaData), NewProp_detailScale_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_ridgeScale = { "ridgeScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, ridgeScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ridgeScale_MetaData), NewProp_ridgeScale_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_oceanColor = { "oceanColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, oceanColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_oceanColor_MetaData), NewProp_oceanColor_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_shallowColor = { "shallowColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, shallowColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_shallowColor_MetaData), NewProp_shallowColor_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_sandColor = { "sandColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, sandColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_sandColor_MetaData), NewProp_sandColor_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_grassColor = { "grassColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, grassColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_grassColor_MetaData), NewProp_grassColor_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_rockColor = { "rockColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, rockColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_rockColor_MetaData), NewProp_rockColor_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_snowColor = { "snowColor", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, snowColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_snowColor_MetaData), NewProp_snowColor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FPlanetInfo_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_seaLevel,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_oceanDepth,
@@ -137,6 +174,12 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FP
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_mountainScale,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_detailScale,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_ridgeScale,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_oceanColor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_shallowColor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_sandColor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_grassColor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_rockColor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_snowColor,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlanetInfo_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::StructParams = {
@@ -561,7 +604,7 @@ struct Z_Construct_UClass_APlanet_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo = { "planetInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, planetInfo), Z_Construct_UScriptStruct_FPlanetInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_planetInfo_MetaData), NewProp_planetInfo_MetaData) }; // 1479001860
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo = { "planetInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, planetInfo), Z_Construct_UScriptStruct_FPlanetInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_planetInfo_MetaData), NewProp_planetInfo_MetaData) }; // 1246641323
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlanet_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo,
 };
@@ -606,13 +649,13 @@ APlanet::~APlanet() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FPlanetInfo::StaticStruct, Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewStructOps, TEXT("PlanetInfo"), &Z_Registration_Info_UScriptStruct_PlanetInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlanetInfo), 1479001860U) },
+		{ FPlanetInfo::StaticStruct, Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewStructOps, TEXT("PlanetInfo"), &Z_Registration_Info_UScriptStruct_PlanetInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlanetInfo), 1246641323U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 200465868U) },
+		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 3945277027U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_2601632825(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_2947885057(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo),
 	nullptr, 0);

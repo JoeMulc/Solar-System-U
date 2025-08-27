@@ -29,6 +29,13 @@ struct COMPUTEMODULE_API FPlanetGenerationShaderDispatchParams
     float detailScale;
     float ridgeScale;
 
+    FVector4f oceanColor;
+    FVector4f shallowColor;
+    FVector4f sandColor;
+    FVector4f grassColor;
+    FVector4f rockColor;
+    FVector4f snowColor;
+
     TArray<FVector> inputVertices;
     TArray<FVector> inputNormals;
     TArray<FVector> outputVertices;
@@ -107,6 +114,14 @@ public:
     float mS;
     float dS;
     float rS;
+
+    FVector4f ocCol;
+    FVector4f shCol;
+    FVector4f saCol;
+    FVector4f grCol;
+    FVector4f roCol;
+    FVector4f snCol;
+
     TArray<FVector> inVert;
     TArray<FVector> inNorm;
 
@@ -116,6 +131,30 @@ public:
         Params.inputVertices = inVert;
         Params.inputNormals = inNorm;
 
+        // Copy all the parameters
+        Params.seaLevel = sL;
+        Params.oceanDepth = oDf;
+        Params.mountainHeight = mHf;
+        Params.continentHeight = cH;
+        Params.valleyDepth = vDf;
+
+        Params.grassSlopeThreshold = gST;
+        Params.rockSlopeThreshold = rST;
+        Params.snowHeightThreshold = snowHT;
+        Params.sandHeightThreshold = sandHT;
+
+        Params.continentScale = cs;
+        Params.mountainScale = mS;
+        Params.detailScale = dS;
+        Params.ridgeScale = rS;
+
+        Params.oceanColor = ocCol;
+        Params.shallowColor = shCol;
+        Params.sandColor = saCol;
+        Params.grassColor = grCol;
+        Params.rockColor = roCol;
+        Params.snowColor = snCol;
+
         // Dispatch the compute shader and wait until it completes
         FPlanetGenerationShaderInterface::Dispatch(Params, [this](TArray<FVector> OutputVertices, TArray<FVector> OutputNormals, TArray<FLinearColor> OutputColors) {
             this->Completed.Broadcast(OutputVertices, OutputNormals, OutputColors);
@@ -123,7 +162,7 @@ public:
     }
 
     UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "ComputeShader", WorldContext = "WorldContextObject"))
-    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13) {
+    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, FVector4f arg14, FVector4f arg15, FVector4f arg16, FVector4f arg17, FVector4f arg18, FVector4f arg19) {
         UPlanetGenerationShaderLibrary_AsyncExecution* Action = NewObject<UPlanetGenerationShaderLibrary_AsyncExecution>();
         Action->sL = arg1;
         Action->oDf = arg2;
@@ -138,9 +177,15 @@ public:
         Action->mS = arg11;
         Action->dS = arg12;
         Action->rS = arg13;
+        Action->ocCol = arg14;
+        Action->shCol = arg15;
+        Action->saCol = arg16;
+        Action->grCol = arg17;
+        Action->roCol = arg18;
+        Action->snCol = arg19;
         Action->inVert = vs;
         Action->inNorm = ns;
-       
+
         Action->RegisterWithGameInstance(WorldContextObject);
         return Action;
     }
