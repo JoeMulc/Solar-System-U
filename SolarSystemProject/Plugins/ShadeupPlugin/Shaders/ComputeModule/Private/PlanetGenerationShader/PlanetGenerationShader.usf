@@ -35,10 +35,10 @@ static const float3 ridgeOffset = float3(234.567, 890.123, 456.789);
 static const float3 riverOffset = float3(678.901, 234.567, 890.123);
 
 //Noise scales for different features
-float continentScale; 
-float mountainScale; 
-float detailScale; 
-float ridgeScale; 
+float continentScale;
+float mountainScale;
+float detailScale;
+float ridgeScale;
 
 //Simple hash function for noise
 float hash(float3 p)
@@ -186,8 +186,44 @@ void PlanetGenerationShader(
     // Calculate terrain height at this vertex
     float finalHeight = calculateTerrainHeight(vertexPos);
     
-    //Calculate bordering vertexes
+    //Calculate neighboring positions for proper normal computation
     float sampleDistance = 5.0;
+    
+    //Calculate tangent vectors
+    float3 right = normalize(cross(normal, float3(0, 1, 0)));
+    float3 up = normalize(cross(right, normal));
+    
+    //Height in tangent direction
+    float3 pos1 = vertexPos + right * sampleDistance;
+    float3 pos2 = vertexPos - right * sampleDistance;
+    float3 pos3 = vertexPos + up * sampleDistance;
+    float3 pos4 = vertexPos - up * sampleDistance;
+    
+    float height1 = calculateTerrainHeight(pos1);
+    float height2 = calculateTerrainHeight(pos2);
+    float height3 = calculateTerrainHeight(pos3);
+    float height4 = calculateTerrainHeight(pos4);
+    
+    //neighbouring vertices
+    float3 displaced1 = pos1 + normalize(pos1) * height1;
+    float3 displaced2 = pos2 + normalize(pos2) * height2;
+    float3 displaced3 = pos3 + normalize(pos3) * height3;
+    float3 displaced4 = pos4 + normalize(pos4) * height4;
+    
+    //Tangent vectors
+    float3 tangent1 = displaced1 - displaced2;
+    float3 tangent2 = displaced3 - displaced4;
+    
+    //Calculate the new normal and pray it works (AMEN)
+    float3 newNormal = normalize(cross(tangent1, tangent2));
+    
+    //Ensures normal points the right way
+    if (dot(newNormal, normal) < 0.0)
+    {
+        newNormal = -newNormal;
+    }
+    
+    //Calculate terrain slope for coloring (using simpler gradient method)
     float heightX1 = calculateTerrainHeight(vertexPos + float3(sampleDistance, 0, 0));
     float heightX2 = calculateTerrainHeight(vertexPos - float3(sampleDistance, 0, 0));
     float heightY1 = calculateTerrainHeight(vertexPos + float3(0, sampleDistance, 0));
@@ -195,16 +231,13 @@ void PlanetGenerationShader(
     float heightZ1 = calculateTerrainHeight(vertexPos + float3(0, 0, sampleDistance));
     float heightZ2 = calculateTerrainHeight(vertexPos - float3(0, 0, sampleDistance));
     
-    //Gradient in 3 directions
     float3 gradient = float3(
         (heightX1 - heightX2) / (2.0 * sampleDistance),
         (heightY1 - heightY2) / (2.0 * sampleDistance),
         (heightZ1 - heightZ2) / (2.0 * sampleDistance)
     );
     
-    //Steepness/shallowness of slope
     float terrainSlope = length(gradient);
-    
     
     float4 terrainColor;
     //Ocean areas
@@ -267,9 +300,10 @@ void PlanetGenerationShader(
     outputVertices[outputIndex + 1] = newVertexPos.y;
     outputVertices[outputIndex + 2] = newVertexPos.z;
     
-    outputNormals[outputIndex] = normal.x; //is the necessary?!?!
-    outputNormals[outputIndex + 1] = normal.y;
-    outputNormals[outputIndex + 2] = normal.z;
+    // Output the corrected normals
+    outputNormals[outputIndex] = newNormal.x;
+    outputNormals[outputIndex + 1] = newNormal.y;
+    outputNormals[outputIndex + 2] = newNormal.z;
     
     uint colorIndex = vertexIndex * 4;
     outputColors[colorIndex] = terrainColor.r;
