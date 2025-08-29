@@ -5,7 +5,9 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/__ExternalActors__/Space/7/06/39B6SUNYHR8JGCTTIH8F7C.uasset"
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/Textures/Atmosphere/AtmosphereMat.uasset",
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/__ExternalActors__/Space/D/Q6/UF5BMA8B8RFBNXOE21RW5D.uasset",
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/__ExternalActors__/Space/A/97/XM27WXXAUR3A4SQA8BYRQ0.uasset"
 			]
 		}
 	]
