@@ -36,6 +36,9 @@ struct COMPUTEMODULE_API FPlanetGenerationShaderDispatchParams
     FVector4f rockColor;
     FVector4f snowColor;
 
+    float continentMin;
+    float continentMax;
+
     TArray<FVector> inputVertices;
     TArray<FVector> inputNormals;
     TArray<FVector> outputVertices;
@@ -115,6 +118,9 @@ public:
     float dS;
     float rS;
 
+    float conMin;
+    float conMax;
+
     FVector4f ocCol;
     FVector4f shCol;
     FVector4f saCol;
@@ -154,6 +160,8 @@ public:
         Params.grassColor = grCol;
         Params.rockColor = roCol;
         Params.snowColor = snCol;
+        Params.continentMin = conMin;
+        Params.continentMax = conMax;
 
         // Dispatch the compute shader and wait until it completes
         FPlanetGenerationShaderInterface::Dispatch(Params, [this](TArray<FVector> OutputVertices, TArray<FVector> OutputNormals, TArray<FLinearColor> OutputColors) {
@@ -162,7 +170,7 @@ public:
     }
 
     UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "ComputeShader", WorldContext = "WorldContextObject"))
-    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, FVector4f arg14, FVector4f arg15, FVector4f arg16, FVector4f arg17, FVector4f arg18, FVector4f arg19) {
+    static UPlanetGenerationShaderLibrary_AsyncExecution* ExecuteBaseComputeShader(UObject* WorldContextObject, TArray<FVector>& vs, TArray<FVector>& ns, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, FVector4f arg14, FVector4f arg15, FVector4f arg16, FVector4f arg17, FVector4f arg18, FVector4f arg19, float arg20, float arg21) {
         UPlanetGenerationShaderLibrary_AsyncExecution* Action = NewObject<UPlanetGenerationShaderLibrary_AsyncExecution>();
         Action->sL = arg1;
         Action->oDf = arg2;
@@ -183,8 +191,11 @@ public:
         Action->grCol = arg17;
         Action->roCol = arg18;
         Action->snCol = arg19;
+        Action->conMin = arg20;
+        Action->conMax = arg21;
         Action->inVert = vs;
         Action->inNorm = ns;
+       
 
         Action->RegisterWithGameInstance(WorldContextObject);
         return Action;

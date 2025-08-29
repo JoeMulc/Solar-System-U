@@ -122,6 +122,8 @@ struct Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_Execu
 		FVector4f arg17;
 		FVector4f arg18;
 		FVector4f arg19;
+		float arg20;
+		float arg21;
 		UPlanetGenerationShaderLibrary_AsyncExecution* ReturnValue;
 	};
 #if WITH_METADATA
@@ -156,6 +158,8 @@ struct Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_Execu
 	static const UECodeGen_Private::FStructPropertyParams NewProp_arg17;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_arg18;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_arg19;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_arg20;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_arg21;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
@@ -184,6 +188,8 @@ const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UPlanetGene
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg17 = { "arg17", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, arg17), Z_Construct_UScriptStruct_FVector4f, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg18 = { "arg18", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, arg18), Z_Construct_UScriptStruct_FVector4f, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg19 = { "arg19", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, arg19), Z_Construct_UScriptStruct_FVector4f, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg20 = { "arg20", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, arg20), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg21 = { "arg21", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, arg21), METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlanetGenerationShaderLibrary_AsyncExecution_eventExecuteBaseComputeShader_Parms, ReturnValue), Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_WorldContextObject,
@@ -210,6 +216,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UPlane
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg17,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg18,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg19,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg20,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_arg21,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::NewProp_ReturnValue,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader_Statics::PropPointers) < 2048);
@@ -248,9 +256,11 @@ DEFINE_FUNCTION(UPlanetGenerationShaderLibrary_AsyncExecution::execExecuteBaseCo
 	P_GET_STRUCT(FVector4f,Z_Param_arg17);
 	P_GET_STRUCT(FVector4f,Z_Param_arg18);
 	P_GET_STRUCT(FVector4f,Z_Param_arg19);
+	P_GET_PROPERTY(FFloatProperty,Z_Param_arg20);
+	P_GET_PROPERTY(FFloatProperty,Z_Param_arg21);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(UPlanetGenerationShaderLibrary_AsyncExecution**)Z_Param__Result=UPlanetGenerationShaderLibrary_AsyncExecution::ExecuteBaseComputeShader(Z_Param_WorldContextObject,Z_Param_Out_vs,Z_Param_Out_ns,Z_Param_arg1,Z_Param_arg2,Z_Param_arg3,Z_Param_arg4,Z_Param_arg5,Z_Param_arg6,Z_Param_arg7,Z_Param_arg8,Z_Param_arg9,Z_Param_arg10,Z_Param_arg11,Z_Param_arg12,Z_Param_arg13,Z_Param_arg14,Z_Param_arg15,Z_Param_arg16,Z_Param_arg17,Z_Param_arg18,Z_Param_arg19);
+	*(UPlanetGenerationShaderLibrary_AsyncExecution**)Z_Param__Result=UPlanetGenerationShaderLibrary_AsyncExecution::ExecuteBaseComputeShader(Z_Param_WorldContextObject,Z_Param_Out_vs,Z_Param_Out_ns,Z_Param_arg1,Z_Param_arg2,Z_Param_arg3,Z_Param_arg4,Z_Param_arg5,Z_Param_arg6,Z_Param_arg7,Z_Param_arg8,Z_Param_arg9,Z_Param_arg10,Z_Param_arg11,Z_Param_arg12,Z_Param_arg13,Z_Param_arg14,Z_Param_arg15,Z_Param_arg16,Z_Param_arg17,Z_Param_arg18,Z_Param_arg19,Z_Param_arg20,Z_Param_arg21);
 	P_NATIVE_END;
 }
 // End Class UPlanetGenerationShaderLibrary_AsyncExecution Function ExecuteBaseComputeShader
@@ -284,7 +294,7 @@ struct Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader, "ExecuteBaseComputeShader" }, // 649414292
+		{ &Z_Construct_UFunction_UPlanetGenerationShaderLibrary_AsyncExecution_ExecuteBaseComputeShader, "ExecuteBaseComputeShader" }, // 1980369674
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -338,10 +348,10 @@ UPlanetGenerationShaderLibrary_AsyncExecution::~UPlanetGenerationShaderLibrary_A
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, UPlanetGenerationShaderLibrary_AsyncExecution::StaticClass, TEXT("UPlanetGenerationShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlanetGenerationShaderLibrary_AsyncExecution), 2015036609U) },
+		{ Z_Construct_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, UPlanetGenerationShaderLibrary_AsyncExecution::StaticClass, TEXT("UPlanetGenerationShaderLibrary_AsyncExecution"), &Z_Registration_Info_UClass_UPlanetGenerationShaderLibrary_AsyncExecution, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlanetGenerationShaderLibrary_AsyncExecution), 518649175U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_3711368812(TEXT("/Script/ComputeModule"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_3352611633(TEXT("/Script/ComputeModule"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Plugins_ShadeupPlugin_Source_ComputeModule_Public_PlanetGenerationShader_PlanetGenerationShader_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

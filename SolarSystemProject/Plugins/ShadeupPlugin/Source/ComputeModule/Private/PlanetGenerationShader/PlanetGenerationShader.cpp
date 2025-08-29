@@ -49,6 +49,8 @@ public:
 		SHADER_PARAMETER(FVector4f, grassColor)
 		SHADER_PARAMETER(FVector4f, rockColor)
 		SHADER_PARAMETER(FVector4f, snowColor)
+		SHADER_PARAMETER(float, continentMin)
+		SHADER_PARAMETER(float, continentMax)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputVertices)
 		SHADER_PARAMETER_RDG_BUFFER_SRV(Buffer<float>, inputNormals)
 		SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float>, outputVertices)
@@ -124,6 +126,9 @@ void FPlanetGenerationShaderInterface::DispatchRenderThread(FRHICommandListImmed
 			PassParameters->grassColor = Params.grassColor;
 			PassParameters->rockColor = Params.rockColor;
 			PassParameters->snowColor = Params.snowColor;
+
+			PassParameters->continentMin = Params.continentMin;
+			PassParameters->continentMax = Params.continentMax;
 
 			// Create input vertex data
 			TArray<float> inputVertexData;

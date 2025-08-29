@@ -40,6 +40,9 @@ float mountainScale;
 float detailScale;
 float ridgeScale;
 
+float continentMin;
+float continentMax;
+
 //Simple hash function for noise
 float hash(float3 p)
 {
@@ -119,7 +122,7 @@ float calculateTerrainHeight(float3 pos)
 {
     //Continents
     float continentMask = fbm(pos + continentOffset, continentScale, 4, 0.6, 2.0);
-    continentMask = smoothstep01(-0.2, 0.3, continentMask);
+    continentMask = smoothstep01(continentMin, continentMax, continentMask);
     
     //Base height
     float baseHeight = lerp(oceanDepth, continentHeight, continentMask);

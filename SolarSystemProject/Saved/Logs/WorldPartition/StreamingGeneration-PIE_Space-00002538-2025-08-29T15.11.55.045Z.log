@@ -45,8 +45,8 @@
  |   |   |- Guid:82F1C7EB498B8846593314A5E9923321 NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_00000000f083c001 Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-4_Y-2_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-100800.000 Y=-50400.000 Z=5808.594), Max=(X=-75600.000 Y=-25200.000 Z=9487.500) RuntimeBounds:IsValid=true, Min=(X=-100800.000 Y=-50400.000 Z=5807.031), Max=(X=-75600.000 Y=-25200.000 Z=9500.781) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- Guid:835B3BC64E3675601E8C93B48F642210 NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_000000002465d8af Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X2_Y-3_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=50400.000 Y=-75600.000 Z=5657.812), Max=(X=75600.000 Y=-50400.000 Z=10830.469) RuntimeBounds:IsValid=true, Min=(X=50400.000 Y=-75600.000 Z=5639.844), Max=(X=75600.000 Y=-50400.000 Z=10830.469) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- Guid:84B6243F4E4C36FCA12911906854883B NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_000000009f3ee17d Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X3_Y1_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=75600.000 Y=25200.000 Z=5872.656), Max=(X=100800.000 Y=50400.000 Z=13592.969) RuntimeBounds:IsValid=true, Min=(X=75600.000 Y=25200.000 Z=5872.656), Max=(X=100800.000 Y=50400.000 Z=13596.094) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
+ |   |   |- Guid:84CF0D9945FA3057B18F418F8D094292 NativeClass:/Script/SolarSystemProject.Planet Name:Planet_UAID_40B07608AE96E58902_1510816471 Label:Planet2 SpatiallyLoaded:true EditorBounds:IsValid=true, Min=(X=-610.000 Y=-7280.000 Z=0.000), Max=(X=-610.000 Y=-7280.000 Z=0.000) RuntimeBounds:IsValid=true, Min=(X=-610.000 Y=-7280.000 Z=0.000), Max=(X=-610.000 Y=-7280.000 Z=0.000) RuntimeGrid:None EditorOnly:false RuntimeOnly:false HLODRelevant:false ListedInSceneOutliner:true IsMainWorldOnly:false
  |   |   |- Guid:85513EB6457AE9740E49A7805DE3B55F NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_0000000059a235de Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-4_Y-3_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5460.938), Max=(X=-75600.000 Y=-50400.000 Z=8737.500) RuntimeBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5449.219), Max=(X=-75600.000 Y=-50400.000 Z=8761.719) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
- |   |   |- Guid:85778A94429C12B3245F25A8F224243E NativeClass:/Script/Engine.StaticMeshActor Name:StaticMeshActor_UAID_40B07608AE96588802_1412065602 Label:Sphere SpatiallyLoaded:true EditorBounds:IsValid=true, Min=(X=-22560.000 Y=-1500.000 Z=-1500.000), Max=(X=-19560.000 Y=1500.000 Z=1500.000) RuntimeBounds:IsValid=true, Min=(X=-22560.000 Y=-1500.000 Z=-1500.000), Max=(X=-19560.000 Y=1500.000 Z=1500.000) RuntimeGrid:None EditorOnly:false RuntimeOnly:false HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false
  |   |   |- Guid:87EB8384439B3028FC8DD69B80BF3E6A NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_000000002dd5331d Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-3_Y2_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-75600.000 Y=50400.000 Z=3219.531), Max=(X=-50400.000 Y=75600.000 Z=9168.750) RuntimeBounds:IsValid=true, Min=(X=-75600.000 Y=50400.000 Z=3219.531), Max=(X=-50400.000 Y=75600.000 Z=9172.656) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- Guid:89E0DAD14A744D10BB06F4A0C407FA1C NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_00000000f37d3085 Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X0_Y-3_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=0.000 Y=-75600.000 Z=107.812), Max=(X=25200.000 Y=-50400.000 Z=6735.156) RuntimeBounds:IsValid=true, Min=(X=0.000 Y=-75600.000 Z=106.250), Max=(X=25200.000 Y=-50400.000 Z=6735.156) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- Guid:8AF41751464D80794E2547939AF91E43 NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_00000000f40719ee Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X3_Y0_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=75600.000 Y=0.000 Z=5095.312), Max=(X=100800.000 Y=25200.000 Z=9228.125) RuntimeBounds:IsValid=true, Min=(X=75600.000 Y=0.000 Z=5091.406), Max=(X=100800.000 Y=25200.000 Z=9228.906) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
@@ -163,9 +163,9 @@
  |   |   |- [+] [ 43]
  |   |   |   |- Guid:84B6243F4E4C36FCA12911906854883B NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_000000009f3ee17d Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X3_Y1_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=75600.000 Y=25200.000 Z=5872.656), Max=(X=100800.000 Y=50400.000 Z=13592.969) RuntimeBounds:IsValid=true, Min=(X=75600.000 Y=25200.000 Z=5872.656), Max=(X=100800.000 Y=50400.000 Z=13596.094) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- [+] [ 44]
- |   |   |   |- Guid:85513EB6457AE9740E49A7805DE3B55F NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_0000000059a235de Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-4_Y-3_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5460.938), Max=(X=-75600.000 Y=-50400.000 Z=8737.500) RuntimeBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5449.219), Max=(X=-75600.000 Y=-50400.000 Z=8761.719) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
+ |   |   |   |- Guid:84CF0D9945FA3057B18F418F8D094292 NativeClass:/Script/SolarSystemProject.Planet Name:Planet_UAID_40B07608AE96E58902_1510816471 Label:Planet2 SpatiallyLoaded:true EditorBounds:IsValid=true, Min=(X=-610.000 Y=-7280.000 Z=0.000), Max=(X=-610.000 Y=-7280.000 Z=0.000) RuntimeBounds:IsValid=true, Min=(X=-610.000 Y=-7280.000 Z=0.000), Max=(X=-610.000 Y=-7280.000 Z=0.000) RuntimeGrid:None EditorOnly:false RuntimeOnly:false HLODRelevant:false ListedInSceneOutliner:true IsMainWorldOnly:false
  |   |   |- [+] [ 45]
- |   |   |   |- Guid:85778A94429C12B3245F25A8F224243E NativeClass:/Script/Engine.StaticMeshActor Name:StaticMeshActor_UAID_40B07608AE96588802_1412065602 Label:Sphere SpatiallyLoaded:true EditorBounds:IsValid=true, Min=(X=-22560.000 Y=-1500.000 Z=-1500.000), Max=(X=-19560.000 Y=1500.000 Z=1500.000) RuntimeBounds:IsValid=true, Min=(X=-22560.000 Y=-1500.000 Z=-1500.000), Max=(X=-19560.000 Y=1500.000 Z=1500.000) RuntimeGrid:None EditorOnly:false RuntimeOnly:false HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false
+ |   |   |   |- Guid:85513EB6457AE9740E49A7805DE3B55F NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_0000000059a235de Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-4_Y-3_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5460.938), Max=(X=-75600.000 Y=-50400.000 Z=8737.500) RuntimeBounds:IsValid=true, Min=(X=-100800.000 Y=-75600.000 Z=5449.219), Max=(X=-75600.000 Y=-50400.000 Z=8761.719) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- [+] [ 46]
  |   |   |   |- Guid:87EB8384439B3028FC8DD69B80BF3E6A NativeClass:/Script/Engine.WorldPartitionHLOD Name:HLOD0_Instancing_000000002dd5331d Label:HLOD0_Instancing/OpenWorld_MainGrid_L0_X-3_Y2_Z0 SpatiallyLoaded:false EditorBounds:IsValid=true, Min=(X=-75600.000 Y=50400.000 Z=3219.531), Max=(X=-50400.000 Y=75600.000 Z=9168.750) RuntimeBounds:IsValid=true, Min=(X=-75600.000 Y=50400.000 Z=3219.531), Max=(X=-50400.000 Y=75600.000 Z=9172.656) RuntimeGrid:MainGrid:PersistentLevel EditorOnly:false RuntimeOnly:true HLODRelevant:true ListedInSceneOutliner:true IsMainWorldOnly:false FolderPath:HLOD/HLOD0_Instancing FolderGuid:C11A5F59487C0DB2AA58CABA5DEDB377
  |   |   |- [+] [ 47]
@@ -380,9 +380,21 @@ Space - Runtime Hash Set
  |   |- [+] Container:
  |   |   |-        ID: 00000000000000000000000000000000
  |   |   |- Transform: 0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000
+[+] Content of Cell Space_MainGrid_L0_X-1_Y-1_Z0 (4CI6IG98FQNRJDLH82F9SEQI0)
+ |- Actor Count: 1
+ |- Content Bounds: IsValid=true, Min=(X=-610.000 Y=-7280.000 Z=0.000), Max=(X=-610.000 Y=-7280.000 Z=0.000)
+ |- Cell Bounds: IsValid=true, Min=(X=-25200.000 Y=-25200.000 Z=0.000), Max=(X=0.000 Y=0.000 Z=25200.000)
+ |- Is 2D: False
+ |- [+] /Game/Space.Space:PersistentLevel.Planet_UAID_40B07608AE96E58902_1510816471
+ |   |-         Package: /Game/__ExternalActors__/Space/7/06/39B6SUNYHR8JGCTTIH8F7C
+ |   |-     Editor Only: 0
+ |   |-   Instance Guid: 84CF0D9945FA3057B18F418F8D094292
+ |   |- [+] Container:
+ |   |   |-        ID: 00000000000000000000000000000000
+ |   |   |- Transform: 0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000
 [+] Content of Cell Space_MainGrid_L0_X-1_Y0_Z0 (AJ4IOFL96Q9M44IWYRYZP3XSJ)
- |- Actor Count: 3
- |- Content Bounds: IsValid=true, Min=(X=-22560.000 Y=0.000 Z=0.000), Max=(X=-16080.000 Y=2320.000 Z=1500.000)
+ |- Actor Count: 2
+ |- Content Bounds: IsValid=true, Min=(X=-21060.000 Y=0.000 Z=0.000), Max=(X=-16080.000 Y=2320.000 Z=780.000)
  |- Cell Bounds: IsValid=true, Min=(X=-25200.000 Y=0.000 Z=0.000), Max=(X=0.000 Y=25200.000 Z=25200.000)
  |- Is 2D: False
  |- [+] /Game/Space.Space:PersistentLevel.Planet_UAID_40B07608AE960D8802_1355050399
@@ -396,13 +408,6 @@ Space - Runtime Hash Set
  |   |-         Package: /Game/__ExternalActors__/Space/E/PD/1HPMUZFKDMYVBUDCX8AZKB
  |   |-     Editor Only: 0
  |   |-   Instance Guid: 50C601B4432648A99D8E7FA5096ADCE2
- |   |- [+] Container:
- |   |   |-        ID: 00000000000000000000000000000000
- |   |   |- Transform: 0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000
- |- [+] /Game/Space.Space:PersistentLevel.StaticMeshActor_UAID_40B07608AE96588802_1412065602
- |   |-         Package: /Game/__ExternalActors__/Space/5/JZ/VDPD7WK9VJ89PA577QKQCM
- |   |-     Editor Only: 0
- |   |-   Instance Guid: 85778A94429C12B3245F25A8F224243E
  |   |- [+] Container:
  |   |   |-        ID: 00000000000000000000000000000000
  |   |   |- Transform: 0.000000,0.000000,0.000000|0.000000,0.000000,-0.000000|1.000000,1.000000,1.000000

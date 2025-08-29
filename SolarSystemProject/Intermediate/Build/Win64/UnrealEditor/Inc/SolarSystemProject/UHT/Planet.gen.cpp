@@ -11,6 +11,7 @@ void EmptyLinkFunctionForGeneratedCodePlanet() {}
 
 // Begin Cross Module References
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
+ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_AOrbitingBody();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet_NoRegister();
@@ -74,6 +75,14 @@ struct Z_Construct_UScriptStruct_FPlanetInfo_Statics
 		{ "Category", "Planet Generation|Color Thresholds" },
 		{ "ModuleRelativePath", "Planet.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_continentMin_MetaData[] = {
+		{ "Category", "Planet Generation|Scales" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_continentMax_MetaData[] = {
+		{ "Category", "Planet Generation|Scales" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_continentScale_MetaData[] = {
 		{ "Category", "Planet Generation|Scales" },
 		{ "ModuleRelativePath", "Planet.h" },
@@ -124,6 +133,8 @@ struct Z_Construct_UScriptStruct_FPlanetInfo_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_rockSlopeThreshold;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_snowHeightThreshold;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_sandHeightThreshold;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_continentMin;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_continentMax;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_continentScale;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_mountainScale;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_detailScale;
@@ -150,6 +161,8 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetI
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_rockSlopeThreshold = { "rockSlopeThreshold", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, rockSlopeThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_rockSlopeThreshold_MetaData), NewProp_rockSlopeThreshold_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_snowHeightThreshold = { "snowHeightThreshold", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, snowHeightThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_snowHeightThreshold_MetaData), NewProp_snowHeightThreshold_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_sandHeightThreshold = { "sandHeightThreshold", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, sandHeightThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_sandHeightThreshold_MetaData), NewProp_sandHeightThreshold_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentMin = { "continentMin", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, continentMin), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_continentMin_MetaData), NewProp_continentMin_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentMax = { "continentMax", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, continentMax), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_continentMax_MetaData), NewProp_continentMax_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentScale = { "continentScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, continentScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_continentScale_MetaData), NewProp_continentScale_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_mountainScale = { "mountainScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, mountainScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_mountainScale_MetaData), NewProp_mountainScale_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_detailScale = { "detailScale", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlanetInfo, detailScale), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_detailScale_MetaData), NewProp_detailScale_MetaData) };
@@ -170,6 +183,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FP
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_rockSlopeThreshold,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_snowHeightThreshold,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_sandHeightThreshold,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentMin,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentMax,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_continentScale,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_mountainScale,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewProp_detailScale,
@@ -577,11 +592,16 @@ struct Z_Construct_UClass_APlanet_Statics
 		{ "IncludePath", "Planet.h" },
 		{ "ModuleRelativePath", "Planet.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_oceanMaterial_MetaData[] = {
+		{ "Category", "Planet" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_planetInfo_MetaData[] = {
 		{ "Category", "Planet" },
 		{ "ModuleRelativePath", "Planet.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_oceanMaterial;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_planetInfo;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -604,8 +624,10 @@ struct Z_Construct_UClass_APlanet_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo = { "planetInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, planetInfo), Z_Construct_UScriptStruct_FPlanetInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_planetInfo_MetaData), NewProp_planetInfo_MetaData) }; // 1246641323
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_oceanMaterial = { "oceanMaterial", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, oceanMaterial), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_oceanMaterial_MetaData), NewProp_oceanMaterial_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo = { "planetInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, planetInfo), Z_Construct_UScriptStruct_FPlanetInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_planetInfo_MetaData), NewProp_planetInfo_MetaData) }; // 3633191090
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlanet_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_oceanMaterial,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APlanet_Statics::PropPointers) < 2048);
@@ -649,13 +671,13 @@ APlanet::~APlanet() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FPlanetInfo::StaticStruct, Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewStructOps, TEXT("PlanetInfo"), &Z_Registration_Info_UScriptStruct_PlanetInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlanetInfo), 1246641323U) },
+		{ FPlanetInfo::StaticStruct, Z_Construct_UScriptStruct_FPlanetInfo_Statics::NewStructOps, TEXT("PlanetInfo"), &Z_Registration_Info_UScriptStruct_PlanetInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlanetInfo), 3633191090U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 3945277027U) },
+		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 4090530599U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_2947885057(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_4157187979(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo),
 	nullptr, 0);

@@ -5,7 +5,8 @@
 
 APlanet::APlanet()
 {
-
+    oceanMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("oceanMesh"));
+    oceanMesh->SetupAttachment(RootComponent);
 }
 
 void APlanet::BeginPlay()
@@ -67,6 +68,8 @@ void APlanet::OnPlanetReady()
     planetParams.sandColor = linearToVector(planetInfo.sandColor);
     planetParams.shallowColor = linearToVector(planetInfo.shallowColor);
     planetParams.snowColor =  linearToVector(planetInfo.snowColor);
+    planetParams.continentMin = planetInfo.continentMin;
+    planetParams.continentMax = planetInfo.continentMax;
 
     FPlanetGenerationShaderInterface::Dispatch(planetParams,
         [this](TArray<FVector> finalVertices, TArray<FVector> finalNormals, TArray<FLinearColor> finalColors) {
@@ -87,6 +90,29 @@ void APlanet::OnPlanetReady()
             }
 
             mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
+            
+            GenerateOcean();
+        });
+}
+
+void APlanet::GenerateOcean()
+{
+    FSphereGenerationShaderDispatchParams waterparams(1, 1, 1);
+    waterparams.latitudeSegments = 64;
+    waterparams.longitudeSegments = 128;
+    waterparams.radius = radius + planetInfo.seaLevel;
+
+    FSphereGenerationShaderInterface::Dispatch(waterparams, [this](const FSphereGeometryData& GeometryData) {
+        UE_LOG(LogTemp, Warning, TEXT("Ocean Generated with: %d vertices and %d triangles"),
+            GeometryData.Vertices.Num(), GeometryData.Triangles.Num());
+
+        if (IsValid(oceanMaterial))
+        {
+            oceanMesh->SetMaterial(1, oceanMaterial);
+        }
+
+        oceanMesh->CreateMeshSection(1, GeometryData.Vertices, GeometryData.Triangles, GeometryData.Normals, GeometryData.UVs, TArray<FColor>(), TArray<FProcMeshTangent>(), false);
+        oceanMesh->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetIncludingScale);
         });
 }
 

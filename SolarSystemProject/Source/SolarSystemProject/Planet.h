@@ -23,6 +23,8 @@ struct FPlanetInfo
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Color Thresholds") float snowHeightThreshold = 80.f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Color Thresholds") float sandHeightThreshold = 10.f;
 
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float continentMin = 1.1f;
+    UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float continentMax = 1.0f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float continentScale = 0.002f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float mountainScale = 0.005f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation|Scales") float detailScale = 0.008f;
@@ -118,7 +120,7 @@ struct FPlanetInfo
         FPlanetInfo planet;
         planet.seaLevel = -30.0f;
         planet.oceanDepth = -80.0f;
-        planet.mountainHeight = 160.0f;
+        planet.mountainHeight = 40.0f;
         planet.continentHeight = 40.0f;
         planet.valleyDepth = -40.0f;
         planet.grassSlopeThreshold = 0.05f;
@@ -261,8 +263,12 @@ protected:
 
 	void GeneratePlanet();
 	void OnPlanetReady();
+    void GenerateOcean();
     FVector4f linearToVector(FLinearColor col);
 
+    UProceduralMeshComponent* oceanMesh;
+    UPROPERTY(EditAnywhere) UMaterialInterface* oceanMaterial;
+    
 	UPROPERTY(EditAnywhere) FPlanetInfo planetInfo;
 
     UFUNCTION(CallInEditor, Category = "Planet Presets")

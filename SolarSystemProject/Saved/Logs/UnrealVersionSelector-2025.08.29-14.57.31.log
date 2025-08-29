@@ -1,10 +1,10 @@
-Log started at 08/28/2025 19:50:06 (2025-08-28T18:50:06Z)
+Log started at 08/29/2025 14:57:33 (2025-08-29T13:57:33Z)
 No config file at C:\ProgramData\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 No config file at C:\Users\Joe\AppData\Local\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 No config file at C:\Users\Joe\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 Configuration will be read from:
   C:\Users\Joe\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
-Log file: C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Saved\Logs\UnrealVersionSelector-2025.08.28-19.49.23.log
+Log file: C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Saved\Logs\UnrealVersionSelector-2025.08.29-14.57.31.log
 
 Setting temp directory to 'C:\Users\Joe\AppData\Local\Temp\UnrealBuildTool\6e225b08'
     Registering build platform: UnrealBuildTool.AndroidPlatformFactory
@@ -3982,12 +3982,12 @@ Found 5 shared PCH headers (listed in order of preference):
 	Slate
 	CoreUObject
 	Core
-  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ACLPlugin
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ACLPluginEditor
-  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for UnrealUSDWrapper
+  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ACLPlugin
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ChaosCachingUSD
-  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for LiveCodingServer
+  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for UnrealUSDWrapper
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for TraceAnalysis
+  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for LiveCodingServer
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for NNERuntimeRDG
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for Reflex
 @progress 'Binding IntelliSense data...' 50%
@@ -4388,9 +4388,9 @@ Found 5 shared PCH headers (listed in order of preference):
 	CoreUObject
 	Core
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for TraceAnalysis
-  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for UnrealUSDWrapper
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ACLPlugin
   CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for ACLPluginEditor
+  CppStandard Cpp17 cannot use PCHUsage UseExplicitOrSharedPCHs. Overriding to NoPCHs for UnrealUSDWrapper
 @progress 'Binding IntelliSense data...' 100%
 Writing project files...
 @progress 'Writing project files...' 0%
@@ -4408,10 +4408,10 @@ Skipped saving .vsconfig because contents haven't changed.
 Project generation complete (2 generated, 50 imported)
 
 Generating QueryTargets data for editor...
-Total execution time: 84.27 seconds
+Total execution time: 71.13 seconds
 WriteFileIfChanged() wrote 32 changed files of 1801 requested writes.
 Timeline:
 
 [ 0.000]
-[ 0.000](+84.269) <unknown>
-[84.269]
+[ 0.000](+71.132) <unknown>
+[71.132]
