@@ -25,3 +25,8 @@ void ACelestialBody::Tick(float DeltaTime)
 
 }
 
+
+float ACelestialBody::GetMass()
+{
+	return mass;
+}

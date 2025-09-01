@@ -181,10 +181,10 @@ AMoon::~AMoon() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMoon, AMoon::StaticClass, TEXT("AMoon"), &Z_Registration_Info_UClass_AMoon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMoon), 2619361468U) },
+		{ Z_Construct_UClass_AMoon, AMoon::StaticClass, TEXT("AMoon"), &Z_Registration_Info_UClass_AMoon, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMoon), 1004976782U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_1302199713(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_1203017608(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Moon_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

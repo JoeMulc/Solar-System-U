@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SolarSystemProjectModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7363d34155e1655c987735ef21fb7629e3c6d02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ea1d7a2f73438007eb19210d1d34dce94f6beed")]
 [assembly: System.Reflection.AssemblyProductAttribute("SolarSystemProjectModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SolarSystemProjectModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

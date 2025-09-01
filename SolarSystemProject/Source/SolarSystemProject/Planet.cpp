@@ -90,7 +90,7 @@ void APlanet::OnPlanetReady()
             }
 
             mesh->CreateMeshSection(0, vertices, triangles, normals, UVs, verticeColors, TArray<FProcMeshTangent>(), false);
-            
+                 
             GenerateOcean();
         });
 }

@@ -8,6 +8,7 @@
 #include "ProceduralMeshComponent.h"
 #include "Materials/MaterialInterface.h"
 #include "KismetProceduralMeshLibrary.h"
+#include "Kismet/GameplayStatics.h"
 #include "OrbitingBody.generated.h"
 
 /**
@@ -28,7 +29,11 @@ protected:
 	void GenerateSphere();
 	void OnSphereReady(const FSphereGeometryData& GeometryData);
 
+	FVector CalculateGravitationalForce(AActor* body1, AActor* body2, float mass1, float mass2);
+
 	UProceduralMeshComponent* mesh;
+
+	UPROPERTY(EditAnywhere) bool generateSphere = false;
 
 	UPROPERTY(EditAnywhere) UMaterialInterface* sphereMaterial;
 
@@ -37,6 +42,7 @@ protected:
 	UPROPERTY(EditAnywhere) float radius = 400.f;
 
 	UPROPERTY(EditAnywhere) float spinSpeed = 2;
+	TArray<AActor*> otherBodies;
 
 	TArray<FVector> vertices;
 	TArray<int32> triangles;
@@ -45,7 +51,11 @@ protected:
 	TArray<FProcMeshTangent> tangents;
 	TArray<FColor> verticeColors;
 
+	//For inital velocity can roughly calculate value using square root of GM/r
+	UPROPERTY(EditAnywhere, Category = "Orbital physics") FVector velocity;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };
