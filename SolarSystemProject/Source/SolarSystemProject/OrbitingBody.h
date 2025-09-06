@@ -54,6 +54,15 @@ protected:
 	//For inital velocity can roughly calculate value using square root of GM/r
 	UPROPERTY(EditAnywhere, Category = "Orbital physics") FVector velocity;
 
+	//Orbit Visiualisation
+	UPROPERTY(EditAnywhere, Category = "Orbit Visualization") bool showOrbitDebug = true;
+	UPROPERTY(EditAnywhere, Category = "Orbit Visualization") int32 orbitSteps = 200;
+	UPROPERTY(EditAnywhere, Category = "Orbit Visualization") float orbitTimeStep = 0.1f;
+	UPROPERTY(EditAnywhere, Category = "Orbit Visualization") FColor orbitLineColor = FColor::Green;
+
+	TArray<FVector> orbitLine;
+	void UpdateOrbitPath();
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

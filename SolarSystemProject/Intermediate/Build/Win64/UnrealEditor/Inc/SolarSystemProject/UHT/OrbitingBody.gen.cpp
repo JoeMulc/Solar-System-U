@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeOrbitingBody() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FColor();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_ACelestialBody();
@@ -71,6 +72,28 @@ struct Z_Construct_UClass_AOrbitingBody_Statics
 		{ "ToolTip", "For inital velocity can roughly calculate value using square root of GM/r" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_showOrbitDebug_MetaData[] = {
+		{ "Category", "Orbit Visualization" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Orbit Visiualisation\n" },
+#endif
+		{ "ModuleRelativePath", "OrbitingBody.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Orbit Visiualisation" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_orbitSteps_MetaData[] = {
+		{ "Category", "Orbit Visualization" },
+		{ "ModuleRelativePath", "OrbitingBody.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_orbitTimeStep_MetaData[] = {
+		{ "Category", "Orbit Visualization" },
+		{ "ModuleRelativePath", "OrbitingBody.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_orbitLineColor_MetaData[] = {
+		{ "Category", "Orbit Visualization" },
+		{ "ModuleRelativePath", "OrbitingBody.h" },
+	};
 #endif // WITH_METADATA
 	static void NewProp_generateSphere_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_generateSphere;
@@ -80,6 +103,11 @@ struct Z_Construct_UClass_AOrbitingBody_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_radius;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_spinSpeed;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_velocity;
+	static void NewProp_showOrbitDebug_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_showOrbitDebug;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_orbitSteps;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_orbitTimeStep;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_orbitLineColor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -98,6 +126,14 @@ const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AOrbitingBody_Sta
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_radius = { "radius", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, radius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_radius_MetaData), NewProp_radius_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_spinSpeed = { "spinSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, spinSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_spinSpeed_MetaData), NewProp_spinSpeed_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_velocity = { "velocity", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, velocity), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_velocity_MetaData), NewProp_velocity_MetaData) };
+void Z_Construct_UClass_AOrbitingBody_Statics::NewProp_showOrbitDebug_SetBit(void* Obj)
+{
+	((AOrbitingBody*)Obj)->showOrbitDebug = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_showOrbitDebug = { "showOrbitDebug", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AOrbitingBody), &Z_Construct_UClass_AOrbitingBody_Statics::NewProp_showOrbitDebug_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_showOrbitDebug_MetaData), NewProp_showOrbitDebug_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitSteps = { "orbitSteps", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, orbitSteps), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_orbitSteps_MetaData), NewProp_orbitSteps_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitTimeStep = { "orbitTimeStep", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, orbitTimeStep), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_orbitTimeStep_MetaData), NewProp_orbitTimeStep_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitLineColor = { "orbitLineColor", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOrbitingBody, orbitLineColor), Z_Construct_UScriptStruct_FColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_orbitLineColor_MetaData), NewProp_orbitLineColor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOrbitingBody_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_generateSphere,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_sphereMaterial,
@@ -106,6 +142,10 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOrbiting
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_radius,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_spinSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_velocity,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_showOrbitDebug,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitSteps,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitTimeStep,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOrbitingBody_Statics::NewProp_orbitLineColor,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AOrbitingBody_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AOrbitingBody_Statics::DependentSingletons[])() = {
@@ -148,10 +188,10 @@ AOrbitingBody::~AOrbitingBody() {}
 struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOrbitingBody, AOrbitingBody::StaticClass, TEXT("AOrbitingBody"), &Z_Registration_Info_UClass_AOrbitingBody, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOrbitingBody), 3465741362U) },
+		{ Z_Construct_UClass_AOrbitingBody, AOrbitingBody::StaticClass, TEXT("AOrbitingBody"), &Z_Registration_Info_UClass_AOrbitingBody, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOrbitingBody), 3340574284U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_2025963744(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_2556670639(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_OrbitingBody_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
