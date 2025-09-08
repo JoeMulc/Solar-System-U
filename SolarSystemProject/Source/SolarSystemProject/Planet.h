@@ -13,7 +13,7 @@ struct FPlanetInfo
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Planet Generation") float seaLevel = 0.0f;
-	UPROPERTY(EditAnywhere, Category = "Planet Generation") float oceanDepth = -80.f;
+	UPROPERTY(EditAnywhere, Category = "Planet Generation") float oceanDepth = -80.f;               //Nested structs?? - cant be bothered rn with unreal stuff but would be better :D
 	UPROPERTY(EditAnywhere, Category = "Planet Generation") float mountainHeight = 150.f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation") float continentHeight = 40.f;
 	UPROPERTY(EditAnywhere, Category = "Planet Generation") float valleyDepth = -30.f;
