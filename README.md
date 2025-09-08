@@ -4,4 +4,4 @@ A tool created for the generation and simulation of a solar system. Compute and 
 
 ![Solar system](SolarSystemProject/Saved/Screenshots/HighresScreenshot00010.png) 
 
-![Orbits](Solar-System-U/SolarSystemProject/Saved/Screenshots/orbits.png)
+![Orbits](SolarSystemProject/Saved/Screenshots/orbits.png)
