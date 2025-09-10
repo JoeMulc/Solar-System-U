@@ -37,7 +37,7 @@ struct FPlanetInfo
     UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor rockColor = FLinearColor(0.4, 0.3, 0.2, 1.0);
     UPROPERTY(EditAnywhere, Category = "Planet Generation|Colours") FLinearColor snowColor = FLinearColor(0.95, 0.95, 0.98, 1.0);
 
-    // Planet Factory Functions
+    //These are shite and dont work as inteded with updated shaders - future joe do this work
 
     static FPlanetInfo CreateEarthLike()
     {
