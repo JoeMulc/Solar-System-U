@@ -250,6 +250,22 @@ struct FPlanetInfo
 
 };
 
+USTRUCT()
+struct FAtmosphereInfo
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere) float lightStepCount = 4.0f;
+    UPROPERTY(EditAnywhere) FLinearColor mieCoeff = FLinearColor(0.002, 0.002, 0.002, 0);
+    UPROPERTY(EditAnywhere) float mieStrength = 0.5f;
+    UPROPERTY(EditAnywhere) FLinearColor rayleighCoeff = FLinearColor(0.0025, 0.0041, 0.0098, 0);
+
+    UPROPERTY(EditAnywhere) float rayleighStrength = 1.0f;
+    UPROPERTY(EditAnywhere) float scatteringStrength = 2.0f;
+    UPROPERTY(EditAnywhere) float stepCount = 8.f;
+    UPROPERTY(EditAnywhere) float sunIntensity = 2.f;
+};
+
 UCLASS()
 class SOLARSYSTEMPROJECT_API APlanet : public AOrbitingBody
 {
@@ -268,6 +284,16 @@ protected:
 
     UProceduralMeshComponent* oceanMesh;
     UPROPERTY(EditAnywhere) UMaterialInterface* oceanMaterial;
+
+    UPROPERTY(EditAnywhere) bool doGenerateAtmosphere = true;
+    UPROPERTY(EditAnywhere) UMaterialInterface* atmosphereMaterial;
+    UMaterialInstanceDynamic* dynamicAtmosphereMaterial;
+    FWeightedBlendable atmosphereBlend;
+    void GenerateAtmosphere();
+    void TickAtmosphere(float deltaTime);
+
+    UPROPERTY(EditAnywhere) FAtmosphereInfo atmosphereInfo;
+
     
 	UPROPERTY(EditAnywhere) FPlanetInfo planetInfo;
 

@@ -7,6 +7,7 @@ APlanet::APlanet()
 {
     oceanMesh = CreateDefaultSubobject<UProceduralMeshComponent>(TEXT("oceanMesh"));
     oceanMesh->SetupAttachment(RootComponent);
+   
 }
 
 void APlanet::BeginPlay()
@@ -14,11 +15,21 @@ void APlanet::BeginPlay()
 	Super::BeginPlay();
    
     GeneratePlanet();
+
+    if (doGenerateAtmosphere && atmosphereMaterial)
+    {
+        dynamicAtmosphereMaterial = UMaterialInstanceDynamic::Create(atmosphereMaterial, this);
+        atmosphereBlend.Object = dynamicAtmosphereMaterial;
+        atmosphereBlend.Weight = 1.f;
+        GenerateAtmosphere();
+    }
 }
 
 void APlanet::Tick(float deltaTime)
 {
 	Super::Tick(deltaTime);
+
+    if (doGenerateAtmosphere && atmosphereMaterial) TickAtmosphere(deltaTime);
 }
 
 void APlanet::GeneratePlanet()
@@ -119,4 +130,39 @@ void APlanet::GenerateOcean()
 FVector4f APlanet::linearToVector(FLinearColor col)
 {
     return FVector4f(col.R, col.G, col.B, col.A);
+}
+
+void APlanet::GenerateAtmosphere()
+{
+    TArray<AActor*> postProcessVolumes;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APostProcessVolume::StaticClass(), postProcessVolumes);
+
+    APostProcessVolume* postProcessVolume = Cast<APostProcessVolume>(postProcessVolumes[0]);
+
+    postProcessVolume->Settings.WeightedBlendables.Array.Add(atmosphereBlend);
+
+    dynamicAtmosphereMaterial->SetScalarParameterValue("AtmosphereRadius", radius + 350);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("AtmosphereHeight", 350);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("Planet Radius", radius);
+
+    dynamicAtmosphereMaterial->SetScalarParameterValue("lightStepCount", atmosphereInfo.lightStepCount);
+    dynamicAtmosphereMaterial->SetVectorParameterValue("MieCoeff", atmosphereInfo.mieCoeff);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("MieStrength", atmosphereInfo.mieStrength);
+    dynamicAtmosphereMaterial->SetVectorParameterValue("RayleighCoeff", atmosphereInfo.rayleighCoeff);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("RayleighStrength", atmosphereInfo.rayleighStrength);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("ScatteringStrength", atmosphereInfo.scatteringStrength);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("StepCount", atmosphereInfo.stepCount);
+    dynamicAtmosphereMaterial->SetScalarParameterValue("SunIntensity", atmosphereInfo.sunIntensity);
+
+}
+
+void APlanet::TickAtmosphere(float deltaTime)
+{
+
+    dynamicAtmosphereMaterial->SetVectorParameterValue("PlanetCenter", FLinearColor(this->GetActorLocation()));
+
+    FVector sunDir = FVector::ZeroVector - this->GetActorLocation();
+    sunDir.Normalize();
+    dynamicAtmosphereMaterial->SetVectorParameterValue("SunDirection", FLinearColor(sunDir));
+
 }
