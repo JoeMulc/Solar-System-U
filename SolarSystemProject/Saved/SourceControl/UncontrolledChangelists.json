@@ -1,0 +1,14 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/Textures/Atmosphere/Atmosphere.uasset",
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/__ExternalActors__/Space/A/97/XM27WXXAUR3A4SQA8BYRQ0.uasset",
+				"C:/Users/Joe/Documents/Unreal Projects/Solar_System/Solar-System/SolarSystemProject/Content/__ExternalActors__/PlanetCloseups/6/37/XRG3VW735EQ1NU1LY1YIDW.uasset"
+			]
+		}
+	]
+}

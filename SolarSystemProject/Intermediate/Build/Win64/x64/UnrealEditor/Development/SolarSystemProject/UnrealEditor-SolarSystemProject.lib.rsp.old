@@ -1,0 +1,22 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-SolarSystemProject.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\SolarSystemProjectEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\CelestialBody.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\Moon.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\OrbitingBody.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\Planet.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\SolarSystemProject.init.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\CelestialBody.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\Moon.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\OrbitingBody.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\SolarSystemProject.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\Planet.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\PerModuleInline.gen.cpp.obj"
+"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\Default.rc2.res"
+/OUT:"C:\Users\Joe\Documents\Unreal Projects\Solar_System\Solar-System\SolarSystemProject\Intermediate\Build\Win64\x64\UnrealEditor\Development\SolarSystemProject\UnrealEditor-SolarSystemProject.lib"

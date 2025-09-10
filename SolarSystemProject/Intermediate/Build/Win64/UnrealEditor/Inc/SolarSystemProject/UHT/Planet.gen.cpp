@@ -12,6 +12,7 @@ void EmptyLinkFunctionForGeneratedCodePlanet() {}
 // Begin Cross Module References
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UPostProcessComponent_NoRegister();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_AOrbitingBody();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet();
 SOLARSYSTEMPROJECT_API UClass* Z_Construct_UClass_APlanet_NoRegister();
@@ -725,6 +726,11 @@ struct Z_Construct_UClass_APlanet_Statics
 		{ "Category", "Planet" },
 		{ "ModuleRelativePath", "Planet.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_atmospherePostProcessing_MetaData[] = {
+		{ "Category", "Planet" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Planet.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_planetInfo_MetaData[] = {
 		{ "Category", "Planet" },
 		{ "ModuleRelativePath", "Planet.h" },
@@ -735,6 +741,7 @@ struct Z_Construct_UClass_APlanet_Statics
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_doGenerateAtmosphere;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_atmosphereMaterial;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_atmosphereInfo;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_atmospherePostProcessing;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_planetInfo;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -765,12 +772,14 @@ void Z_Construct_UClass_APlanet_Statics::NewProp_doGenerateAtmosphere_SetBit(voi
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_doGenerateAtmosphere = { "doGenerateAtmosphere", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(APlanet), &Z_Construct_UClass_APlanet_Statics::NewProp_doGenerateAtmosphere_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_doGenerateAtmosphere_MetaData), NewProp_doGenerateAtmosphere_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_atmosphereMaterial = { "atmosphereMaterial", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, atmosphereMaterial), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_atmosphereMaterial_MetaData), NewProp_atmosphereMaterial_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_atmosphereInfo = { "atmosphereInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, atmosphereInfo), Z_Construct_UScriptStruct_FAtmosphereInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_atmosphereInfo_MetaData), NewProp_atmosphereInfo_MetaData) }; // 2563386444
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_atmospherePostProcessing = { "atmospherePostProcessing", nullptr, (EPropertyFlags)0x0020080000080009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, atmospherePostProcessing), Z_Construct_UClass_UPostProcessComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_atmospherePostProcessing_MetaData), NewProp_atmospherePostProcessing_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo = { "planetInfo", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlanet, planetInfo), Z_Construct_UScriptStruct_FPlanetInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_planetInfo_MetaData), NewProp_planetInfo_MetaData) }; // 3051757667
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlanet_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_oceanMaterial,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_doGenerateAtmosphere,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_atmosphereMaterial,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_atmosphereInfo,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_atmospherePostProcessing,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlanet_Statics::NewProp_planetInfo,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APlanet_Statics::PropPointers) < 2048);
@@ -818,10 +827,10 @@ struct Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Pl
 		{ FAtmosphereInfo::StaticStruct, Z_Construct_UScriptStruct_FAtmosphereInfo_Statics::NewStructOps, TEXT("AtmosphereInfo"), &Z_Registration_Info_UScriptStruct_AtmosphereInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FAtmosphereInfo), 2563386444U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 2097791607U) },
+		{ Z_Construct_UClass_APlanet, APlanet::StaticClass, TEXT("APlanet"), &Z_Registration_Info_UClass_APlanet, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlanet), 3619487964U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_2342298727(TEXT("/Script/SolarSystemProject"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_1010667861(TEXT("/Script/SolarSystemProject"),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_SolarSystemProject_Source_SolarSystemProject_Planet_h_Statics::ScriptStructInfo),
 	nullptr, 0);

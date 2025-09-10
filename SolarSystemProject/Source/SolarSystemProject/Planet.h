@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "OrbitingBody.h"
 #include "PlanetGenerationShader/PlanetGenerationShader.h"
+#include "Components\PostProcessComponent.h"
 #include "Planet.generated.h"
 
 USTRUCT()
@@ -293,6 +294,7 @@ protected:
     void TickAtmosphere(float deltaTime);
 
     UPROPERTY(EditAnywhere) FAtmosphereInfo atmosphereInfo;
+    UPROPERTY(EditAnywhere) UPostProcessComponent* atmospherePostProcessing;
 
     
 	UPROPERTY(EditAnywhere) FPlanetInfo planetInfo;
