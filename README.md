@@ -6,6 +6,9 @@ A tool created for the generation and simulation of a solar system. Compute and 
 
 ![Orbits](SolarSystemProject/Saved/Screenshots/orbits.png)
 
+![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00001.png)
+_Still working on atmospheres - image shows early stage_
+
 **Interesting Stuff**
 
 - Screenshots -> [Screenshots](https://github.com/JoeMulc/Solar-System-U/tree/main/SolarSystemProject/Saved/Screenshots)
