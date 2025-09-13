@@ -4,9 +4,9 @@ A tool created for the generation and simulation of a solar system. Compute and 
 
 ![Solar system](SolarSystemProject/Saved/Screenshots/HighresScreenshot00010.png) 
 
-![Orbits](SolarSystemProject/Saved/Screenshots/orbits.png)
+![Orbits](SolarSystemProject/Saved/Screenshots/WindowsEditor/49.png) ![Orbits2](SolarSystemProject/Saved/Screenshots/WindowsEditor/48.png)
 
-![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png)
+![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
 
 **Interesting Stuff**
 
