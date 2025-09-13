@@ -2,12 +2,13 @@
 
 A tool created for the generation and simulation of a solar system. Compute and pixel shaders generate the terrain, oceans and atmospheres of planets, moons and stars. Orbital calculations accurately simulate the forces being applied to all celestial bodies using Newtons law of universal gravitation. 
 
-![Solar system](SolarSystemProject/Saved/Screenshots/HighresScreenshot00010.png) 
+![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
 
 ![Orbits](SolarSystemProject/Saved/Screenshots/WindowsEditor/49.png) ![Orbits2](SolarSystemProject/Saved/Screenshots/WindowsEditor/48.png)
 
-![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
-
+![Earth](SolarSystemProject/Saved/Screenshots/WindowsEditor/50.png) ![Earth 2](SolarSystemProject/Saved/Screenshots/WindowsEditor/51.png) ![Attlerock](SolarSystemProject/Saved/Screenshots/WindowsEditor/52.png) ![Moon2](SolarSystemProject/Saved/Screenshots/WindowsEditor/53.png) ![Planet](SolarSystemProject/Saved/Screenshots/WindowsEditor/54.png)
+![Sulfur](SolarSystemProject/Saved/Screenshots/WindowsEditor/57.png) ![Arrakis](SolarSystemProject/Saved/Screenshots/WindowsEditor/58.png) ![Inquistitor](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00002.png)
+![PrettyMoon](SolarSystemProject/Saved/Screenshots/WindowsEditor/55.png)
 **Interesting Stuff**
 
 - Screenshots -> [Screenshots](https://github.com/JoeMulc/Solar-System-U/tree/main/SolarSystemProject/Saved/Screenshots)
