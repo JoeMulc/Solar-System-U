@@ -4,11 +4,14 @@ A tool created for the generation and simulation of a solar system. Compute and 
 
 _Orbit video has no lighting and is sped up 4000%, its clear sun mass is not large enough_
 ![OrbitsGif](SolarSystemProject/Saved/Screenshots/OrbitVideo.gif)
+
+_Nice atmosphere images_
 ![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
 
 _Stable orbit can be achieved using the debug option to show path_
 ![Orbits](SolarSystemProject/Saved/Screenshots/WindowsEditor/49.png) ![Orbits2](SolarSystemProject/Saved/Screenshots/WindowsEditor/48.png)
 
+_Some random images_
 ![Earth](SolarSystemProject/Saved/Screenshots/WindowsEditor/50.png) ![Earth 2](SolarSystemProject/Saved/Screenshots/WindowsEditor/51.png) ![Attlerock](SolarSystemProject/Saved/Screenshots/WindowsEditor/52.png) ![Moon2](SolarSystemProject/Saved/Screenshots/WindowsEditor/53.png) ![Planet](SolarSystemProject/Saved/Screenshots/WindowsEditor/54.png)
 ![Sulfur](SolarSystemProject/Saved/Screenshots/WindowsEditor/57.png) ![Arrakis](SolarSystemProject/Saved/Screenshots/WindowsEditor/58.png) ![Inquistitor](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00002.png)
 ![PrettyMoon](SolarSystemProject/Saved/Screenshots/WindowsEditor/55.png)
