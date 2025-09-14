@@ -2,7 +2,7 @@
 
 A tool created for the generation and simulation of a solar system. Compute and pixel shaders generate the terrain, oceans and atmospheres of planets, moons and stars. Orbital calculations accurately simulate the forces being applied to all celestial bodies using Newtons law of universal gravitation. 
 
-__Orbit video has no lighting and is sped up 4000%, its clear sun mass is not large enough__
+_Orbit video has no lighting and is sped up 4000%, its clear sun mass is not large enough_
 ![OrbitsGif](SolarSystemProject/Saved/Screenshots/OrbitVideo.gif)
 ![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
 
