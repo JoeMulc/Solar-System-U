@@ -1,6 +1,6 @@
 #  Procedural Solar System
 
-A tool created for the generation and simulation of a solar system. Compute and pixel shaders generate the terrain, oceans and atmospheres of planets, moons and stars. Orbital calculations accurately simulate the forces being applied to all celestial bodies using Newtons law of universal gravitation. 
+A tool created for the generation and simulation of a solar system. Compute and pixel shaders generate the terrain, oceans and atmospheres of planets, moons and stars. Orbital calculations accurately simulate the forces being applied to all celestial bodies using Newtons law of universal gravitation. Atmospheres use raymarching to calculate Rayleigh and Mie scattering resulting in life like atmospheres. 
 
 _Orbit video has no lighting and is sped up 4000%, its clear sun mass is not large enough_
 ![OrbitsGif](SolarSystemProject/Saved/Screenshots/OrbitVideo.gif)
