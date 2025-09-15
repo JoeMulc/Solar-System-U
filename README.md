@@ -7,7 +7,7 @@ _Orbit video has no lighting and is sped up 4000%, its clear sun mass is not lar
 
 _Nice atmosphere images - Rayleigh and Mie values change colour of the atmosphere and the suns glare_
 ![Atmosphere](SolarSystemProject/Saved/Screenshots/WindowsEditor/37.png) ![Atmosphere2](SolarSystemProject/Saved/Screenshots/WindowsEditor/2.png) ![Atmosphere3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00000.png) ![Atmosphere4](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00003.png)
-_View of sun from inside the atmosphere_
+_View of the sun from inside different atmospheres_
 ![mie1](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00005.png) ![mie2](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00006.png) ![mie3](SolarSystemProject/Saved/Screenshots/WindowsEditor/HighresScreenshot00007.png)
 
 _Stable orbit can be achieved using the debug option to show path_
