@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\Planet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\Planet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\Planet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\CelestialBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\OrbitingBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Moon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0C99B17C-CCD8-3049-90DF-965DFAA0D00A}|Intermediate\\ProjectFiles\\SolarSystemProject.vcxproj|solutionrelative:Source\\SolarSystemProject\\Moon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Moon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\Moon.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\CelestialBody.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Source\\SolarSystemProject\\Planet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 199,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,12 +55,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "PlanetGenerationShader.usf",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf",
+              "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf",
+              "RelativeToolTip": "Plugins\\ShadeupPlugin\\Shaders\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.usf",
+              "ViewState": "AgIAAMUAAAAAAAAAAADwvxwBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-02-23T09:48:48.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlanetGenerationShader.cpp",
+              "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp",
+              "RelativeDocumentMoniker": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp",
+              "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp",
+              "RelativeToolTip": "Plugins\\ShadeupPlugin\\Source\\ComputeModule\\Private\\PlanetGenerationShader\\PlanetGenerationShader.cpp",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-23T09:48:25.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Planet.h",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.h",
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\Planet.h",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.h",
               "RelativeToolTip": "Source\\SolarSystemProject\\Planet.h",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAAACoBAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAABwBAAAAAAAAAAAowH0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-09-08T15:23:11.798Z"
             },
@@ -64,56 +97,56 @@
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\Planet.cpp",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Planet.cpp",
               "RelativeToolTip": "Source\\SolarSystemProject\\Planet.cpp",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAAAJQAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAADeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-23T14:55:20.073Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "CelestialBody.cpp",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp",
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\CelestialBody.cpp",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.cpp",
               "RelativeToolTip": "Source\\SolarSystemProject\\CelestialBody.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-31T21:27:17.681Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "CelestialBody.h",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h",
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\CelestialBody.h",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\CelestialBody.h",
               "RelativeToolTip": "Source\\SolarSystemProject\\CelestialBody.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-08-31T21:04:32.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "OrbitingBody.h",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h",
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\OrbitingBody.h",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.h",
               "RelativeToolTip": "Source\\SolarSystemProject\\OrbitingBody.h",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAD4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-08-29T12:26:52.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "OrbitingBody.cpp",
               "DocumentMoniker": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp",
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\OrbitingBody.cpp",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\OrbitingBody.cpp",
               "RelativeToolTip": "Source\\SolarSystemProject\\OrbitingBody.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAowKAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-29T12:26:53.488Z"
             },
@@ -125,7 +158,7 @@
               "RelativeDocumentMoniker": "Source\\SolarSystemProject\\Moon.cpp",
               "ToolTip": "C:\\Users\\Joe\\Documents\\Unreal Projects\\Solar_System\\Solar-System\\SolarSystemProject\\Source\\SolarSystemProject\\Moon.cpp",
               "RelativeToolTip": "Source\\SolarSystemProject\\Moon.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAFEAAAB4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-31T21:43:49.842Z"
             }

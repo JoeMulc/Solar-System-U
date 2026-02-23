@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+// 
+//Struggling to get the generation I want adn burned out with this thing. In the shader ive assumed planets will always be about 1500 unites wide - scales are whacko bcoz of this - needs adjusted to work with any raidus :D
 
 #include "Planet.h"
 
